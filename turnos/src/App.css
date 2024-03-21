@@ -9,9 +9,9 @@
 }
 
 :root {
-  --clr-primario: rgb(39, 38, 38);
-  --clr-primario-dark: rgb(9, 9, 9);
-  --clr-secundario: rgb(255, 255, 255);
+  --clr-primario: rgb(81, 81, 81);
+  --clr-primario-dark: rgb(0, 0, 0);
+  --clr-secundario: rgb(185, 255, 49);
   --clr-terciario: rgb(137, 137, 137);
   --clr-gris-claro: rgb(221, 220, 220);
   --ff-primario: 'Poppins', sans-serif;
