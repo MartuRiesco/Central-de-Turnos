@@ -3,15 +3,33 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Login from './Components/Login/login';
 import Register from './Components/Register/register';
 import Home from './Components/Home/home';
+import PublicRoute from './Components/PublicRoute/publicRoute';
+//import ProtectedRoute from './Components/ProtectedRoute/protectedRoute';
 
 function App() {
   return (
     <div className='App p-5'>
       <BrowserRouter>
           <Routes>
-              <Route path='/' element={ <Login /> } />
-              <Route path='/register' element={ <Register /> } />
-              <Route path='/home' element={ <Home /> } />
+              <Route path='/' element={ 
+                  <PublicRoute>
+                      <Login /> 
+                  </PublicRoute>
+                    } 
+              />
+              <Route path='/register' element={ 
+                  <PublicRoute>
+                      <Register /> 
+                  </PublicRoute>
+                    } 
+              />
+              <Route 
+                path='/home' element={
+                  //<ProtectedRoute>
+                      <Home /> 
+                  //</ProtectedRoute>
+                   } 
+              />
           </Routes>
       </BrowserRouter>
     </div>
