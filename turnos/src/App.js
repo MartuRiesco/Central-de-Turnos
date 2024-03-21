@@ -1,7 +1,9 @@
+import React from 'react';
+
 function App() {
   return (
     <div className="App">
-      <h1>DEMO</h1>
+      <h1>Registro de turnos</h1>
     </div>
   );
 }
