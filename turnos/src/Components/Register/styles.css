@@ -51,7 +51,7 @@ label {
 }
 
 .primary-button:hover {
-    color: var(--clr-gris-claro) !important;
+    color: var(--clr-primario-dark) !important;
 }
 
 .anchor {
