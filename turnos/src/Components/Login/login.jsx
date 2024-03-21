@@ -2,6 +2,7 @@ import React from "react";
 import { Button, Form, Input } from 'antd';
 import { Link } from 'react-router-dom';
 import './styles.css';
+import Logo from "../Logo/logo";
 
 function Login() {
 
@@ -12,7 +13,9 @@ function Login() {
     return (
         <div className="authentication">
             <div className="authentication-form card p-3">
-                <h1 className="card-title">Logo</h1>
+                <div>
+                    <Logo />
+                </div>
                 <Form layout='vertical m-3' onFinish={onFinish}>
                         <Form.Item name='email'>
                                 <Input placeholder='Email' />
