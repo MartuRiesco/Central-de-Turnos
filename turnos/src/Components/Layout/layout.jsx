@@ -1,10 +1,12 @@
 import { React, useState } from 'react';
 import './styles.css';
 //import Logo from '../Logo/logo';
+//import { useSelector } from 'react-redux';
 import { Link, useLocation } from 'react-router-dom';
 function Layout({ children }) {
 
-  const [ collapsed, setCollapsed ] = useState(false)
+  const [ collapsed, setCollapsed ] = useState(false);
+  //const { user } = useSelector((state) => state.user)
   const location = useLocation();
   const userMenu = [
     {
@@ -62,8 +64,9 @@ function Layout({ children }) {
                         </i>
                     }
 
-                    <div className='d-flex'>
+                    <div className='d-flex align-items-center px-4'>
                         <i className="ri-notification-line header-action-icon"></i>
+                        {/* <Link className='anchor' to='/profile'>{user?.name}</Link> */}
                     </div>
                 </div>
                 <div className="body">
