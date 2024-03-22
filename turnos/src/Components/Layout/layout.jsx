@@ -61,6 +61,10 @@ function Layout({ children }) {
                              className="ri-close-line header-action-icon" onClick={() => setCollapsed(true)}>
                         </i>
                     }
+
+                    <div className='d-flex'>
+                        <i className="ri-notification-line header-action-icon"></i>
+                    </div>
                 </div>
                 <div className="body">
                     { children }
