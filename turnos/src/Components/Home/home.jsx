@@ -1,12 +1,11 @@
 import React from "react";
-import './styles.css';
-import Layout from "antd/es/layout/layout";
+import Layout from '../Layout/layout';
 
 function Home() {
 
     return (
             <Layout>
-                HomePage
+                <h1>HomePage</h1>
             </Layout>
     );
 };

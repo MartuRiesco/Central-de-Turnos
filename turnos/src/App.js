@@ -9,7 +9,7 @@ import { Toaster } from 'react-hot-toast';
 
 function App() {
   return (
-    <div className='App p-5'>
+    <div className='App p-2'>
       <BrowserRouter>
       <Toaster
   position="top-center"
