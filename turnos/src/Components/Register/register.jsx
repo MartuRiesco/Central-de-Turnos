@@ -3,11 +3,23 @@ import { Button, Form, Input } from 'antd';
 import { Link } from 'react-router-dom';
 import './styles.css';
 import Logo from "../Logo/logo";
+import axios from 'axios';
+import toast from 'react-hot-toast'
 
 function Register() {
 
-    const onFinish = (values) => {
-        console.log('Valores del fromulario', values);
+    const onFinish = async(values) => {
+       try {
+        const response = await axios.post('/auth/register', values)
+        if (response.data.success) {
+            toast.success(response.data.message)
+        }else{
+            toast.error(response.data.message)
+        }
+       } catch (error) {
+        console.log(error.message)
+        toast.error('something went wrong')
+       }
     }
 
     return (
