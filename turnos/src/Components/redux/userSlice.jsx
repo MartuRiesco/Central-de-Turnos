@@ -12,4 +12,4 @@ export const userSlice = createSlice({
     },
 });
 
-export const { showLoading, hideLoading } = userSlice.actions;
+export const { setUser } = userSlice.actions;
