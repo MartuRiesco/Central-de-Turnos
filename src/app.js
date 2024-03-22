@@ -18,7 +18,7 @@ const COOKIE_SECRET = config.cookeSecret;
 
 app.use(cookieParser(COOKIE_SECRET));
 initPassportConfig()
-app.use(passport.initialize());
+app.use(passport.initialize()); 
 
 app.use('/', indexRouter, userRouter, authRouter )
 

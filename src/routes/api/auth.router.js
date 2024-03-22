@@ -14,11 +14,11 @@ router.post('/auth/register', async (req, res) => {
     body: { name, email, password, role },
   } = req;
   if (!name || !email || !password) {
-    return res.status(400).json({ message: 'All fields are required' });
+    return res.status(400).json({ message: 'All fields are required', success:false });
   }
   let user = await UserModel.findOne({ email });
   if (user) {
-    return res.status(400).json({ message: 'Already registered user' });
+    return res.status(200).json({ message: 'Already registered user', success:false });
   }
   user = await UserModel.create({
     name,
@@ -28,7 +28,7 @@ router.post('/auth/register', async (req, res) => {
   });
   const cartDao = new CartDAO();
   await cartDao.createCart({ user: user._id });
-  res.status(201).json({ message: 'Usuario creado con éxito' });
+  res.status(201).json({ message: 'Usuario creado con éxito', success:true });
 });
 
 router.post('/auth/login', async (req, res) => {
@@ -38,7 +38,7 @@ try {
   res
   .cookie('access_token', token, { maxAge: 1000*60*30, httpOnly: true, signed: true })
   .status(200)
-  .json({message:'ingreso exitoso'})
+  .json({message:'ingreso exitoso', success: true})
 } catch (error) {
   res.status(400).json({message: error.message})
   

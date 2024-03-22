@@ -1,13 +1,29 @@
 import React from "react";
 import { Button, Form, Input } from 'antd';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './styles.css';
 import Logo from "../Logo/logo";
+import toast from "react-hot-toast";
+import axios from "axios";
 
 function Login() {
-
-    const onFinish = (values) => {
-        console.log('Valores del fromulario', values);
+    const navigate = useNavigate()
+    const onFinish = async(values) => {
+       try {
+        const response = await axios.post('/auth/login', values)
+        console.log(response);
+        if (response.data.success) {
+            toast.success(response.data.message)
+            toast('Redirecting to home page')
+            localStorage.setItem("token", response.token)
+            navigate('/home')
+        }else{
+            toast.error(response.data.message)
+        }
+       } catch (error) {
+        console.log(error.message)
+        toast.error('something went wrong')
+       }
     }
 
     return (
