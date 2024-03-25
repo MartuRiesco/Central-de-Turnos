@@ -8,15 +8,15 @@ import { generatorUserError,  validatorUserError } from "../utils/CauseMessageEr
 /* import EmailService from "../services/email.service.js"; */
 import userModel from "../models/user.model.js";
 
-const Admin = {first_name: config.adminName,
+const Admin = {
+  first_name: config.adminName,
   last_name: config.adminLastname,
   email: config.adminEmail,
-  password:config.adminPassword,
+  password: config.adminPassword,
   role: config.adminRole
+};
 
-}
-
-export default class AuthController{
+export default class AuthController {
     static  async register(data){
         const {
             first_name,
@@ -160,48 +160,4 @@ return userUpdated
   
 return user
   }
-
-/* static async changeUserRoleByAdmin(uid){
-  const userToUpdate = await UserService.getById(uid);
-  console.log('user to update', userToUpdate);
-  if (!userToUpdate) {
-    console.log({ message: 'Usuario no encontrado' });
-  }
-  const UserRole =  userToUpdate.role
-      const UserUpdated = UserRole === 'user' ? 'premium' : 'user';
-      const userToUp = {...userToUpdate, role: UserUpdated}
-   console.log('user updated', UserUpdated);
-       const user=  await UserService.updateById(uid, userToUp);
-       console.log('uo', user);
-       return UserUpdated
-
 }
- */
-/* static async changeUserRole(uid){
-  
-  const userToUpdate = await UserService.getById(uid);
-    console.log('user to update', userToUpdate);
-    if (!userToUpdate) {
-      console.log({ message: 'Usuario no encontrado' });
-    }
-    console.log('us doc', userToUpdate.documents);
-    const { documents } = userToUpdate;
-    const requiredDocuments = ['identification', 'proofOfAddress', 'bankStatement'];
-    const missingDocuments = requiredDocuments.filter(docName => !documents.find(doc => doc.name === docName));
-    if (missingDocuments.length > 0) {
-      CustomError.createError({
-        name: 'Error actualizando al usuario',
-        cause: generatorUserUpdate(documents),
-        message: 'Faltan completar campos 😨.',
-        code: EnumsError.INVALID_PARAMS_ERROR,
-      });
-    }
-    const UserRole =  userToUpdate.role
-      const UserUpdated = UserRole === 'user' ? 'premium' : 'user';
-      const userToUp = {...userToUpdate, role: UserUpdated}
-   console.log('user updated', UserUpdated);
-       const user=  await UserService.updateById(uid, userToUp);
-       console.log('uo', user);
-       return UserUpdated
-
-}} */}

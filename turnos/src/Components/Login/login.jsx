@@ -13,11 +13,10 @@ function Login() {
         const response = await axios.post('/auth/login', values)
         console.log(response);
         if (response.data.success) {
-            toast.success(response.data.message)
-            toast('Redirecting to home page')
-            localStorage.setItem("token", response.token)
-            navigate('/home')
-        }else{
+            toast.success(response.data.message);
+            toast('Accediendo a Home')
+            navigate('/')
+        } else {
             toast.error(response.data.message)
         }
        } catch (error) {

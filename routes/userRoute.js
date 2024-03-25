@@ -1,8 +1,8 @@
+import express from 'express';
 import { Router } from 'express';
-import userModel from '../../models/user.model.js';
-import bcrypt from 'bcryptjs';
 
 const router = Router();
+
 router.post('/register', async (req, res) => {
     try {
         const userExists = await userModel.findOne({ email: req.body.email });
@@ -21,14 +21,5 @@ router.post('/register', async (req, res) => {
         res.status(500).send({ message: 'Error creando al usuario.', success: false, error })
     }
 });
-
-router.post('/login', async (req, res) => {
-  try {
-
-  } catch (error) {
-    
-  }
-});
-
 
 export default router;

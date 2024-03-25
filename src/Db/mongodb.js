@@ -10,3 +10,4 @@ export const init = async () => {
       console.log('Ah ocurrido un error al intentar conectarnos a la DB', error.message);
     }
   }
+

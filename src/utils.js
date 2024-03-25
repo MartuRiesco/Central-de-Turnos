@@ -45,7 +45,7 @@ export const createHash = (password) => {
       role: user.role,
       cartId
     };
-    const token = JWT.sign(payload, JWT_SECRET, { expiresIn: '30m' });
+    const token = JWT.sign(payload, JWT_SECRET, { expiresIn: '1d' });
    return token
    } 
   

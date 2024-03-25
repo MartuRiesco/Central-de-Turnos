@@ -5,23 +5,26 @@ import authRouter from './routes/api/auth.router.js'
 import passport from 'passport';
 import cookieParser from 'cookie-parser';
 import { __dirname, app } from './utils.js';
-import{ init as initPassportConfig }from './config/passport.config.js'
+import { init as initPassportConfig } from './config/passport.config.js'
 import config from './config.js';
-import expressCompression from 'express-compression'
+import express from 'express';
+//import expressCompression from 'express-compression'
 
- app.use(expressCompression())
- app.use((error, req, res, next) => {
-  const message = `😨 Ah ocurrido un error desconocido: ${error.message}`;
-  res.status(500).json({ status: 'error', message });
-});
+//app.use(expressCompression())
+
 const COOKIE_SECRET = config.cookeSecret;
 
+app.use(express.json());
 app.use(cookieParser(COOKIE_SECRET));
 initPassportConfig()
 app.use(passport.initialize()); 
 
-app.use('/', indexRouter, userRouter, authRouter )
+//app.use('/api/user', userRouter);
+//app.use('/', authRouter);
 
-
+app.use((error, req, res, next) => {
+  const message = `😨 Ah ocurrido un error desconocido: ${error.message}`;
+  res.status(500).json({ status: 'error', message });
+});
 
 export default app
