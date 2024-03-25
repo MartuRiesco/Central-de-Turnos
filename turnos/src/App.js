@@ -5,39 +5,21 @@ import Register from './Components/Register/register';
 import Home from './Components/Home/home';
 //import PublicRoute from './Components/PublicRoute/publicRoute';
 import { Toaster } from 'react-hot-toast';
-<<<<<<< HEAD
-//import ProtectedRoute from './Components/ProtectedRoute/protectedRoute'
-=======
 import ProtectedRoute from './Components/ProtectedRoute/protectedRoute';
->>>>>>> 20ffb08390c13bb5585d63789bec0fce0fdbd5af
 
 function App() {
   return (
-    <div className='App p-2'>
+    <div className='App p-5'>
       <BrowserRouter>
-          <Toaster
-            position= "top-center"
-            reverseOrder= { false }
-          />
+      <Toaster
+  position="top-center"
+  reverseOrder={false}
+/>
           <Routes>
-              <Route path='/login' element={ 
-                  //<PublicRoute>
+              <Route path='/' element={ 
+                  
                       <Login /> 
-<<<<<<< HEAD
-                  //</PublicRoute>
-                    } 
-              />
-              <Route path='/register' element={ 
-                  //<PublicRoute>
-                      <Register /> 
-                  //</PublicRoute>
-                    } 
-              />
-              <Route 
-                path='/' element={
-                  //<ProtectedRoute>
-=======
-                   </PublicRoute> 
+                
                     } 
               />
               <Route path='/register' element={ 
@@ -49,7 +31,6 @@ function App() {
               <Route 
                 path='/home' element={
                   <ProtectedRoute>
->>>>>>> 20ffb08390c13bb5585d63789bec0fce0fdbd5af
                       <Home /> 
                   </ProtectedRoute>
                    } 

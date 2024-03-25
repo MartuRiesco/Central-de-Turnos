@@ -7,20 +7,21 @@ import axios from 'axios';
 import toast from 'react-hot-toast'
 
 function Register() {
-    const navigate = useNavigate();
+const navigate = useNavigate()
     const onFinish = async(values) => {
        try {
-        const response = await axios.post('/api/user/register', values)
+        const response = await axios.post('/auth/register', values)
+        console.log(response);
         if (response.data.success) {
             toast.success(response.data.message)
-            toast('Redirigiendo al login')
-            navigate('/login')
+            toast('Redirecting to login page')
+            navigate('/')
         }else{
             toast.error(response.data.message)
         }
        } catch (error) {
         console.log(error.message)
-        toast.error('Error al registrar')
+        toast.error('something went wrong')
        }
     }
 
@@ -43,7 +44,7 @@ function Register() {
 
                         <Button className="primary-button mt-2 mb-4" htmlType="submit">Registrarse</Button>
 
-                        <Link to="/login" className="anchor mt-4">Volver al login</Link>
+                        <Link to="/" className="anchor mt-4">Volver al login</Link>
                 </Form>
             </div>
         </div>
