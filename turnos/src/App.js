@@ -5,7 +5,7 @@ import Register from './Components/Register/register';
 import Home from './Components/Home/home';
 import PublicRoute from './Components/PublicRoute/publicRoute';
 import { Toaster } from 'react-hot-toast';
-//import ProtectedRoute from './Components/ProtectedRoute/protectedRoute';
+import ProtectedRoute from './Components/ProtectedRoute/protectedRoute';
 
 function App() {
   return (
@@ -19,20 +19,20 @@ function App() {
               <Route path='/' element={ 
                   <PublicRoute>
                       <Login /> 
-                  </PublicRoute>
+                   </PublicRoute> 
                     } 
               />
               <Route path='/register' element={ 
-                  <PublicRoute>
+            /*       <PublicRoute> */
                       <Register /> 
-                  </PublicRoute>
+                  /* </PublicRoute> */
                     } 
               />
               <Route 
                 path='/home' element={
-                  //<ProtectedRoute>
+                  <ProtectedRoute>
                       <Home /> 
-                  //</ProtectedRoute>
+                  </ProtectedRoute>
                    } 
               />
           </Routes>

@@ -1,6 +1,6 @@
 import passport from "passport";
 import { Strategy as JwtStrategy, ExtractJwt } from 'passport-jwt';
-  import { JWT_SECRET } from '../utils.js';
+import { JWT_SECRET } from '../utils.js';
 
 
 const opts = {

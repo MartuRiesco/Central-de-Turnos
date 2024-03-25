@@ -7,7 +7,9 @@ import AuthController from '../../controller/auth.controller.js';
 
 
 const router = Router();
-
+router.get('/logout', (req, res) => {
+  res.clearCookie('access_token').redirect('/')
+});
 router.post('/auth/register', async (req, res) => {
 
   const {
@@ -38,7 +40,7 @@ try {
   res
   .cookie('access_token', token, { maxAge: 1000*60*30, httpOnly: true, signed: true })
   .status(200)
-  .json({message:'ingreso exitoso', success: true})
+  .json({message:'ingreso exitoso', success: true, token: token})
 } catch (error) {
   res.status(400).json({message: error.message})
   
