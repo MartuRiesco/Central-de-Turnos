@@ -5,7 +5,11 @@ import Register from './Components/Register/register';
 import Home from './Components/Home/home';
 //import PublicRoute from './Components/PublicRoute/publicRoute';
 import { Toaster } from 'react-hot-toast';
+<<<<<<< HEAD
 //import ProtectedRoute from './Components/ProtectedRoute/protectedRoute'
+=======
+import ProtectedRoute from './Components/ProtectedRoute/protectedRoute';
+>>>>>>> 20ffb08390c13bb5585d63789bec0fce0fdbd5af
 
 function App() {
   return (
@@ -19,6 +23,7 @@ function App() {
               <Route path='/login' element={ 
                   //<PublicRoute>
                       <Login /> 
+<<<<<<< HEAD
                   //</PublicRoute>
                     } 
               />
@@ -31,8 +36,22 @@ function App() {
               <Route 
                 path='/' element={
                   //<ProtectedRoute>
+=======
+                   </PublicRoute> 
+                    } 
+              />
+              <Route path='/register' element={ 
+            /*       <PublicRoute> */
+                      <Register /> 
+                  /* </PublicRoute> */
+                    } 
+              />
+              <Route 
+                path='/home' element={
+                  <ProtectedRoute>
+>>>>>>> 20ffb08390c13bb5585d63789bec0fce0fdbd5af
                       <Home /> 
-                  //</ProtectedRoute>
+                  </ProtectedRoute>
                    } 
               />
           </Routes>

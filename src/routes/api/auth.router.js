@@ -1,21 +1,26 @@
-/* import { Router } from 'express';
+import { Router } from 'express';
 import UserModel from '../../models/user.model.js';
-import { createHash, isPasswordValid, tokenGenerator, authenticationMiddleware } from "../../utils.js";
+import { createHash, isPasswordValid, tokenGenerator } from "../../utils.js";
 import CartDAO from '../../Dao/Cart.dao.js';
 import AuthController from '../../controller/auth.controller.js';
 
-const router = Router();
 
+
+const router = Router();
+router.get('/logout', (req, res) => {
+  res.clearCookie('access_token').redirect('/')
+});
 router.post('/auth/register', async (req, res) => {
+
   const {
     body: { name, email, password, role },
   } = req;
   if (!name || !email || !password) {
-    return res.status(400).json({ message: 'Todos los campos son necesarios', success:false });
+    return res.status(400).json({ message: 'All fields are required', success:false });
   }
   let user = await UserModel.findOne({ email });
   if (user) {
-    return res.status(200).json({ message: 'Correo ya registrado', success:false });
+    return res.status(200).json({ message: 'Already registered user', success:false });
   }
   user = await UserModel.create({
     name,
@@ -35,58 +40,11 @@ try {
   res
   .cookie('access_token', token, { maxAge: 1000*60*30, httpOnly: true, signed: true })
   .status(200)
-  .json( {message:'Ingreso exitoso', success: true} );
+  .json({message:'ingreso exitoso', success: true, token: token})
 } catch (error) {
-  res.status(400).json({message: error.message});
-}});
-
-router.post('/user',
-authenticationMiddleware('jwt'), async (req, res) => {
-    try {
-      const { uid } = req.user;
-      const user = await UserModel.findOne({ _id: uid });
-      console.log('user', user);
-      const datas = buildResponse(user)
-    res.send({ user: datas });
-  } catch (error) {
-    res.status(500).send({ message: 'Error al obtener usuarios' });
-  }
-  });
-
-  const buildResponse = (data) => {
-    const usersData = data.map(user => ({
-      id: user.id,
-      name: user.first_name,
-      last_name: user.last_name,
-      email: user.email,
-      role: user.role,
-    }));
-    return usersData;
-  };  
-
-router.post('/auth/user', authenticationMiddleware('jwt'), async (req, res) => {
-  try {
-    const { uid } = req.user;
-    console.log('uid', { _id: uid});
-    const user = await UserModel.findOne({ _id: uid });
-    console.log('user', user);
-    if (!user) {
-      return res
-        .status(200)
-        .json({ message: 'No se encontró el usuario', success: false });
-    }
-      res.status(200).send({ success: true, data: {
-        name: user.name,
-        email: user.email
-      }});
-  } catch (error) {
-      res
-        .status(500)
-        .send({ message: 'Error obteniendo el usuario', success: false, error })
-  }
-    
-    
-  });
+  res.status(400).json({message: error.message})
+  
+}})
 
  
 router.post('/auth/recovery-password', async (req, res) => {
@@ -112,15 +70,8 @@ router.post('/auth/restore-password', async (req, res) => {
     res.status(400).json({message: error.message})
     
   }
-});
-
-/* router.post('/auth/user-by-id', authenticationMiddleware('jwt'), async(req, res) => {
-  try {
-    
-  } catch (error) {
-    
-  }
-}) */
+  
+})
 
 
-/* export default router; */
+export default router;
