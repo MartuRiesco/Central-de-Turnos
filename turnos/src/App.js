@@ -5,7 +5,7 @@ import Register from './Components/Register/register';
 import Home from './Components/Home/home';
 //import PublicRoute from './Components/PublicRoute/publicRoute';
 import { Toaster } from 'react-hot-toast';
-import ProtectedRoute from './Components/ProtectedRoute/protectedRoute';
+//import ProtectedRoute from './Components/ProtectedRoute/protectedRoute';
 
 function App() {
   return (
@@ -16,7 +16,7 @@ function App() {
   reverseOrder={false}
 />
           <Routes>
-              <Route path='/' element={ 
+              <Route path='/login' element={ 
                   
                       <Login /> 
                 
@@ -29,10 +29,8 @@ function App() {
                     } 
               />
               <Route 
-                path='/home' element={
-                  <ProtectedRoute>
+                path='/' element={
                       <Home /> 
-                  </ProtectedRoute>
                    } 
               />
           </Routes>

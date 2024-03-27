@@ -19,24 +19,21 @@ const Admin = {
 export default class AuthController {
     static  async register(data){
         const {
-            first_name,
-            last_name,
+            name,
             email,
             password,
             
           } = data;
           console.log('data :', data);
           if (
-            !first_name ||
-            !last_name ||
+            !name ||
             !email ||
             !password
           ) {
             CustomError.createError({
               name: 'Error creando el usuario',
               cause: generatorUserError({
-                first_name,
-                last_name,
+                name,
                 email,
                 password,
               }),
@@ -49,10 +46,8 @@ export default class AuthController {
             throw new Error('Correo ya registrado 😨. Intenta recuperar tu contraseña 😁.' );
           }
             let registeredUser = await UserService.create({
-              first_name,
-              last_name,
+              name,
               email,
-              age,
               password: createHash(password),
             });
             

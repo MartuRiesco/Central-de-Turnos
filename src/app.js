@@ -20,7 +20,7 @@ initPassportConfig()
 app.use(passport.initialize()); 
 
 //app.use('/api/user', userRouter);
-//app.use('/', authRouter);
+app.use('/', authRouter);
 
 app.use((error, req, res, next) => {
   const message = `😨 Ah ocurrido un error desconocido: ${error.message}`;

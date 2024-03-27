@@ -60,6 +60,28 @@ export const createHash = (password) => {
       });
     });
   }
+
+  export const authMiddleware = (req, res, next) => {
+      try {
+        const token = req.header['authorization'].split(" ")[1];
+        JWT.verify(token, JWT_SECRET, (error, decoded) => {
+          if(err) {
+            return res.status(401).send({
+              message: "Auth failed",
+              succes: false
+            });
+          } else {
+            req.body.userId = decoded.id;
+            next();
+          }
+        })
+      } catch (error) {
+          return res.status(401).send({
+            message: "Auth failed",
+            succes: false
+          });
+      }
+  }
   export const authenticationMiddleware = (strategy) => (req, res, next) => {
     passport.authenticate(strategy, function(error, payload, info) {
       if (error) {

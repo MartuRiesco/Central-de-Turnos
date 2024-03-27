@@ -1,15 +1,16 @@
 import { Router } from 'express';
 import UserModel from '../../models/user.model.js';
-import { createHash, isPasswordValid, tokenGenerator } from "../../utils.js";
+import { createHash, authMiddleware, authenticationMiddleware } from "../../utils.js";
 import CartDAO from '../../Dao/Cart.dao.js';
 import AuthController from '../../controller/auth.controller.js';
 
 
-
 const router = Router();
+
 router.get('/logout', (req, res) => {
   res.clearCookie('access_token').redirect('/')
 });
+
 router.post('/auth/register', async (req, res) => {
 
   const {
@@ -46,6 +47,22 @@ try {
   
 }})
 
+router.post('/get-user-info-by-id', authenticationMiddleware('jwt'), async (req, res) => {
+  try {
+    const user = await UserModel.findOne({ _id: req.user.userId });
+    console.log('req', req.user.email);
+    if (!user) {
+      return res.status(200).send({ message: 'No existe el usuario', success: false });
+    } else {
+      res.status(200).send({ success: true, data: {
+        name: user.name,
+        email: user.email
+      }});
+    }
+  } catch (error) {
+    res.status(500).send({ message: 'Error obteniendo información', success: false, error });
+  }
+});
  
 router.post('/auth/recovery-password', async (req, res) => {
 try {
