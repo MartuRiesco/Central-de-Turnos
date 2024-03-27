@@ -4,8 +4,10 @@ const userSchema = new mongoose.Schema({
   name: { type: String, required: true },
   email: { type: String, unique: true },
   password: { type: String, required: true },
-  role: { type: String, default: 'user',  enum: ['user',  'admin']  },
-  cart: { type: mongoose.Schema.Types.ObjectId, ref: 'Cart' },
+  role : { type: String, default: 'user',  enum: ['user',  'admin']  },
+ /* cart: { type: mongoose.Schema.Types.ObjectId, ref: 'Cart' }, */
+/*   isEmployee: {type: Boolean, default: false},
+  isAdmin:{type:Boolean, default:false}, */
   last_connection: { type: Date, default: null },
   jwtToken: String,
 }, { timestamps: true });

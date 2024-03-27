@@ -3,9 +3,10 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Login from './Components/Login/login';
 import Register from './Components/Register/register';
 import Home from './Components/Home/home';
-import PublicRoute from './Components/PublicRoute/publicRoute';
+//import PublicRoute from './Components/PublicRoute/publicRoute';
 import { Toaster } from 'react-hot-toast';
 import ProtectedRoute from './Components/ProtectedRoute/protectedRoute';
+//import ProtectedRoute from './Components/ProtectedRoute/protectedRoute';
 
 function App() {
   return (
@@ -16,10 +17,10 @@ function App() {
   reverseOrder={false}
 />
           <Routes>
-              <Route path='/' element={ 
-                 // <PublicRoute>
+              <Route path='/login' element={ 
+                  
                       <Login /> 
-                  // </PublicRoute> 
+                
                     } 
               />
               <Route path='/register' element={ 
@@ -29,10 +30,9 @@ function App() {
                     } 
               />
               <Route 
-                path='/home' element={
-                  <ProtectedRoute>
-                      <Home /> 
-                  </ProtectedRoute>
+              
+                path='/' element={<ProtectedRoute>
+                      <Home /> </ProtectedRoute>
                    } 
               />
           </Routes>

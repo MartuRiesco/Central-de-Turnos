@@ -4,7 +4,7 @@ input {
     border-radius: 20px !important;
     border: 0 !important;
     height: 60px !important;
-    background: var(--clr-gris-claro) !important;
+    background: var(--clr-gray-light) !important;
     padding: 20px !important;
     margin: 5px 0 !important;
 }
@@ -12,7 +12,7 @@ input {
 input:focus {
     outline: none !important;
     box-shadow: none !important;
-    border: 1px solid var(--clr-gris-claro) !important;
+    border: 1px solid var(--clr-gray-light) !important;
 }
 
 label {
