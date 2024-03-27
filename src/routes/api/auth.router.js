@@ -55,7 +55,8 @@ router.post('/get-user-info-by-id', authenticationMiddleware('jwt'), async (req,
       return res.status(200).send({ message: 'No existe el usuario', success: false });
     } else {
       res.status(200).send({ success: true, data: {
-        name: user.name,
+        id: user._id,
+        //name: user.name,
         email: user.email
       }});
     }

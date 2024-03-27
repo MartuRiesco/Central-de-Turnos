@@ -24,7 +24,7 @@ function Home() {
 
     useEffect(() => {
         getData();
-    }, [])
+    }, []);
     
     return (
         <div>

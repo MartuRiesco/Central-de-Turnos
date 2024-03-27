@@ -32,18 +32,14 @@ export const createHash = (password) => {
   export const tokenGenerator = (user, cartId) => {
     const {
       _id: id,
-      first_name,
-      last_name,
+      name,
       email,
       role,
     } = user;
     const payload = {
       id,
-      first_name,
-      last_name,
-      email,
-      role: user.role,
-      cartId
+      name,
+      email
     };
     const token = JWT.sign(payload, JWT_SECRET, { expiresIn: '1d' });
    return token
