@@ -10,8 +10,8 @@ function Home() {
     const onclick = async()=>{
         alert('saliendo');
      const response = await axios.get('/logout')
-     console.log(response);
-     if (response){
+     console.log(response.data.success);
+     if (response.data.success){
         navigate('/')
      }
     }

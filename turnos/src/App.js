@@ -17,9 +17,9 @@ function App() {
 />
           <Routes>
               <Route path='/' element={ 
-                  <PublicRoute>
+                 // <PublicRoute>
                       <Login /> 
-                   </PublicRoute> 
+                  // </PublicRoute> 
                     } 
               />
               <Route path='/register' element={ 

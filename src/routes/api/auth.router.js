@@ -8,7 +8,7 @@ import AuthController from '../../controller/auth.controller.js';
 
 const router = Router();
 router.get('/logout', (req, res) => {
-  res.clearCookie('access_token').redirect('/')
+  res.clearCookie('access_token').json({message: 'logout exitoso', success: true})
 });
 router.post('/auth/register', async (req, res) => {
 
