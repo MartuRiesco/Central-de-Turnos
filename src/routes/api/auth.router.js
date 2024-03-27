@@ -50,7 +50,7 @@ try {
 router.post('/get-user-info-by-id', authenticationMiddleware('jwt'), async (req, res) => {
   try {
     const user = await UserModel.findOne({ _id: req.user.userId });
-    console.log('req', req.user.email);
+    console.log('req', req.user);
     if (!user) {
       return res.status(200).send({ message: 'No existe el usuario', success: false });
     } else {
