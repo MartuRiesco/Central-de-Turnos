@@ -19,12 +19,8 @@ app.use(cookieParser(COOKIE_SECRET));
 initPassportConfig()
 app.use(passport.initialize()); 
 
-//app.use('/api/user', userRouter);
-app.use('/', authRouter);
+app.use('/', indexRouter, userRouter, authRouter )
 
-app.use((error, req, res, next) => {
-  const message = `😨 Ah ocurrido un error desconocido: ${error.message}`;
-  res.status(500).json({ status: 'error', message });
-});
+
 
 export default app

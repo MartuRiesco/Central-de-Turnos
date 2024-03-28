@@ -6,7 +6,8 @@ import { init } from './Db/mongodb.js'
 
 await init();
 
-const PORT = config.port
+const PORT = config.port || 3000
+console.log(PORT);
 
 app.listen(PORT, () => {
   console.log(`Server running in http://localhost:${PORT}/`);

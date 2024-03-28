@@ -1,16 +1,21 @@
 import React from "react";
 import { Button, Form, Input } from 'antd';
 import { Link, useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import './styles.css';
 import Logo from "../Logo/logo";
 import axios from 'axios';
 import toast from 'react-hot-toast'
+import { hideLoading, showLoading } from "../redux/alertsSlice";
 
 function Register() {
-const navigate = useNavigate()
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
     const onFinish = async(values) => {
        try {
-        const response = await axios.post('/auth/register', values)
+        dispatch(showLoading());
+        const response = await axios.post('/auth/register', values);
+        dispatch(hideLoading());
         console.log(response);
         if (response.data.success) {
             toast.success(response.data.message)
@@ -20,8 +25,9 @@ const navigate = useNavigate()
             toast.error(response.data.message)
         }
        } catch (error) {
-        console.log(error.message)
-        toast.error('something went wrong')
+        dispatch(hideLoading());
+        console.log(error.message);
+        toast.error('something went wrong');
        }
     }
 
@@ -44,7 +50,7 @@ const navigate = useNavigate()
 
                         <Button className="primary-button mt-2 mb-4" htmlType="submit">Registrarse</Button>
 
-                        <Link to="/" className="anchor mt-4">Volver al login</Link>
+                        <Link to="/login" className="anchor mt-4">Volver al login</Link>
                 </Form>
             </div>
         </div>

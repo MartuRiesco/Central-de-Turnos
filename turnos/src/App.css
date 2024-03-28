@@ -12,6 +12,7 @@
   --clr-primario: rgb(81, 81, 81);
   --clr-primario-dark: rgb(0, 0, 0);
   --clr-secundario: rgb(185, 255, 49);
+  --clr-secundario-light: rgba(248, 248, 248, 0.75);
   --clr-secundario-dark: rgb(213, 242, 154);
   --clr-gray: rgb(137, 137, 137);
   --clr-gray-light: rgb(233, 231, 231);

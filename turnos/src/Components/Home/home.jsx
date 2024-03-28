@@ -6,11 +6,11 @@ import axios from "axios";
 //import { useNavigate } from "react-router-dom";
 import Layout from "../Layout/layout";
 
-function Home() {
+function Home() {  
 
     const getData = async () => {
         try {
-            const response = await axios.post('/get-user-info-by-id', {}, {
+            const response = await axios.get('/get-user-info-by-id', {}, {
                 headers: {
                     Authorization: 'Bearer ' + localStorage.getItem('token'),
                 }
@@ -24,7 +24,7 @@ function Home() {
 
     useEffect(() => {
         getData();
-    }, []);
+    }, [])
     
     return (
         <div>
@@ -33,5 +33,5 @@ function Home() {
             </Layout>
         </div>
     );
-};
+;}
 export default Home;

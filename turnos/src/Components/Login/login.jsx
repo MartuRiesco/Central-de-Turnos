@@ -4,13 +4,18 @@ import { Link, useNavigate } from 'react-router-dom';
 import './styles.css';
 import Logo from "../Logo/logo";
 import toast from "react-hot-toast";
+import { /* useSelector */ useDispatch } from 'react-redux';
 import axios from "axios";
+import { hideLoading, showLoading } from "../redux/alertsSlice";
 
 function Login() {
+    const dispatch = useDispatch();
     const navigate = useNavigate()
     const onFinish = async(values) => {
        try {
-        const response = await axios.post('/auth/login', values)
+        dispatch(showLoading());
+        const response = await axios.post('/auth/login', values);
+        dispatch(hideLoading())
         console.log(response);
         if (response.data.success) {
             toast.success(response.data.message)
@@ -22,7 +27,8 @@ function Login() {
             toast.error(response.data.message)
         }
        } catch (error) {
-        console.log(error.message)
+        dispatch(hideLoading());
+        console.log(error.message);
         toast.error('something went wrong')
        }
     }

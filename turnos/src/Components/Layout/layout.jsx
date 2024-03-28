@@ -1,12 +1,24 @@
 import { React, useState } from 'react';
 import './styles.css';
 //import Logo from '../Logo/logo';
-//import { useSelector } from 'react-redux';
-import { Link, useLocation } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { Link, useLocation, /* useNavigate */ } from 'react-router-dom';
+//import axios from 'axios';
 function Layout({ children }) {
 
   const [ collapsed, setCollapsed ] = useState(false);
-  //const { user } = useSelector((state) => state.user)
+  const { user } = useSelector((state) => state.user)
+
+ /* const navigate = useNavigate()
+    const onclick = async()=>{
+        alert('saliendo');
+     const response = await axios.get('/logout')
+     console.log(response.data.success);
+     if (response.data.success){
+        localStorage.clear()
+        navigate('/login')
+     }
+    }  */
   const location = useLocation();
   const userMenu = [
     {
@@ -15,19 +27,19 @@ function Layout({ children }) {
         icon: 'ri-home-6-line'
     },
     {
-        name: 'Turnos',
+        name: 'Servicios',
         path: '/turnos',
         icon: 'ri-home-6-line'
     },
     {
-        name: 'Clientes',
+        name: 'Turnos',
         path: '/profile',
         icon: 'ri-user-line'
     },
     {
         name: 'Logout',
-        path: '/logout',
-        icon: 'ri-logout-box-line'
+        path: '/login',
+        icon: 'ri-logout-box-line',
     }
   ];
 
@@ -47,9 +59,10 @@ function Layout({ children }) {
                             const isActive = location.pathname === menu.path;
                             return  <div className={`d-flex menu-item ${isActive && 'active-menu-item'}`}>
                                         <i className={menu.icon}></i>
-                                        {!collapsed &&  <Link to={menu.path}>{menu.name}</Link>}
+                                        {!collapsed &&  <Link to={menu.path} >{menu.name}</Link>}
                                     </div>
                         })}
+                          
                     </div>
             </div>
 
@@ -66,7 +79,7 @@ function Layout({ children }) {
 
                     <div className='d-flex align-items-center px-4'>
                         <i className="ri-notification-line header-action-icon"></i>
-                        {/* <Link className='anchor' to='/profile'>{user?.name}</Link> */}
+                        <Link className='anchor' to='/profile'>{user?.name}</Link> 
                     </div>
                 </div>
                 <div className="body">

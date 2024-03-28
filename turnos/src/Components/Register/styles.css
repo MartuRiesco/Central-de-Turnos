@@ -24,6 +24,25 @@ label {
     margin: 10px 0 !important;
 }
 
+.spinner-parent {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--clr-secundario-light);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+}
+
+.spinner-border {
+    width: 2rem;
+    height: 2rem;
+    color: var(--clr-secundario);
+}
+
 /* Commom Styling */
 
 .card-title {
