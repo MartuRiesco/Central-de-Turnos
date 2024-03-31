@@ -22,7 +22,7 @@ function Home() {
     }, [])
     return (
         <Layout>
-            <h1>Home Page</h1>
+            <p>footer</p>
         </Layout>
     )
 }

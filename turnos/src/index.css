@@ -11,11 +11,12 @@
 :root {
   --clr-primario: rgb(81, 81, 81);
   --clr-primario-dark: rgb(0, 0, 0);
-  --clr-secundario: rgb(185, 255, 49);
-  --clr-secundario-light: rgba(248, 248, 248, 0.75);
-  --clr-secundario-dark: rgb(235, 248, 208);
-  --clr-gray: rgb(137, 137, 137);
+  --clr-secundario: rgb(189, 255, 49);
+  --clr-secundario-light: rgba(186, 255, 49, 0.29);
+  --clr-secundario-dark: rgb(75, 98, 27);
+  --clr-gray: rgb(177, 175, 175);
   --clr-gray-light: rgb(233, 231, 231);
+  --clr-active: rgb(73, 75, 45);
   --clr-white: rgb(255, 255, 255);
   --ff-primario: 'Poppins', sans-serif;
   --ff-secundario: 'Playfair Display', serif;
