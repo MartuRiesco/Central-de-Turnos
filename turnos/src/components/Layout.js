@@ -7,18 +7,8 @@ import { Link, useLocation, /* useNavigate */ } from 'react-router-dom';
 function Layout({ children }) {
 
   const [ collapsed, setCollapsed ] = useState(false);
-  const { user } = useSelector((state) => state.user)
+  const { user } = useSelector((state) => state.user);
 
- /* const navigate = useNavigate()
-    const onclick = async()=>{
-        alert('saliendo');
-     const response = await axios.get('/logout')
-     console.log(response.data.success);
-     if (response.data.success){
-        localStorage.clear()
-        navigate('/login')
-     }
-    }  */
   const location = useLocation();
   const userMenu = [
     {
@@ -43,15 +33,15 @@ function Layout({ children }) {
     }
   ];
 
-  const menuToBeRendered = userMenu
+  const menuToBeRendered = userMenu;
 
   return (
-    <div className='main'>
+    <div className='main p-3'>
         <div className='d-flex layout'>
             <div className='sidebar'>
                     <div className="sidebar-header">
                         {/* <Logo /> */}
-                        <h1>Lg</h1>
+                        {/* <h1>Lg</h1> */}
                     </div>
 
                     <div className="menu">
@@ -79,7 +69,7 @@ function Layout({ children }) {
 
                     <div className='d-flex align-items-center px-4'>
                         <i className="ri-notification-line header-action-icon"></i>
-                        <Link className='anchor' to='/profile'>{user?.name}</Link> 
+                        <Link className='anchor' to='/'>Hola, {user?.name}!</Link> 
                     </div>
                 </div>
                 <div className="body">

@@ -1,38 +1,35 @@
-import React from "react";
+import React from 'react';
 import { Button, Form, Input } from 'antd';
 import { Link, useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import './styles.css';
-import Logo from "../Logo/logo";
 import axios from 'axios';
-import toast from 'react-hot-toast'
-import { hideLoading, showLoading } from "../redux/alertsSlice";
+import toast from 'react-hot-toast';
+import { useDispatch } from 'react-redux';
+import { hideLoading, showLoading } from '../redux/alertsSlice';
+import Logo from '../components/Logo';
 
 function Register() {
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    const onFinish = async(values) => {
-       try {
-        dispatch(showLoading());
-        const response = await axios.post('/auth/register', values);
-        dispatch(hideLoading());
-        console.log(response);
-        if (response.data.success) {
+    const onFinish = async (values) => {
+        try {
+          dispatch(showLoading());
+          const response = await axios.post('/api/user/register', values);
+          dispatch(hideLoading())
+          if(response.data.success) {
+            toast.success(response.data.message);
+            toast('Redirecting to login page');
+            navigate('/login');
+          } else {
             toast.success(response.data.message)
-            toast('Redirecting to login page')
-            navigate('/login')
-        }else{
-            toast.error(response.data.message)
+          }
+        } catch (error) {
+            dispatch(hideLoading());
+            toast.error('Something went wrong');  
         }
-       } catch (error) {
-        dispatch(hideLoading());
-        console.log(error.message);
-        toast.error('something went wrong');
-       }
     }
 
-    return (
-        <div className="authentication">
+  return (
+    <div className="authentication">
             <div className="authentication-form card p-3">
                 <div>
                     <Logo />
@@ -54,7 +51,7 @@ function Register() {
                 </Form>
             </div>
         </div>
-    )
-};
+  )
+}
 
 export default Register;

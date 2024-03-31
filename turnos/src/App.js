@@ -1,52 +1,48 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Login from './Components/Login/login';
-import Register from './Components/Register/register';
-import Home from './Components/Home/home';
 import { Toaster } from 'react-hot-toast';
+import Register from './pages/Register';
+import Home from './pages/Home';
+import Login from './pages/Login'
 import { useSelector } from 'react-redux';
-import ProtectedRoute from './Components/Private/ProtectedRoute';
-import PublicRoute from './Components/Private/PublicRoute';
+import ProtectedRoute from './components/ProtectedRoute';
+import PublicRoute from './components/PublicRoute';
 
 
 function App() {
+
   const { loading } = useSelector(state => state.alerts);
+
   return (
-    <div className='App p-5'>
+    <div className='App'>
       <BrowserRouter>
           {loading && (
-              <div className='spinner-parent'>
-              <div class="spinner-border" role="status">
+                <div className='spinner-parent'>
+                <div class="spinner-border" role="status">
+                </div>
               </div>
-            </div>
-          )}
-          
+            )}
           <Toaster
-              position="top-center"
-              reverseOrder={false}
-          />
+                position="top-center"
+                reverseOrder={false}
+            />
           <Routes>
               <Route path='/login' element={ 
                   <PublicRoute>
                       <Login /> 
-                  </PublicRoute>
-                
-                    } 
-              />
+                  </PublicRoute>}/>
               <Route path='/register' element={ 
-                <PublicRoute>
-                    <Register /> 
-                </PublicRoute>
-                    } 
-              />
-              <Route 
-                path='/' element={
+                  <PublicRoute>
+                      <Register /> 
+                  </PublicRoute>
+                }/>
+              <Route path='/' element={ 
                   <ProtectedRoute>
-                    <Home /> 
+                      <Home /> 
                   </ProtectedRoute>
-                   } 
-              />
+                }/>
           </Routes>
+
       </BrowserRouter>
     </div>
   );

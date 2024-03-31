@@ -1,4 +1,5 @@
-import React, { useEffect } from 'react'
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Navigate, useNavigate } from 'react-router-dom';
 import axios from 'axios';
@@ -6,14 +7,15 @@ import { setUser } from '../redux/userSlice';
 import { hideLoading, showLoading } from '../redux/alertsSlice';
 
 function ProtectedRoute(props) {
-    const {user} = useSelector((state) => state.user);
+    const { user } = useSelector((state) => state.user);
     const dispatch = useDispatch();
     const navigate = useNavigate();
+
     const getUser = async() => {
         try {
             dispatch(showLoading());
-            const response = await axios.get(
-                '/get-user-info-by-id', 
+            const response = await axios.post(
+                '/api/user/get-user-info-by-id', 
                 { token: localStorage.getItem('token') }, 
                 {
                     headers: {
@@ -21,23 +23,23 @@ function ProtectedRoute(props) {
                     }
                 });
             dispatch(hideLoading())
-            if(response.data.succes) {
-                dispatch(setUser(response.data.data))
+            if(response.data.success) {
+                dispatch(setUser(response.data.data));
             } else {
-                localStorage.clear();
                 navigate('/login');
+                localStorage.clear();
             }
         } catch (error) {
             dispatch(hideLoading());
+            navigate('/login');
             localStorage.clear();
-            navigate('/');
         }
     }
+    
     useEffect(() => {
         if(!user) {
             getUser()
         }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [user]);
 
   if(localStorage.getItem('token')) {

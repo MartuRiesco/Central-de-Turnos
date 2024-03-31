@@ -5,7 +5,7 @@
 .sidebar {
     text-align: center;
     background-color: var(--clr-secundario);
-    border-radius: 5px;
+    border-radius: 30px;
     box-shadow: 0 0 2px var(--clr-terciario);
     margin-right: 20px !important;
     min-height: 100%;
@@ -18,11 +18,10 @@
 }
 
 .header {
-    background-color: var(--clr-white);
-    border-radius: 5px;
-    box-shadow: 0 0 2px var(--clr-gray);
+    background-color: var(--clr-secundario);
+    border-radius: 30px;
     margin-bottom: 20px !important;
-    height: 10vh;
+    height: 15vh;
     width: 100%;
     display: flex;
     align-items: center;
@@ -43,7 +42,7 @@
 }
 
 .menu-item {
-    margin-top: 30px !important;
+    margin-top: 40px !important;
 }
 
 .menu-item a {
@@ -70,7 +69,8 @@
     font-size: 30px;
     color: var(--clr-primario-dark);
     cursor: pointer;
-    padding-left: 10px !important;
+    padding-left: 20px !important;
+    padding-right: 10px !important;
 }
 
 @media screen and (max-width: 768px) {

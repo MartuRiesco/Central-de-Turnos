@@ -1,43 +1,39 @@
-import React from "react";
+import React from 'react';
 import { Button, Form, Input } from 'antd';
 import { Link, useNavigate } from 'react-router-dom';
-import './styles.css';
-import Logo from "../Logo/logo";
-import toast from "react-hot-toast";
-import { /* useSelector */ useDispatch } from 'react-redux';
-import axios from "axios";
-import { hideLoading, showLoading } from "../redux/alertsSlice";
+import axios from 'axios';
+import toast from 'react-hot-toast';
+import { useDispatch } from 'react-redux';
+import { hideLoading, showLoading } from '../redux/alertsSlice';
+import Logo from '../components/Logo';
 
 function Login() {
     const dispatch = useDispatch();
-    const navigate = useNavigate()
+    const navigate = useNavigate();
     const onFinish = async(values) => {
-       try {
-        dispatch(showLoading());
-        const response = await axios.post('/auth/login', values);
-        dispatch(hideLoading())
-        console.log(response);
-        if (response.data.success) {
-            toast.success(response.data.message)
-            toast('Redirecting to home page')
-            console.log(response.data.token);
-            localStorage.setItem("token", response.data.token)
-            navigate('/')
-        }else{
-            toast.error(response.data.message)
-        }
-       } catch (error) {
-        dispatch(hideLoading());
-        console.log(error.message);
-        toast.error('something went wrong')
-       }
+        try {
+            dispatch(showLoading());
+            const response = await axios.post('/api/user/login', values);
+            dispatch(hideLoading());
+            if(response.data.success) {
+              toast.success(response.data.message);
+              toast('Redirecting to home page');
+              localStorage.setItem('token', response.data.data);
+              navigate('/');
+            } else {
+              dispatch(hideLoading())
+              toast.success(response.data.message)
+            }
+          } catch (error) {
+              toast.error('something went wrong');  
+          }
     }
 
-    return (
-        <div className="authentication">
+  return (
+    <div className="authentication">
             <div className="authentication-form card p-3">
                 <div>
-                    <Logo />
+                    < Logo />
                 </div>
                 <Form layout='vertical m-3' onFinish={onFinish}>
                         <Form.Item name='email'>
@@ -57,7 +53,7 @@ function Login() {
                 </Form>
             </div>
         </div>
-    )
-};
+  )
+}
 
 export default Login;
