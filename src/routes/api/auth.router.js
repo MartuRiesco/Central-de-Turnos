@@ -4,6 +4,7 @@ import UserModel from '../../models/user.model.js';
 import { createHash, authMiddleware, authenticationMiddleware, authorizationMiddleware } from "../../utils.js";
 import CartDAO from '../../Dao/Cart.dao.js';
 import AuthController from '../../controller/auth.controller.js';
+import bcrypt from 'bcryptjs';
 
 
 const router = Router();
@@ -12,6 +13,25 @@ router.get('/logout', (req, res) => {
   res.clearCookie('access_token').json({message: 'logout exitoso', success: true})
 });
 
+/* router.post('/auth/register', async (req, res) => {
+  try {
+      const userExists = await UserModel.findOne({ email: req.body.email });
+      console.log('userExists', userExists);
+      if(userExists) {
+        return res.status(200).send({ message: 'Usuario ya registrado.', success: false })
+      }
+      const password = req.body.password;
+      const salt = await bcrypt.genSalt(10);
+      const hashedPassword = await bcrypt.hash(password, salt);
+      req.body.password = hashedPassword;
+      const newuser = new User(req.body);
+      await newuser.save();
+      res.status(200).send({ message: 'Usuario creado exitosamente!', success: true })
+  } catch (error) {
+      res.status(500).send({ message: 'Error creando al usuario.', success: false, error })
+  }
+});
+ */
 router.post('/auth/register', async (req, res) => {
 
   const {
@@ -30,34 +50,55 @@ router.post('/auth/register', async (req, res) => {
     password: createHash(password),
     role
   });
-  const cartDao = new CartDAO();
-  await cartDao.createCart({ user: user._id });
+  /* const cartDao = new CartDAO();
+  await cartDao.createCart({ user: user._id }); */
   res.status(201).json({ message: 'Usuario creado con éxito', success:true });
 });
 
 router.post('/auth/login', async (req, res) => {
 try {
- const token = await AuthController.login(req.body)
- console.log('token', token);
+ const token = await AuthController.login(req.body);
   res
-  .cookie('access_token', token, { maxAge: 1000*60*30, httpOnly: true, signed: true })
+  .cookie('token', token, { maxAge: 1000*60*30, httpOnly: true, signed: true })
   .status(200)
-  .json({message:'ingreso exitoso', success: true, token: token})
+  .send({message:'ingreso exitoso', success: true, token: token})
 } catch (error) {
-  res.status(400).json({message: error.message})
+  res.status(400).send({message: error.message})
   
 }})
-router.get('/get-user-info-by-id', authenticationMiddleware('jwt'),  async (req, res) => {
+router.post('/get-user-info-by-id', authenticationMiddleware('jwt'),  async (req, res) => {
   try {
-    const user = await UserModel.findOne({ email: req.user.email});
+    const user = await UserModel.findOne({ email: req.user.email });
+    if (!user) {
+      return res
+        .status(200)
+        .send({ message: 'No existe el usuario', success: false });
+    } else {
+      res.status(200).send({ 
+        success: true, 
+        data: {
+          name: user.name,
+          email: user.email
+      }});
+    }
+  } catch (error) {
+    res.status(500)
+      .send({ message: 'Error obteniendo información', success: false, error });
+  }
+});
+
+router.post('/get-info', authenticationMiddleware('jwt'),  async (req, res) => {
+  try {
+    const user = await UserModel.findOne({ _id: req.user.userId});
     console.log('req', req.user);
     if (!user) {
       return res.status(200).send({ message: 'No existe el usuario', success: false });
     } else {
-      res.status(200).send({ success: true, data: {
-        name: user.name,
-        email: user.email, 
-        id: user._id
+      res.status(200).send({ 
+        success: true, 
+        data: {
+          name: user.name,
+          email: user.email
       }});
     }
   } catch (error) {
@@ -65,7 +106,7 @@ router.get('/get-user-info-by-id', authenticationMiddleware('jwt'),  async (req,
   }
 });
 
-/* router.post('/get-user-info-by-id', authenticationMiddleware('jwt'), async (req, res) => {
+router.post('/get-user-info', authenticationMiddleware('jwt'), async (req, res) => {
   try {
     const user = await UserModel.findOne({ _id: req.user.userId });
     console.log('req', req.user);
@@ -81,7 +122,7 @@ router.get('/get-user-info-by-id', authenticationMiddleware('jwt'),  async (req,
   } catch (error) {
     res.status(500).send({ message: 'Error obteniendo información', success: false, error });
   }
-}); */
+});
  
 router.post('/auth/recovery-password', async (req, res) => {
 try {

@@ -9,12 +9,9 @@ const opts = {
 };
 function coookieExtractor(req) {
   let token = null;
-  /* let cartId = null; */
   if (req && req.signedCookies) {
-    token = req.signedCookies['access_token'];
-    /* cartId = req.signedCookies['cart_id']; */
+    token = req.signedCookies['token'];
   }
-  console.log('token..', token);
   return token ;
 }
 export const init = () => {

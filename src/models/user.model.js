@@ -11,7 +11,7 @@ const userSchema = new mongoose.Schema({
   seenNotificacion: { type: Array, default: [] },
   unseenNotification: { type: Array, default: [] },
   last_connection: { type: Date, default: null },
-  jwtToken: String,
+  //jwtToken: String,
 }, { timestamps: true });
 
 export default mongoose.model('User', userSchema);

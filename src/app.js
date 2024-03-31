@@ -19,7 +19,7 @@ app.use(cookieParser(COOKIE_SECRET));
 initPassportConfig()
 app.use(passport.initialize()); 
 
-app.use('/', indexRouter, userRouter, authRouter )
+app.use('/', authRouter )
 
 
 
