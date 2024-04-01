@@ -12,7 +12,7 @@
 .header-action-icon {
     font-size: 30px;
     font-weight: bold;
-    color: var(--clr-secundario);
+    color: var(--clr-primario-dark);
     cursor: pointer;
     margin: 1rem !important;
 }
@@ -24,13 +24,13 @@
 }
 
 .welcome h1 {
-    font-size: 80px;
+    font-size: 75px;
     font-weight: bold;
     color: var(--clr-primario-dark);
 }
 
 .welcome p {
-    font-size: 18px;
+    font-size: 16px;
     color: var(--clr-primario-dark);
     text-transform: none;
 }
@@ -68,9 +68,11 @@
 
 .menu-item p {
     color: var(--clr-primario-dark);
-    font-size: 18px;
+    font-size: 16px;
+    letter-spacing: .4px;
+    font-weight: bold;
     text-align: right;
-    width: 70%;
+    width: 40%;
     position: absolute;
     right: 20px;
     bottom: 20px;
@@ -82,7 +84,7 @@
     font-size: 30px;
     position: absolute;
     top: 20px;
-    left: 20px;
+    right: 20px;
 }
 
 .active-menu-item a {
@@ -90,7 +92,7 @@
 }
 
 .active-menu-item i {
-    color: var(--clr-active);
+    color: var(--clr-primario-dark);
 }
 
 .content {

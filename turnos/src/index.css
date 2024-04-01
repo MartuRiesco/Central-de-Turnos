@@ -10,10 +10,9 @@
 
 :root {
   --clr-primario: rgb(81, 81, 81);
-  --clr-primario-dark: rgb(0, 0, 0);
+  --clr-primario-dark: rgb(70, 69, 69);
   --clr-secundario: rgb(189, 255, 49);
-  --clr-secundario-light: rgba(186, 255, 49, 0.29);
-  --clr-secundario-dark: rgb(75, 98, 27);
+  --clr-secundario-light: rgba(190, 255, 49, 0.581);
   --clr-gray: rgb(177, 175, 175);
   --clr-gray-light: rgb(233, 231, 231);
   --clr-active: rgb(73, 75, 45);
@@ -99,6 +98,8 @@ label {
   width: 100% !important;
   color: var(--clr-primario-dark);
   font-size: 14px !important;
+  font-weight: bold !important;
+  text-transform: uppercase;
 }
 
 .primary-button:hover {

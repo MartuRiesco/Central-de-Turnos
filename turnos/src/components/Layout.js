@@ -13,29 +13,19 @@ function Layout({ children }) {
   const location = useLocation();
   const userMenu = [
     {
-        name: 'Link Uno',
+        name: 'Solicitar Turno',
         path: '/',
         icon: 'ri-arrow-right-line'
     },
     {
-        name: 'Link Uno',
-        path: '/turnos',
-        icon: 'ri-arrow-right-line'
+        name: 'Mis Turnos',
+        path: '/',
+        icon: 'ri-calendar-check-line'
     },
     {
-        name: 'Link Uno',
-        path: '/profile',
-        icon: 'ri-arrow-right-line'
-    },
-    {
-        name: 'Link Uno',
-        path: '/login',
-        icon: 'ri-arrow-right-line',
-    },
-    {
-        name: 'Link Uno',
-        path: '/login',
-        icon: 'ri-arrow-right-line',
+        name: 'Mis Datos',
+        path: '/',
+        icon: 'ri-user-line'
     }
   ];
 
