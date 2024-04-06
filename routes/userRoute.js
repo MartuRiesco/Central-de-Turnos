@@ -5,6 +5,8 @@ const Employee = require('../models/employeeModel')
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const authenticationMiddleware = require('../middlewares/authenticationMiddleware');
+const Appointment = require('../models/appointmentModel');
+const moment = require('moment');
 
 router.post('/register', async(req, res) => {
     try {
@@ -150,6 +152,103 @@ router.post('/delete-all-notifications',authenticationMiddleware, async(req, res
             .send({ message: 'Error solicitando la cuenta de empleado.', success: false, error })
     }
 });
+router.get("/get-all-employees", authenticationMiddleware, async (req, res) => {
+    try {
+      const employees = await Employee.find({ status: "approved"});
+      res.status(200).send({
+        message: "Empleados cargados correctamente",
+        success: true,
+        data: employees,
+      });
+    } catch (error) {
+      console.log(error);
+      res.status(500).send({
+        message: "Error buscando los empleados",
+        success: false,
+        error,
+      });
+    }
+  });
+
+router.post("/book-appointment", authenticationMiddleware, async (req, res) => {
+    try {
+    req.body.status = "pending"
+    req.body.date = moment(req.body.date, 'DD-MM-YYYY').toISOString
+    req.body.time = moment(req.body.time, 'HH:mm').toISOString
+    const newAppointment = new Appointment(req.body)
+    await newAppointment.save()
+const user = await User.findOne({_id: req.body.employeeInfo.userId });
+console.log(req.body);
+user.unseenNotifications.push({
+    type:"nuevo-turno-solicitado",
+    message:`Un nuevo turno fue solicitado por ${req.body.userInfo.name}`,
+    onClickPath: "/employee/appointments"
+
+})
+await user.save()
+res.status(200).send({
+    message: 'Turno registrado correctamente',
+    success: true
+})
+    } catch (error) {
+      console.log(error);
+      res.status(500).send({
+        message: "Error solicitando el turno ",
+        success: false,
+        error,
+      });
+    }
+  });
+
+  router.post("/check-booking-avilability", authenticationMiddleware, async (req, res) => {
+    try {
+    const date = moment(req.body.date, 'DD-MM-YYYY').toISOString()
+    const fromTime = moment(req.body.time, 'HH:mm').subtract(60, 'hours').toISOString()
+    const toTime = moment(req.body.time, 'HH:mm').add(1, 'hours').toISOString
+    const employeeId = req.body.employeeId
+    const appointments = await Appointment.find({
+        employeeId,
+        date,
+        time:{$gte: fromTime, $lte: toTime},
+        status: 'approved'
+    })
+    if(appointments.length>0){
+        return res.status(200).send({
+            message: 'El turno no esta disponible',
+            success: false
+        })
+    }else{
+        return res.status(200).send({
+            message: 'El turno esta disponible',
+            success: true
+        })
+    }
+    } catch (error) {
+      console.log(error);
+      res.status(500).send({
+        message: "Error solicitando el turno ",
+        success: false,
+        error,
+      });
+    }
+  });
+  router.get("/get-appointments-by-user-id", /* authenticationMiddleware, */ async (req, res) => {
+    try {
+      const appointments = await Appointment.find({userId: req.body.userId})
+      res.status(200).send({
+        message:"Turnos listados correctamente",
+        success:true,
+        data: appointments,
+      })
+    } catch (error) {
+      console.log(error);
+      res.status(500).send({
+        message: "Error buscando los turnos",
+        success: false,
+        error,
+      });
+    }
+  });
 
 
 

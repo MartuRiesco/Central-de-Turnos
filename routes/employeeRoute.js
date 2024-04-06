@@ -3,6 +3,7 @@ const router = express.Router();
 const User = require("../models/userModel");
 const Employee = require("../models/employeeModel");
 const authenticationMiddleware = require('../middlewares/authenticationMiddleware');
+const Appointment = require("../models/appointmentModel");
 
 
 router.post("/get-employee-info-by-userid", authenticationMiddleware, async (req, res) => {
@@ -22,7 +23,23 @@ router.post("/get-employee-info-by-userid", authenticationMiddleware, async (req
       });
     }
   })
-
+  router.post("/get-employee-info-by-id", authenticationMiddleware, async (req, res) => {
+    try {
+        const employee = await Employee.findOne({_id: req.body.employeeId})
+        res.status(200).send({
+            success:true, 
+            message: "Informacion del empleado ",
+            data: employee
+        })
+    } catch (error) {
+      console.log(error);
+      res.status(500).send({
+        message: "Error buscando la informacion de los empleados" ,
+        success: false,
+        error,
+      });
+    }
+  })
 
   router.post("/update-employee-profile", authenticationMiddleware, async (req, res) => {
     try {
@@ -41,4 +58,49 @@ router.post("/get-employee-info-by-userid", authenticationMiddleware, async (req
       });
     }
   })
+  router.get("/get-appointments-by-employee-id", authenticationMiddleware, async (req, res) => {
+    try {
+      const employee = await Employee.findOne({userId: req.body.userId     })
+      const appointments = await Appointment.find({employeeId: employee._id})
+      res.status(200).send({
+        message:"Turnos listados correctamente",
+        success:true,
+        data: appointments,
+      })
+    } catch (error) {
+      console.log(error);
+      res.status(500).send({
+        message: "Error buscando los turnos",
+        success: false,
+        error,
+      });
+    }
+  });
+  router.post("/change-apppointment-status",/*  authenticationMiddleware, */ async (req, res) => {
+    try {
+        const {appointmentId,  status} = req.body
+      const appointment = await Appointment.findByIdAndUpdate(appointmentId,{ status});
+      const user = await User.findOne({_id: appointment.userId})
+      const unseenNotifications = user.unseenNotifications;
+      unseenNotifications.push({
+       type:'appointment-request-changed',
+       message: `tu turno cambio su estado a ${status}`,
+       onClickPath:"/appointments",
+      })
+      
+      await user.save()
+      res.status(200).send({
+        message:"Cambio de estado del turno correctamente ",
+        success: true,
+      })
+    } catch (error) {
+      console.log(error);
+      res.status(500).send({
+        message: "Error actualizando los turnos" ,
+        success: false,
+        error,
+      });
+    }
+  })
+
 module.exports = router;
