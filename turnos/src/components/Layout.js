@@ -3,6 +3,7 @@ import './styles.css';
 //import Logo from '../Logo/logo';
 import { useSelector } from 'react-redux';
 import { Link, useLocation, useNavigate, /* useNavigate */ } from 'react-router-dom';
+import { Badge } from 'antd';
 //import axios from 'axios';
 function Layout({ children }) {
 
@@ -14,22 +15,39 @@ function Layout({ children }) {
   const userMenu = [
     {
         name: 'Solicitar Turno',
-        path: '/',
+        path: '/book-appointment',
         icon: 'ri-arrow-right-line'
     },
     {
         name: 'Mis Turnos',
-        path: '/',
+        path: '/get-appointments-by-user-id',
         icon: 'ri-calendar-check-line'
     },
     {
         name: 'Mis Datos',
-        path: '/',
+        path: '/get-user-info-by-id',
         icon: 'ri-user-line'
+    },
+    {
+        name: 'Cuenta Empleado',
+        path:'/apply-employee-account',
+        icon:'ri-user-add-line'
     }
   ];
+  const adminMenu = [
+    {
+        name: 'Usuarios',
+        path: '/get-all-users',
+        icon: 'ri-user-line'
+    },
+    {
+        name: 'Empleados',
+        path: '/get-all-employees',
+        icon: 'ri-user-add-line'
+    },
 
-  const menuToBeRendered = userMenu;
+  ];
+  const menuToBeRendered = user?.isAdmin ? adminMenu : userMenu;
 
   return (
     <div className='main'>
@@ -47,7 +65,10 @@ function Layout({ children }) {
                     }
 
                     <div className='d-flex align-items-center'>
+                    
+                    <Badge count={user?.unseenNotifications.length} onClick={()=>navigate('/notifications')}>
                         <i className="ri-notification-line header-action-icon"></i>
+                    </Badge>
                     </div>
                 </div>
                 

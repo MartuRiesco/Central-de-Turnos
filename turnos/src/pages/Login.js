@@ -22,7 +22,7 @@ function Login() {
               navigate('/');
             } else {
               dispatch(hideLoading())
-              toast.success(response.data.message)
+              toast.error(response.data.message)
             }
           } catch (error) {
               toast.error('something went wrong');  

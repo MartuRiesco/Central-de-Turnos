@@ -7,6 +7,8 @@ import Login from './pages/Login'
 import { useSelector } from 'react-redux';
 import ProtectedRoute from './components/ProtectedRoute';
 import PublicRoute from './components/PublicRoute';
+import ApplyEmployee from './pages/ApplyEmployee';
+import Notifications from './pages/Notifications';
 
 
 function App() {
@@ -40,6 +42,18 @@ function App() {
                   <ProtectedRoute>
                       <Home /> 
                   </ProtectedRoute>
+                }/>
+                <Route path='/apply-employee-account' element={ 
+                  <ProtectedRoute>
+                      <ApplyEmployee /> 
+                  </ProtectedRoute>
+                  
+                }/>
+                <Route path='/notifications' element={ 
+                  <ProtectedRoute>
+                      <Notifications /> 
+                  </ProtectedRoute>
+                  
                 }/>
           </Routes>
 

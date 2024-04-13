@@ -65,7 +65,7 @@ router.post('/get-user-info-by-id', authenticationMiddleware, async(req, res) =>
     try {
 
         const user = await User.findOne({ _id: req.body.userId });
-        console.log(req.body.userId);
+        user.password = undefined
         if(!user) {
             return res
                 .status(200)
@@ -73,10 +73,7 @@ router.post('/get-user-info-by-id', authenticationMiddleware, async(req, res) =>
         } else {
             res
                 .status(200)
-                .send({ success: true, data: {
-                    name: user.name,
-                    email: user.email
-                }})
+                .send({ success: true, data: user})
         }
     } catch (error) {
         res
