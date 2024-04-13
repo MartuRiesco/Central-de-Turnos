@@ -114,7 +114,7 @@ router.post('/mark-all-notifications-as-seen',authenticationMiddleware, async(re
         seenNotifications.push(...unseenNotifications);
         user.unseenNotifications = [];
         user.seenNotifications= seenNotifications
-        const updateUser = await User.findByIdAndUpdate(user._id, user);
+        const updateUser = await user.save()
         updateUser.password = undefined;
         res.status(200).send({
             success: true, 
@@ -138,7 +138,7 @@ router.post('/delete-all-notifications',authenticationMiddleware, async(req, res
         updateUser.password = undefined;
         res.status(200).send({
             success: true, 
-            message: "Todas las notificaciones leidas",
+            message: "Todas las notificaciones borradas",
             data: updateUser,
         })
 

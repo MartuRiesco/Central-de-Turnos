@@ -110,6 +110,7 @@ label {
   color: var(--clr-terciario) !important;
   text-decoration: none !important;
   font-size: 14px !important;
+  cursor: pointer;
 }
 
 .anchor:hover {

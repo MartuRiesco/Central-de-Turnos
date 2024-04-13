@@ -95,7 +95,6 @@ function Layout({ children }) {
                                         </div>
                                         </Link>
                         })}
-
                                 <div className='menu-bg' onClick={() => {
                                     localStorage.clear()
                                     navigate('/login')
