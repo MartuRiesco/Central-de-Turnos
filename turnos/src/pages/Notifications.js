@@ -5,8 +5,7 @@ import { useNavigate } from 'react-router-dom'
 import { hideLoading, showLoading } from '../redux/alertsSlice'
 import axios from 'axios'
 import toast from 'react-hot-toast'
-import { setUser } from '../redux/userSlice'
-import { Header } from 'antd/es/layout/layout'
+import { setUser } from '../redux/userSlice';
 
 
 function Notifications() {
@@ -60,7 +59,9 @@ function Notifications() {
     
     <div className='container-notifications'>
         <div className='menu-notifications'>
-            <Button onClick={()=>navigate('/')} >Menu</Button>
+            <Button onClick={()=>navigate('/')} >
+                menu
+            </Button>
             <Button >Flechita</Button>
         </div>
         <h1 className='title-notifications'>Notificaciones</h1>

@@ -1,12 +1,13 @@
 import React from 'react'
 import './style.css'
-import FormItem from 'antd/es/form/FormItem'
-import { Button, Col, Form, Input, Row } from 'antd'
+/* import FormItem from 'antd/es/form/FormItem' */
+/* import { Button, Col, Form, Input, Row } from 'antd' */
 import { useDispatch, useSelector } from 'react-redux'
 import axios from 'axios'
 import { showLoading, hideLoading } from '../redux/alertsSlice'
 import { useNavigate } from 'react-router-dom'
 import {toast} from 'react-hot-toast'
+import EmployeeForm from '../components/EmployeeForm'
 
 function ApplyEmployee() {
     const dispatch= useDispatch()
@@ -37,7 +38,9 @@ function ApplyEmployee() {
     <div className='body-page'>
     <h1 className='page-title'>Solicitar cuenta de empleado</h1>
     <hr/>
-    <Form layout='vertical' onFinish={onFinish}>
+
+    <EmployeeForm onFinish={ onFinish } />
+    {/* <Form layout='vertical' onFinish={onFinish}>
         <h1 className='card-title mt-3 '> Informacion personal</h1>
 
        <Row>
@@ -64,7 +67,7 @@ function ApplyEmployee() {
        <div className='d-flex justofy-content-end'>
        < Button className='primary-button ' htmlType='submit'> ENVIAR</Button>
        </div>
-    </Form>
+    </Form> */}
     </div>
   )
 }

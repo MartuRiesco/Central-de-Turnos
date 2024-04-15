@@ -15,7 +15,7 @@ function Layout({ children }) {
   const userMenu = [
     {
         name: 'Solicitar Turno',
-        path: '/book-appointment',
+        path: '/home',
         icon: 'ri-arrow-right-line'
     },
     {
@@ -37,17 +37,47 @@ function Layout({ children }) {
   const adminMenu = [
     {
         name: 'Usuarios',
-        path: '/get-all-users',
+        path: '/admin/users',
         icon: 'ri-user-line'
     },
     {
-        name: 'Empleados',
-        path: '/get-all-employees',
+        name: 'Turnos',
+        path: '/admin/turnos',
         icon: 'ri-user-add-line'
+    },
+    {
+        name: 'Empleados',
+        path: '/admin/employees',
+        icon: 'ri-user-add-line'
+    },
+    {
+        name: 'Mí Perfil',
+        path: '/profile',
+        icon: 'ri-user-line'
     },
 
   ];
-  const menuToBeRendered = user?.isAdmin ? adminMenu : userMenu;
+
+  const employeeMenu = [
+    {
+        name: 'Usuarios',
+        path: '/admin/users',
+        icon: 'ri-user-line'
+    },
+    {
+        name: 'Turnos',
+        path: '/home',
+        icon: 'ri-user-add-line'
+    },
+    {
+        name: 'Mí Perfil',
+        path: `/employee/profile/${user?._id}`,
+        icon: 'ri-user-line'
+    },
+
+  ];
+  const menuToBeRendered = user?.isAdmin ? adminMenu : user?.isEmployee ? employeeMenu : userMenu;
+  const role = user?.isAdmin ? 'Admin' : user?.isEmployee ? 'Empleado' : 'Usuario'
 
   return (
     <div className='main'>
@@ -66,9 +96,9 @@ function Layout({ children }) {
 
                     <div className='d-flex align-items-center'>
                     
-                    <Badge count={user?.unseenNotifications.length} onClick={()=>navigate('/notifications')}>
-                        <i className="ri-notification-line header-action-icon"></i>
-                    </Badge>
+                        <Badge count={user?.unseenNotifications.length} onClick={()=>navigate('/notifications')}>
+                            <i className="ri-notification-line header-action-icon"></i>
+                        </Badge>
                     </div>
                 </div>
                 
@@ -77,6 +107,7 @@ function Layout({ children }) {
             <div className='welcome'>
                 <h1>Hola!</h1>
                 <p>Bienvenido, <span className='welcome-name'>{user?.name}</span>!</p>
+                <h6>{role}</h6>
             </div>
 
             <div className='sidebar'>

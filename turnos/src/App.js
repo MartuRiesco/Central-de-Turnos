@@ -9,6 +9,11 @@ import ProtectedRoute from './components/ProtectedRoute';
 import PublicRoute from './components/PublicRoute';
 import ApplyEmployee from './pages/ApplyEmployee';
 import Notifications from './pages/Notifications';
+import UsersList from './pages/Admin/UsersList';
+import EmployeeList from './pages/Admin/EmployeeList';
+import Profile from './pages/Employee/Profile';
+import Layout from './components/Layout';
+import BookAppointment from './pages/BookAppointment';
 
 
 function App() {
@@ -40,6 +45,12 @@ function App() {
                 }/>
               <Route path='/' element={ 
                   <ProtectedRoute>
+                      <Layout /> 
+                  </ProtectedRoute>
+                }/>
+
+              <Route path='/home' element={ 
+                  <ProtectedRoute>
                       <Home /> 
                   </ProtectedRoute>
                 }/>
@@ -53,7 +64,30 @@ function App() {
                   <ProtectedRoute>
                       <Notifications /> 
                   </ProtectedRoute>
-                  
+                }/>
+
+                <Route path='/admin/users' element={ 
+                  <ProtectedRoute>
+                      <UsersList /> 
+                  </ProtectedRoute>
+                }/>
+
+                <Route path='/admin/employees' element={ 
+                  <ProtectedRoute>
+                      <EmployeeList /> 
+                  </ProtectedRoute>
+                }/>
+
+                <Route path='/employee/profile/:employeeId' element={ 
+                  <ProtectedRoute>
+                      <Profile /> 
+                  </ProtectedRoute>
+                }/>
+
+              <Route path='/book-appointment/:employeeId' element={ 
+                  <ProtectedRoute>
+                      <BookAppointment /> 
+                  </ProtectedRoute>
                 }/>
           </Routes>
 

@@ -95,7 +95,7 @@ router.post('/apply-employee-account',authenticationMiddleware, async(req, res) 
             employeeId: newEmployee._id,
             name: newEmployee.name
         }, 
-        onClickPath: '/admin/employeeslist'
+        onClickPath: '/admin/employees'
        })
        await User.findByIdAndUpdate(adminUser._id, {unseenNotifications})
        res.status(200).send({ success:true, message: 'Cuenta de empledo solicitada correctamente'})
