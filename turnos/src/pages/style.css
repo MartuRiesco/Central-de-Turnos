@@ -41,14 +41,15 @@ padding: 10px !important;
    margin: 30px !important;
 }
 .green-dot-container{  
-   background-color: greenyellow !important;
-   height: 300px;
+   background-color: var(--clr-secundario) !important;
+   height: 800px;
    display: block;
-   width: 300px;
-   top: 200px;
-   left: -90px;
+   width: 800px;
+   top: 100px;
+   right: 90px;
    position: absolute;
    border-radius: 600px;
+   z-index: -9999;
 }
 .green-dot-container2{  
     background-color: greenyellow !important;
@@ -70,3 +71,4 @@ padding: 10px !important;
     margin: 50px !important;
     background-color: transparent;
 }
+

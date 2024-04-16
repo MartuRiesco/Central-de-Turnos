@@ -17,7 +17,6 @@ function Register() {
           dispatch(hideLoading())
           if(response.data.success) {
             toast.success(response.data.message);
-            //toast('Redirecting to login page');
             navigate('/login');
           } else {
             toast.success(response.data.message)
@@ -30,7 +29,7 @@ function Register() {
 
   return (
     <div className="authentication">
-            <div className="authentication-form card p-3">
+            <div className="authentication-form p-3">
                 <div>
                     <Logo />
                 </div>

@@ -14,6 +14,7 @@ import EmployeeList from './pages/Admin/EmployeeList';
 import Profile from './pages/Employee/Profile';
 import Layout from './components/Layout';
 import BookAppointment from './pages/BookAppointment';
+import Header from './components/Header';
 
 
 function App() {
@@ -33,6 +34,7 @@ function App() {
                 position="top-center"
                 reverseOrder={false}
             />
+          
           <Routes>
               <Route path='/login' element={ 
                   <PublicRoute>
@@ -45,47 +47,55 @@ function App() {
                 }/>
               <Route path='/' element={ 
                   <ProtectedRoute>
+                    <Header />
                       <Layout /> 
                   </ProtectedRoute>
                 }/>
 
               <Route path='/home' element={ 
                   <ProtectedRoute>
+                    <Header />
                       <Home /> 
                   </ProtectedRoute>
                 }/>
                 <Route path='/apply-employee-account' element={ 
                   <ProtectedRoute>
+                    <Header />
                       <ApplyEmployee /> 
                   </ProtectedRoute>
                   
                 }/>
                 <Route path='/notifications' element={ 
                   <ProtectedRoute>
+                    <Header />
                       <Notifications /> 
                   </ProtectedRoute>
                 }/>
 
                 <Route path='/admin/users' element={ 
                   <ProtectedRoute>
+                    <Header />
                       <UsersList /> 
                   </ProtectedRoute>
                 }/>
 
                 <Route path='/admin/employees' element={ 
                   <ProtectedRoute>
+                    <Header />
                       <EmployeeList /> 
                   </ProtectedRoute>
                 }/>
 
                 <Route path='/employee/profile/:employeeId' element={ 
                   <ProtectedRoute>
+                    <Header />
                       <Profile /> 
                   </ProtectedRoute>
                 }/>
 
               <Route path='/book-appointment/:employeeId' element={ 
                   <ProtectedRoute>
+                    <Header />
                       <BookAppointment /> 
                   </ProtectedRoute>
                 }/>

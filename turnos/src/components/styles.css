@@ -10,16 +10,16 @@
 }
 
 .header-action-icon {
-    font-size: 30px;
+    font-size: 40px;
     font-weight: bold;
     color: var(--clr-primario-dark);
     cursor: pointer;
-    margin: 1rem !important;
+    margin: 1.5rem !important;
 }
 
 .welcome {
     background-color: var(--clr-white);
-    margin: 1rem !important;
+    margin: 0 1.5rem 1.5rem !important;
 
 }
 
@@ -56,6 +56,18 @@
     padding: 1rem !important;
 }
 
+.role {
+    background-color: var(--clr-primario-dark);
+    color: var(--clr-secundario) !important;
+    margin: 15px 0 0 !important;
+    text-align: center !important;
+    border-radius: 15px;
+    max-width: 120px !important;
+    min-width: 100px !important;
+    padding: 5px !important;
+    font-size: 16px !important;
+}
+
 .menu-bg {
     background-color: var(--clr-secundario);
     border-radius: 30px !important;
@@ -64,15 +76,13 @@
     position: relative;
 }
 
-
-
 .menu-item p {
     color: var(--clr-primario-dark);
     font-size: 16px;
     letter-spacing: .4px;
     font-weight: bold;
     text-align: right;
-    width: 40%;
+    width: 60%;
     position: absolute;
     right: 20px;
     bottom: 20px;
@@ -105,7 +115,24 @@
     border-radius: 30px;
 }
 
+/* employee card */
 
+.card {
+    background-color: var(--clr-secundario);
+    padding: 20px !important;
+    border-radius: 20px !important;
+}
+
+/* antd rules*/
+
+.ant-picker-input input {
+    border: none !important;
+    background-color: transparent !important;
+}
+
+.ant-picker {
+    height: 60px !important;
+}
 
 
 

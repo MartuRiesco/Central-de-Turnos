@@ -1,13 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { hideLoading, showLoading } from '../../redux/alertsSlice';
-import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import { Button, Table } from 'antd'
+import { Table } from 'antd'
 
 function UsersList() {
   const [users, setUsers] = useState([]);
-  const navigate = useNavigate()
   const dispatch = useDispatch()
   const getUsersData = async () => {
     try {
@@ -56,16 +54,9 @@ function UsersList() {
 
   return (
     <div className='container-notifications p-5'>
-    <div className='menu-notifications'>
-        <Button onClick={()=>navigate('/')} >
-            menu
-        </Button>
-        <Button >Flechita</Button>
+        <h1 className='title-notifications'>Lista Usuarios</h1>
+        <Table columns={columns} dataSource={users} />
     </div>
-    <h1 className='title-notifications'>Lista Usuarios</h1>
-    <Table columns={columns} dataSource={users} />
-
-</div>
   )
 }
 

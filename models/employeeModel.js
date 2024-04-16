@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const { type } = require('os');
 const { stringify } = require('uuid');
 
 const employeeSchema = new mongoose.Schema(
@@ -18,11 +19,15 @@ const employeeSchema = new mongoose.Schema(
     specialization: { 
         type: String, 
         required: true 
-},
+    },
+    timings: {
+        type: Array,
+        required: true
+    },
     status:{
         type: String,
         default: 'pending'
-}
+    }
 },
 {
     timestamps: true

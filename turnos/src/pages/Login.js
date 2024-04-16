@@ -31,7 +31,7 @@ function Login() {
 
   return (
     <div className="authentication">
-            <div className="authentication-form card p-3">
+            <div className="authentication-form p-3">
                 <div>
                     < Logo />
                 </div>

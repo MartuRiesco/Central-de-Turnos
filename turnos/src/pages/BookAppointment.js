@@ -39,7 +39,7 @@ function BookAppointment() {
   return (
     <div>
       {employee && (
-          <div>
+          <div className='card'>
             <h1>{employee?.name}</h1>
           </div>
       )}

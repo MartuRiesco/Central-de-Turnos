@@ -5,7 +5,9 @@ function Employee({employee}) {
     const navigate = useNavigate();
   return (
     <div className='card' onClick={() => navigate(`/book-appointment/${employee._id}`)}>
-        <h1>{employee.name}</h1>
+        <p>{employee.name}</p>
+        <p>{employee.email}</p>
+        <p>{employee.specialization}</p>
     </div>
   )
 }

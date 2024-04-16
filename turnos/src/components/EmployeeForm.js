@@ -1,6 +1,7 @@
 import React from 'react'
-import { Button, Col, Form, Input, Row } from 'antd';
-import FormItem from 'antd/es/form/FormItem'
+import { Button, Col, Form, Input, Row, TimePicker } from 'antd';
+import FormItem from 'antd/es/form/FormItem';
+import './styles.css';
 
 function EmployeeForm({onFinish, initialValues}) {
     
@@ -26,6 +27,13 @@ function EmployeeForm({onFinish, initialValues}) {
         <Col span={8} xs={24} sm={24} lg={8}>
             <FormItem  required label='Especializacion' name='specialization' rules={[{required:true}]}>
                 <Input  placeholder='Especialización'/>
+            </FormItem>
+        </Col>
+       </Row>
+       <Row>
+        <Col span={8} xs={24} sm={24} lg={8}>
+            <FormItem  required label='Horarios' name='timings' rules={[{required:true}]}>
+                <TimePicker.RangePicker />
             </FormItem>
         </Col>
        </Row>

@@ -58,22 +58,13 @@ function Notifications() {
   return (
     
     <div className='container-notifications'>
-        <div className='menu-notifications'>
-            <Button onClick={()=>navigate('/')} >
-                menu
-            </Button>
-            <Button >Flechita</Button>
-        </div>
         <h1 className='title-notifications'>Notificaciones</h1>
         <section className='green-dot-container'>
             <div className='green-dot'></div>
         </section>
-        <section className='green-dot-container2'>
-            <div className='green-dot'></div>
-        </section>
         <Tabs>
             <Tabs.TabPane tab='No leidas' className='noleidas' key={0}>
-                <div className='d-flex justify-content-end'>
+                <div className='d-flex justify-content-end m-3'>
                     <h1 className='anchor' onClick={()=>markAllAsSeen()}>Leer todas</h1>
 
                 </div>
@@ -88,7 +79,7 @@ function Notifications() {
                 }
             </Tabs.TabPane>
             <Tabs.TabPane tab='Leidas' className='leidas' key={1}>
-                <div className='d-flex justify-content-end'>
+                <div className='d-flex justify-content-end m-3'>
                     <h1 className='anchor ' onClick={()=>deleteAll()}>Borrar todas</h1>
                 </div>
                 {
