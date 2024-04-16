@@ -1,32 +1,45 @@
-.body-page{
+.body-page {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
 }
 
-.title{
-    font-size: 20px;
-    color: black;
+.title { 
+    font-size: 20px !important;
+    color: var(--clr-secundario);
     font-weight: bold;
 }
 
 .title-notifications{
+    font-size: 2rem;
     margin-left: 30px !important; 
 }
 
 .ant-tabs-nav-list{
     padding: 20px !important;
-    color: greenyellow;
+    color: var(--clr-secundario) !important;
 }
 .container-notifications{
    display: flex;
    background-color: transparent  !important;
    flex-direction: column;
 }
-.ant-tabs-tab{
-padding: 10px !important;
+
+.ant-tabs-tab {
+    background-color: var(--clr-secundario) !important;
+    border-radius: 20px !important;
+    padding: 10px 20px !important;
+    margin: 0 20px 0 0 !important;
 }
+.ant-tabs-tab-btn {
+    color: var(--clr-primario-dark) !important;
+}
+
+.ant-tabs-ink-bar{
+    background: var(--clr-secundario) !important;
+}
+
 .tabs{
     margin-top: 20px;
 
@@ -45,7 +58,7 @@ padding: 10px !important;
    height: 800px;
    display: block;
    width: 800px;
-   top: 100px;
+   top: 250px;
    right: 90px;
    position: absolute;
    border-radius: 600px;
@@ -62,13 +75,13 @@ padding: 10px !important;
     border-radius: 600px;
  }
 .card-text{
-    font-size: 20px;
-    font-weight: bold;
+    font-size: 18px;
+    font-weight: 400;
     
 }
 .card{
     width: 80%;
     margin: 50px !important;
-    background-color: transparent;
+    background-color: var(--clr-white) !important;
 }
 

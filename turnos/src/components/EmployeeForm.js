@@ -30,13 +30,13 @@ function EmployeeForm({onFinish, initialValues}) {
             </FormItem>
         </Col>
        </Row>
-       <Row>
+       {/* <Row>
         <Col span={8} xs={24} sm={24} lg={8}>
             <FormItem  required label='Horarios' name='timings' rules={[{required:true}]}>
                 <TimePicker.RangePicker />
             </FormItem>
         </Col>
-       </Row>
+       </Row> */}
        <div className='d-flex justofy-content-end'>
        < Button className='primary-button ' htmlType='submit'> ENVIAR</Button>
        </div>
