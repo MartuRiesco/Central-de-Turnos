@@ -15,6 +15,7 @@ import Profile from './pages/Employee/Profile';
 import Layout from './components/Layout';
 import BookAppointment from './pages/BookAppointment';
 import Header from './components/Header';
+import UserInfo from './pages/UserInfo';
 
 
 function App() {
@@ -69,6 +70,12 @@ function App() {
                   <ProtectedRoute>
                     <Header />
                       <Notifications /> 
+                  </ProtectedRoute>
+                }/>
+                 <Route path='/get-user-info-by-id' element={ 
+                  <ProtectedRoute>
+                    <UserInfo />
+                      
                   </ProtectedRoute>
                 }/>
 

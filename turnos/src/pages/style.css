@@ -84,4 +84,20 @@
     margin: 50px !important;
     background-color: var(--clr-white) !important;
 }
-
+.form-update{
+    margin: 20px !important;
+}
+.user-info{
+    padding:10px !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+.info-title{
+    display: flex;
+    justify-content: space-around;
+}
+.user-info-tag{
+    font-size: medium;
+}

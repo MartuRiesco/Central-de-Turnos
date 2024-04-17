@@ -81,6 +81,36 @@ router.post('/get-user-info-by-id', authenticationMiddleware, async(req, res) =>
          .send({ message: 'Error obteniendo información', success: false, error })
     }
 })
+router.get('/get-user-info-by-id', authenticationMiddleware, async(req,res)=>{
+    const user = await User.findOne({ _id: req.body.userId });
+    user.password = undefined
+        if(!user) {
+            return res
+                .status(200)
+                .send({ message: 'No existe el usuario', success: true, data: user })
+        } else {
+            res
+                .status(200)
+                .send({ success: true, data: user})
+        }
+
+})
+router.put('/update-user',  async(req, res) => {
+    console.log('res',req.body);
+    const { id, valueToUpdate } = req.body;
+
+    try {
+        const userToUpdate = await User.findByIdAndUpdate(id, valueToUpdate);
+        console.log( 'us',userToUpdate);
+        if (!userToUpdate) {
+            return res.status(404).json({ success: false, message: 'No se encontró el usuario para actualizar' });
+        }
+        res.status(200).json({ success: true, message: 'Usuario actualizado correctamente', user: userToUpdate });
+    } catch (error) {
+        console.error('Error al actualizar usuario:', error);
+        res.status(500).json({ success: false, message: 'Error interno del servidor al actualizar usuario' });
+    }
+});
 router.post('/apply-employee-account',authenticationMiddleware, async(req, res) => {
     try {
        const newEmployee =  new Employee({...req.body, status: 'pending'});
