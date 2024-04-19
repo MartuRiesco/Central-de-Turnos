@@ -1,6 +1,4 @@
 const mongoose = require('mongoose');
-const { type } = require('os');
-const { stringify } = require('uuid');
 
 const employeeSchema = new mongoose.Schema(
 {

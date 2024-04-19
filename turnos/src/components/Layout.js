@@ -15,12 +15,12 @@ function Layout({ children }) {
   const userMenu = [
     {
         name: 'Solicitar Turno',
-        path: '/book-appointment/661cc7710aa8e4d2d697de47',
+        path: '/home',
         icon: 'ri-arrow-right-line'
     },
     {
         name: 'Mis Turnos',
-        path: '/get-appointments-by-user-id',
+        path: '/appointments',
         icon: 'ri-calendar-check-line'
     },
     {
@@ -42,7 +42,7 @@ function Layout({ children }) {
     },
     {
         name: 'Turnos',
-        path: '/admin/turnos',
+        path: '/employee/appointments',
         icon: 'ri-calendar-check-line'
     },
     {
@@ -60,7 +60,7 @@ function Layout({ children }) {
     },
     {
         name: 'Turnos',
-        path: '/home',
+        path: '/employee/appointments',
         icon: 'ri-user-add-line'
     },
     {

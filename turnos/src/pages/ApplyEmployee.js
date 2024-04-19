@@ -8,6 +8,7 @@ import { showLoading, hideLoading } from '../redux/alertsSlice'
 import { useNavigate } from 'react-router-dom'
 import {toast} from 'react-hot-toast'
 import EmployeeForm from '../components/EmployeeForm'
+import moment from 'moment'
 
 function ApplyEmployee() {
     const dispatch= useDispatch()
@@ -16,7 +17,16 @@ function ApplyEmployee() {
     const onFinish = async (values) =>{
         try {
             dispatch(showLoading());
-            const response = await axios.post('/api/user/apply-employee-account', {...values, userId: user._id},{
+            const response = await axios.post('/api/user/apply-employee-account', 
+                {
+                    ...values,
+                    userId: user._id,
+                    timings: [
+                        moment(values.timings[0]).format('HH:mm'),
+                        moment(values.timings[1]).format('HH:mm'),
+                      ],
+                }
+                ,{
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem('token' )}`
                 }
@@ -40,34 +50,6 @@ function ApplyEmployee() {
     <hr/>
 
     <EmployeeForm onFinish={ onFinish } />
-    {/* <Form layout='vertical' onFinish={onFinish}>
-        <h1 className='card-title mt-3 '> Informacion personal</h1>
-
-       <Row>
-        <Col span={8} xs={24} sm={24} lg={8}>
-            <FormItem  required label='Nombre' name='name' rules={[{required:true}]}>
-                <Input  placeholder='Nombre'/>
-            </FormItem>
-        </Col>
-       </Row>
-       <Row>
-        <Col span={8} xs={24} sm={24} lg={8}>
-            <FormItem  required label='Email' name='email' rules={[{required:true}]}>
-                <Input  placeholder='Email'/>
-            </FormItem>
-        </Col>
-       </Row>
-       <Row>
-        <Col span={8} xs={24} sm={24} lg={8}>
-            <FormItem  required label='Especializacion' name='specialization' rules={[{required:true}]}>
-                <Input  placeholder='Especialización'/>
-            </FormItem>
-        </Col>
-       </Row>
-       <div className='d-flex justofy-content-end'>
-       < Button className='primary-button ' htmlType='submit'> ENVIAR</Button>
-       </div>
-    </Form> */}
     </div>
   )
 }

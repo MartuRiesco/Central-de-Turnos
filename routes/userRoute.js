@@ -173,6 +173,7 @@ router.post('/delete-all-notifications',authenticationMiddleware, async(req, res
         })
 
     } catch (error) {
+
         console.log(error);
         res
             .status(500)
@@ -200,8 +201,8 @@ router.get("/get-all-employees", authenticationMiddleware, async (req, res) => {
 router.post("/book-appointment", authenticationMiddleware, async (req, res) => {
     try {
     req.body.status = "pending"
-    req.body.date = moment(req.body.date, 'DD-MM-YYYY').toISOString
-    req.body.time = moment(req.body.time, 'HH:mm').toISOString
+    req.body.date = moment(req.body.date, 'DD-MM-YYYY').toISOString()
+    req.body.time = moment(req.body.time, 'HH:mm').toISOString()
     const newAppointment = new Appointment(req.body)
     await newAppointment.save()
 const user = await User.findOne({_id: req.body.employeeInfo.userId });
@@ -230,8 +231,8 @@ res.status(200).send({
   router.post("/check-booking-avilability", authenticationMiddleware, async (req, res) => {
     try {
     const date = moment(req.body.date, 'DD-MM-YYYY').toISOString()
-    const fromTime = moment(req.body.time, 'HH:mm').subtract(60, 'hours').toISOString()
-    const toTime = moment(req.body.time, 'HH:mm').add(1, 'hours').toISOString
+    const fromTime = moment(req.body.time, 'HH:mm').subtract(1, 'hours').toISOString()
+    const toTime = moment(req.body.time, 'HH:mm').add(1, 'hours').toISOString()
     const employeeId = req.body.employeeId
     const appointments = await Appointment.find({
         employeeId,
@@ -259,7 +260,7 @@ res.status(200).send({
       });
     }
   });
-  router.get("/get-appointments-by-user-id", /* authenticationMiddleware, */ async (req, res) => {
+  router.get("/get-appointments-by-user-id", authenticationMiddleware, async (req, res) => {
     try {
       const appointments = await Appointment.find({userId: req.body.userId})
       res.status(200).send({

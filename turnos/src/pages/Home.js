@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { Col, Row } from 'antd';
 import Employee from '../components/Employee';
 import { useDispatch } from 'react-redux';
 import { showLoading, hideLoading } from '../redux/alertsSlice';
@@ -29,14 +28,19 @@ function Home() {
         getData();
     }, [])
     return (
-            <Row gutter={20}>
-                {employee.map((employee) => (
-                    <Col span={8} xs={24} lg={8}>
-                        <Employee employee={employee} />
-                    </Col>
-                ))}
+            <div gutter={20}>
+                <div className='service-title'>
+                    <h1>Nuestros servicios</h1>
+                </div>
+                <div className='service-container'>
+                    {employee.map((employee) => (
+                        <div className='service-card'>
+                            <Employee employee={employee} />
+                        </div>
+                    ))}
+                </div>
                 
-            </Row>
+            </div>
     )
 }
 

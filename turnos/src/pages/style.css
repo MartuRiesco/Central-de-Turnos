@@ -11,12 +11,12 @@
     font-weight: bold;
 }
 
-.title-notifications{
+.title-notifications {
     font-size: 2rem;
     margin-left: 30px !important; 
 }
 
-.ant-tabs-nav-list{
+.ant-tabs-nav-list {
     padding: 20px !important;
     color: var(--clr-secundario) !important;
 }
@@ -38,6 +38,12 @@
 
 .ant-tabs-ink-bar{
     background: var(--clr-secundario) !important;
+}
+
+.ant-badge-count {
+    color: var(--clr-primario-dark) !important;
+    background: var(--clr-secundario) !important;
+    right: 60px !important;
 }
 
 .tabs{
@@ -64,16 +70,7 @@
    border-radius: 600px;
    z-index: -9999;
 }
-.green-dot-container2{  
-    background-color: greenyellow !important;
-    height: 300px;
-    display: block;
-    width: 300px;
-    bottom: 50px;
-    right: -90px;
-    position: absolute;
-    border-radius: 600px;
- }
+
 .card-text{
     font-size: 18px;
     font-weight: 400;
@@ -100,4 +97,29 @@
 }
 .user-info-tag{
     font-size: medium;
+}
+
+
+/* service */
+
+.service-title h1 {
+    font-size: 20px !important;
+    font-weight: 400;
+    text-align: center;
+}
+
+.service-container {
+    display: flex;
+    align-self: center !important;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+}
+
+.service-card {
+    background-color: var(--clr-secundario) !important;
+    margin: 2rem 0 !important;
+    padding: 5rem !important;
+    border-radius: 50px !important;
+    text-align: center;
 }

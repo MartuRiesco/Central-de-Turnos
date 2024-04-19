@@ -2,11 +2,23 @@ import React from 'react'
 import { Button, Col, Form, Input, Row, TimePicker } from 'antd';
 import FormItem from 'antd/es/form/FormItem';
 import './styles.css';
+import moment from 'moment'
 
 function EmployeeForm({onFinish, initialValues}) {
-    
+    //const date = moment('HH:mm');
+    console.log('initialValues', initialValues);    
+    //console.log(typeof date);
   return (
-    <Form layout='vertical' onFinish={onFinish} initialValues={initialValues}>
+
+    <Form className='p-3' layout='vertical' onFinish={onFinish} initialValues={{
+        ...initialValues,
+        ...(initialValues && {
+            timings : [
+                moment(initialValues?.timings[0], 'HH:mm'),
+                moment(initialValues?.timings[1], 'HH:mm'),
+              ],
+        })
+    }}>
         <h1 className='card-title mt-3 '> Informacion personal</h1>
 
        <Row>
@@ -30,13 +42,13 @@ function EmployeeForm({onFinish, initialValues}) {
             </FormItem>
         </Col>
        </Row>
-       {/* <Row>
+       <Row>
         <Col span={8} xs={24} sm={24} lg={8}>
-            <FormItem  required label='Horarios' name='timings' rules={[{required:true}]}>
-                <TimePicker.RangePicker />
-            </FormItem>
+            <Form.Item  required label='Horarios' name='timings' rules={[{required:true}]}>
+                <TimePicker.RangePicker format='HH:mm'/>
+            </Form.Item>
         </Col>
-       </Row> */}
+       </Row>
        <div className='d-flex justofy-content-end'>
        < Button className='primary-button ' htmlType='submit'> ENVIAR</Button>
        </div>

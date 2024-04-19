@@ -16,6 +16,8 @@ import Layout from './components/Layout';
 import BookAppointment from './pages/BookAppointment';
 import Header from './components/Header';
 import UserInfo from './pages/UserInfo';
+import Appoinments from './pages/Appoinments';
+import EmployeeAppoinments from './pages/Employee/EmployeeAppointments';
 
 
 function App() {
@@ -74,6 +76,7 @@ function App() {
                 }/>
                  <Route path='/get-user-info-by-id' element={ 
                   <ProtectedRoute>
+                    <Header />
                     <UserInfo />
                       
                   </ProtectedRoute>
@@ -104,6 +107,20 @@ function App() {
                   <ProtectedRoute>
                     <Header />
                       <BookAppointment /> 
+                  </ProtectedRoute>
+                }/>
+
+              <Route path='/appointments' element={ 
+                  <ProtectedRoute>
+                    <Header />
+                      <Appoinments /> 
+                  </ProtectedRoute>
+                }/>
+
+              <Route path='/employee/appointments' element={ 
+                  <ProtectedRoute>
+                    <Header />
+                      <EmployeeAppoinments /> 
                   </ProtectedRoute>
                 }/>
           </Routes>
