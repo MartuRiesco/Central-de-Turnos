@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const { stringify } = require('uuid');
 
 const appointmentSchema = new mongoose.Schema(
 {
@@ -25,12 +24,12 @@ const appointmentSchema = new mongoose.Schema(
     },
     time: {
         type: String,
-        required:true
+        required: true
     },
     status: {
         type: String,
-        default: "pending",
-        required:true
+        required: true,
+        default: "pending"
     }
 },
 {

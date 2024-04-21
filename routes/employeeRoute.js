@@ -25,7 +25,7 @@ router.post("/get-employee-info-by-userid", authenticationMiddleware, async (req
   })
   router.post("/get-employee-info-by-id", authenticationMiddleware, async (req, res) => {
     try {
-        const employee = await Employee.findOne({_id: req.body.employeeId})
+        const employee = await Employee.findOne({ _id: req.body.employeeId })
         res.status(200).send({
             success:true, 
             message: "Informacion del empleado ",
@@ -78,27 +78,27 @@ router.post("/get-employee-info-by-userid", authenticationMiddleware, async (req
   });
   router.post("/change-apppointment-status",/*  authenticationMiddleware, */ async (req, res) => {
     try {
-        const {appointmentId,  status} = req.body
-      const appointment = await Appointment.findByIdAndUpdate(appointmentId,{ status});
-      const user = await User.findOne({_id: appointment.userId})
-      const unseenNotifications = user.unseenNotifications;
-      unseenNotifications.push({
-       type:'appointment-request-changed',
-       message: `tu turno cambio su estado a ${status}`,
-       onClickPath:"/appointments",
+          const {appointmentId,  status} = req.body
+          const appointment = await Appointment.findByIdAndUpdate(appointmentId, { status });
+          const user = await User.findOne({_id: appointment.userId})
+          const unseenNotifications = user.unseenNotifications;
+          unseenNotifications.push({
+          type: 'appointment-request-changed',
+          message: `Su turno cambio su estado a ${status}`,
+          onClickPath: "/appointments",
       })
       
       await user.save()
-      res.status(200).send({
-        message:"Cambio de estado del turno correctamente ",
-        success: true,
+          res.status(200).send({
+          message: "Cambio de estado del turno correctamente ",
+          success: true,
       })
     } catch (error) {
-      console.log(error);
-      res.status(500).send({
-        message: "Error actualizando los turnos" ,
-        success: false,
-        error,
+          console.log(error);
+          res.status(500).send({
+            message: "Error actualizando los turnos" ,
+            success: false,
+            error,
       });
     }
   })

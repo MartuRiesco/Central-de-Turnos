@@ -9,8 +9,7 @@ import moment from 'moment';
 
 function EmployeeAppoinments() {
 
-    const [appointments, setAppointments] = useState([]);
-  //const navigate = useNavigate()
+  const [ appointments, setAppointments ] = useState([]);
   const dispatch = useDispatch()
   const getAppointmentsData = async () => {
     try {

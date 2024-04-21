@@ -200,47 +200,50 @@ router.get("/get-all-employees", authenticationMiddleware, async (req, res) => {
 
 router.post("/book-appointment", authenticationMiddleware, async (req, res) => {
     try {
-    req.body.status = "pending"
-    req.body.date = moment(req.body.date, 'DD-MM-YYYY').toISOString()
-    req.body.time = moment(req.body.time, 'HH:mm').toISOString()
-    const newAppointment = new Appointment(req.body)
-    await newAppointment.save()
-const user = await User.findOne({_id: req.body.employeeInfo.userId });
-console.log(req.body);
-user.unseenNotifications.push({
-    type:"nuevo-turno-solicitado",
-    message:`Un nuevo turno fue solicitado por ${req.body.userInfo.name}`,
-    onClickPath: "/employee/appointments"
-
-})
-await user.save()
-res.status(200).send({
-    message: 'Turno registrado correctamente',
-    success: true
-})
-    } catch (error) {
-      console.log(error);
-      res.status(500).send({
-        message: "Error solicitando el turno ",
-        success: false,
-        error,
-      });
-    }
+        
+        //console.log('time', req.body.time);
+        req.body.status = "pending"
+        req.body.date = moment(req.body.date, 'DD-MM-YYYY').toISOString()
+        req.body.time = moment(req.body.time, 'HH:mm').toISOString()
+        const newAppointment = new Appointment(req.body)
+        await newAppointment.save()
+        const user = await User.findOne({ _id: req.body.employeeInfo.userId });
+        console.log('req.body', req.body);
+        user.unseenNotifications.push({
+            type: "nuevo-turno-solicitado",
+            message:`Un nuevo turno fue solicitado por ${req.body.userInfo.name}`,
+            onClickPath: "/employee/appointments"
+    })
+    await user.save()
+    res.status(200).send({
+        message: 'Turno registrado correctamente',
+        success: true
+    })
+        } catch (error) {
+        console.log(error);
+        res.status(500).send({
+            message: "Error solicitando el turno ",
+            success: false,
+            error,
+        });
+        }
   });
 
-  router.post("/check-booking-avilability", authenticationMiddleware, async (req, res) => {
+  router.post("/check-booking-availability", authenticationMiddleware, async (req, res) => {
     try {
-    const date = moment(req.body.date, 'DD-MM-YYYY').toISOString()
-    const fromTime = moment(req.body.time, 'HH:mm').subtract(1, 'hours').toISOString()
-    const toTime = moment(req.body.time, 'HH:mm').add(1, 'hours').toISOString()
-    const employeeId = req.body.employeeId
-    const appointments = await Appointment.find({
-        employeeId,
-        date,
-        time:{$gte: fromTime, $lte: toTime},
-        status: 'approved'
-    })
-    if(appointments.length>0){
+        console.log('ddate', req.body.date);
+        console.log('tinme', req.body.time);
+        const date = moment(req.body.date, 'DD-MM-YYYY').toISOString();
+        const fromTime = moment(req.body.time, 'HH:mm').subtract(59, 'minutes').toISOString();
+        const toTime = moment(req.body.time, 'HH:mm').add(59, 'minutes').toISOString();
+        const employeeId = req.body.employeeId
+        const appointments = await Appointment.find({
+            employeeId,
+            date,
+            time: { $gte: fromTime, $lte: toTime },
+            status: 'approved'
+        })
+    if(appointments.length > 0){
         return res.status(200).send({
             message: 'El turno no esta disponible',
             success: false
