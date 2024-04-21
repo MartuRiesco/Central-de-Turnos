@@ -49,20 +49,20 @@ function EmployeeAppoinments() {
   }
 
   const columns = [
-    {
+    /* {
         title: 'Id',
         dataIndex: '_id'
-    },
+    }, */
     {
       title: 'Usuario',
       dataIndex: 'name',
       render: (text, record) => <h1 className='normal-text'>{record.userInfo.name}</h1>
     },
-    {
+    /* {
       title: 'Email',
       dataIndex: 'email',
       render: (text, record) => <p className='normal-text'>{record.userInfo.email}</p>
-    },
+    }, */
     /* {
       title: "Celular",
       dataIndex: "phoneNumber"
@@ -98,7 +98,7 @@ function EmployeeAppoinments() {
   return (
     <div className='container-notifications p-5'>
     <h1 className='title-notifications'>Turnos</h1>
-    <Table columns={columns} dataSource={appointments} />
+    <Table columns={columns} dataSource={appointments} className='m-2'/>
 
 </div>
   )

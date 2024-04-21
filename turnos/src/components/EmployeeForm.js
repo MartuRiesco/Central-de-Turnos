@@ -4,22 +4,20 @@ import FormItem from 'antd/es/form/FormItem';
 import './styles.css';
 import moment from 'moment'
 
-function EmployeeForm({onFinish, initialValues}) {
-    //const date = moment('HH:mm');
-    console.log('initialValues', initialValues);    
-    //console.log(typeof date);
+function EmployeeForm({ onFinish, initialValues }) {
+
   return (
 
-    <Form className='p-3' layout='vertical' onFinish={onFinish} initialValues={{
+    <Form className='p-3' layout='vertical' onFinish={ onFinish } initialValues={{
         ...initialValues,
         ...(initialValues && {
             timings : [
-                moment(initialValues?.timings[0], 'HH:mm'),
-                moment(initialValues?.timings[1], 'HH:mm'),
+                moment(initialValues.timings[0], 'HH:mm'),
+                moment(initialValues.timings[1], 'HH:mm'),
               ],
         })
     }}>
-        <h1 className='card-title mt-3 '> Informacion personal</h1>
+        <h1 className='card-title mt-3 '>Informacion personal</h1>
 
        <Row>
         <Col span={8} xs={24} sm={24} lg={8}>
@@ -30,21 +28,21 @@ function EmployeeForm({onFinish, initialValues}) {
        </Row>
        <Row>
         <Col span={8} xs={24} sm={24} lg={8}>
-            <FormItem  required label='Email' name='email' rules={[{required:true}]}>
+            <FormItem  required label='Email' name='email' rules={[{ required: true }]}>
                 <Input  placeholder='Email'/>
             </FormItem>
         </Col>
        </Row>
        <Row>
         <Col span={8} xs={24} sm={24} lg={8}>
-            <FormItem  required label='Especializacion' name='specialization' rules={[{required:true}]}>
+            <FormItem  required label='Especializacion' name='specialization' rules={[{ required: true }]}>
                 <Input  placeholder='Especialización'/>
             </FormItem>
         </Col>
        </Row>
        <Row>
         <Col span={8} xs={24} sm={24} lg={8}>
-            <Form.Item  required label='Horarios' name='timings' rules={[{required:true}]}>
+            <Form.Item  required label='Horarios' name='timings' rules={[{ required: true }]}>
                 <TimePicker.RangePicker format='HH:mm'/>
             </Form.Item>
         </Col>
@@ -56,4 +54,4 @@ function EmployeeForm({onFinish, initialValues}) {
   )
 }
 
-export default EmployeeForm
+export default EmployeeForm;

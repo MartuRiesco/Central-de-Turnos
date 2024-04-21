@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { hideLoading, showLoading } from '../../redux/alertsSlice';
-//import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { Table } from 'antd';
 import { toast } from 'react-hot-toast';
+import moment from 'moment';
 
 function EmployeeList() {
   const [employee, setEmployee] = useState([]);
@@ -66,7 +66,8 @@ function EmployeeList() {
     }, */
     {
       title: 'Creates At',
-      dataIndex: 'createdAt'
+      dataIndex: 'createdAt',
+      render: (record, text) => moment(record.createAt).format('DD-MM-YYYY')
     },
     {
         title: 'Status',

@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { hideLoading, showLoading } from '../../redux/alertsSlice';
 import axios from 'axios';
-import { Table } from 'antd'
+import { Table } from 'antd';
+import moment from 'moment';
 
 function UsersList() {
   const [users, setUsers] = useState([]);
@@ -37,10 +38,11 @@ function UsersList() {
       title: 'Email',
       dataIndex: 'email'
     },
-    /* {
+    {
       title: 'Creates At',
-      dataIndex: 'createdAt'
-    }, */
+      dataIndex: 'createdAt',
+      render: (record, text) => moment(record.createAt).format('DD-MM-YYYY')
+    },
     {
       title: 'Actions',
       dataIndex: 'actions',
