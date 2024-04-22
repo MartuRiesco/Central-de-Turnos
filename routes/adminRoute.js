@@ -22,6 +22,7 @@ router.get("/get-all-employees", authenticationMiddleware, async (req, res) => {
   }
 });
 
+
 router.get("/get-all-users", authenticationMiddleware, async (req, res) => {
   try {
     const users = await User.find({});
@@ -33,7 +34,7 @@ router.get("/get-all-users", authenticationMiddleware, async (req, res) => {
   } catch (error) {
     console.log(error);
     res.status(500).send({
-      message: "Error buscando los usuarios" ,
+      message: "Error buscando a los usuarios" ,
       success: false,
       error,
     });
@@ -42,29 +43,29 @@ router.get("/get-all-users", authenticationMiddleware, async (req, res) => {
 
 router.post("/change-employee-status", authenticationMiddleware, async (req, res) => {
     try {
-        const {employeeId,  status} = req.body
-      const employee = await Employee.findByIdAndUpdate(employeeId,{ status});
-      const user = await User.findOne({_id: employee.userId})
-      const unseenNotifications = user.unseenNotifications;
-      unseenNotifications.push({
-       type:'new-employee-request-changed',
-       message: `tu cuenta de empleado cambio su estado a ${status}`,
-       onClickPath:"/notifications",
-      })
-      user.isEmployee = status === "approved" ? true : false;
-      await user.save()
-      res.status(200).send({
-        message:"Cambio de estado correctamente ",
-        success: true,
-        data:employee
-      })
-    } catch (error) {
-      console.log(error);
-      res.status(500).send({
-        message: "Error actualizando los empleados" ,
-        success: false,
-        error,
-      });
+          const { employeeId, status } = req.body
+          const employee = await Employee.findByIdAndUpdate(employeeId,{ status});
+          const user = await User.findOne({_id: employee.userId})
+          const unseenNotifications = user.unseenNotifications;
+          unseenNotifications.push({
+          type: 'new-employee-request-changed',
+          message: `tu cuenta de empleado cambio su estado a ${status}`,
+          onClickPath: "/notifications",
+    });
+          user.isEmployee = status === "approved" ? true : false;
+          await user.save()
+          res.status(200).send({
+              message:"Cambio de estado correctamente ",
+              success: true,
+              data:employee
+          });
+      } catch (error) {
+        console.log(error);
+        res.status(500).send({
+          message: "Error actualizando los empleados" ,
+          success: false,
+          error,
+        });
     }
   })
 

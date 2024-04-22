@@ -10,15 +10,6 @@ function Header() {
   return (
     <div className='content'>
                 <div className="header">
-                    {/* { collapsed ? 
-                        <i
-                            className="ri-close-line header-action-icon" onClick={() => setCollapsed(false)}>
-                        </i> :
-                        <i 
-                            className="ri-menu-2-line header-action-icon" onClick={() => setCollapsed(true)}>
-                        </i> 
-                        
-                    } */}
                         <i
                             className="ri-arrow-left-line header-action-icon" onClick={() => navigate(-1)}>
                         </i>
