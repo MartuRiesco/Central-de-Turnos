@@ -123,3 +123,24 @@
     border-radius: 50px !important;
     text-align: center;
 }
+.title-appiointment-notifications{
+    font-size:50px;
+    font-weight: bold;
+}
+.booked-container{
+  
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.booked-notification{
+  margin: 10px !important;
+    position: absolute;
+    top: 30%;
+    left: 10%;
+}
+.info-appiointment-notifications{
+    font-size: 30px;
+    font-weight:200;
+    margin: 10px !important;
+}

@@ -64,7 +64,12 @@ function BookAppointment() {
       dispatch(hideLoading())
       if(response.data.success) {
           toast.success(response.data.message);
-          navigate('/appointments') 
+          const bookedAppointment = {
+            date: date,
+            time: time
+        };
+        navigate('/appointment-booked', { state: { bookedAppointment } });
+          
       }
      
       } catch (error) {
@@ -125,10 +130,9 @@ function BookAppointment() {
                         }}
                   />
                   <TimePicker format='HH' className='mt-3 p-3' onChange={(value) => {
-                      
+                      setIsAvailable(false);
                       setTime(
                         dayjs(value).format('HH:mm'));
-                        setIsAvailable(false);
                       }}
                   />
 

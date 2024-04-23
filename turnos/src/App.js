@@ -18,6 +18,7 @@ import Header from './components/Header';
 import UserInfo from './pages/UserInfo';
 import Appoinments from './pages/Appoinments';
 import EmployeeAppoinments from './pages/Employee/EmployeeAppointments';
+import AppointmentBooked from './pages/AppointmentBooked';
 
 
 function App() {
@@ -72,6 +73,12 @@ function App() {
                   <ProtectedRoute>
                     <Header />
                       <Notifications /> 
+                  </ProtectedRoute>
+                }/>
+                 <Route path='/appointment-booked' element={ 
+                  <ProtectedRoute>
+                    <Header />
+                      <AppointmentBooked /> 
                   </ProtectedRoute>
                 }/>
                  <Route path='/get-user-info-by-id' element={ 
