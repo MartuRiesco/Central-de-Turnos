@@ -59,14 +59,17 @@ function BookAppointment() {
               headers: {
                   Authorization: `Bearer ${localStorage.getItem('token')}`,
               }
-          });
+          }); console.log(response);
+          
       dispatch(hideLoading())
       if(response.data.success) {
           toast.success(response.data.message);
           navigate('/appointments') 
       }
+     
       } catch (error) {
           toast.error('Algo se rompio')
+          console.log(error);
           dispatch(hideLoading());
       }
   }
@@ -122,9 +125,10 @@ function BookAppointment() {
                         }}
                   />
                   <TimePicker format='HH' className='mt-3 p-3' onChange={(value) => {
-                      setIsAvailable(false);
+                      
                       setTime(
                         dayjs(value).format('HH:mm'));
+                        setIsAvailable(false);
                       }}
                   />
 

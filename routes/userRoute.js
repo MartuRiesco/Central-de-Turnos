@@ -232,6 +232,7 @@ router.post("/book-appointment", authenticationMiddleware, async (req, res) => {
   router.post("/check-booking-availability", authenticationMiddleware, async (req, res) => {
     try {
         console.log('ddate', req.body.date);
+        console.log(req.body);
         console.log('tinme', req.body.time);
         const date = moment(req.body.date, 'DD-MM-YYYY').toISOString();
         const fromTime = moment(req.body.time, 'HH:mm').subtract(59, 'minutes').toISOString();

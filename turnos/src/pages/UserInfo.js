@@ -84,7 +84,7 @@ console.log(values, 'val');
        </Row>
        
        <div className='d-flex justofy-content-end'>
-       < Button className='primary-button ' htmlType='submit'> ENVIAR</Button>
+       < Button className='primary-button ' htmlType='submit'> ACTUALIZAR</Button>
        </div>
     </Form></div>
   )
