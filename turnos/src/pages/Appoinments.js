@@ -27,20 +27,20 @@ function Appoinments() {
   }
 
   const columns = [
-    /* {
+    {
         title: 'Id',
         dataIndex: '_id'
-    }, */
+    },
     {
       title: 'Servicio',
       dataIndex: 'name',
       render: (text, record) => <h1 className='normal-text'>{record.employeeInfo.name}</h1>
     },
-    /* {
+    {
       title: 'Email',
       dataIndex: 'email',
       render: (text, record) => <p className='normal-text'>{record.employeeInfo.email}</p>
-    }, */
+    },
     {
       title: 'Horario',
       dataIndex: 'createdAt',
@@ -59,6 +59,7 @@ function Appoinments() {
     <div className='container-notifications p-5'>
         <h1 className='title-notifications mb-3'>Turnos</h1>
     <Table columns={columns} dataSource={appointments} />
+    { appointments.map()}
     
 
 </div>

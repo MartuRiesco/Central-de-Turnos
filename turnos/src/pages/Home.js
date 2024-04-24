@@ -28,18 +28,19 @@ function Home() {
         getData();
     }, [])
     return (
-            <div gutter={20}>
-                <div className='service-title'>
-                    <h1>Nuestros servicios</h1>
-                </div>
+            <div className='service'>
                 <div className='service-container'>
-                    {employee.map((employee) => (
-                        <div className='service-card'>
-                            <Employee employee={employee} />
-                        </div>
-                    ))}
-                </div>
-                
+                    <div className='service-title'>
+                        <h1>Servicios</h1>
+                    </div>
+                    <div className='service-container'>
+                        {employee.map((employee) => (
+                            <div className='service-card'>
+                                <Employee employee={employee} />
+                            </div>
+                        ))}
+                    </div>
+                </div> 
             </div>
     )
 }

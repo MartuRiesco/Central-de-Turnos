@@ -73,7 +73,7 @@ function Layout({ children }) {
 
   const welcome = user?.isAdmin ? 'Gestiona tu empresa, ' : user?.isEmployee ? 'Revisa tus reservas, ' : 'Te damos la bienvenida a nuestra central de turnos, ';
   const menuToBeRendered = user?.isAdmin ? adminMenu : user?.isEmployee ? employeeMenu : userMenu;
-  const role = user?.isAdmin ? 'Admin' : user?.isEmployee ? 'Profesional' : 'Premium';
+  const role = user?.isAdmin ? 'Admin' : user?.isEmployee ? 'Profesional' : 'Cliente';
 
   return (
     <div className='main'>
@@ -83,7 +83,7 @@ function Layout({ children }) {
 
             <div className='welcome'>
                 <h1>Hola!</h1>
-                <p>{welcome} <span className='welcome-name'>{user?.name}</span>!</p>
+                <p>{welcome} <span className='welcome-name'>{user?.name}!</span></p>
                 <p className='role'>{role}</p>
             </div>
 

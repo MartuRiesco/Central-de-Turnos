@@ -37,6 +37,7 @@
 
 .welcome-name {
     text-transform: capitalize;
+    font-weight: bold !important;
 }
 
 /* .sidebar {
@@ -57,8 +58,9 @@
 }
 
 .role {
-    background-color: var(--clr-primario-dark);
-    color: var(--clr-secundario) !important;
+    background-color: var(--clr-secundario) !important;
+    font-weight: bold !important;
+    color: var(--clr-secundario-light) !important;
     margin: 15px 0 0 !important;
     text-align: center !important;
     border-radius: 15px;
@@ -77,7 +79,7 @@
 }
 
 .menu-item p {
-    color: var(--clr-primario-dark);
+    color: var(--clr-secundario-light);
     font-size: 16px;
     letter-spacing: .4px;
     font-weight: bold;
@@ -89,7 +91,7 @@
 }
 
 .menu-item i {
-    color: var(--clr-primario-dark);
+    color: var(--clr-secundario-light);
     text-decoration: none;
     font-size: 30px;
     position: absolute;

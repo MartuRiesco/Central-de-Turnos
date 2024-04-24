@@ -105,38 +105,46 @@ function BookAppointment() {
   }, []);
   
   return (
-    <div>
+    <div className='calendar'>
       {employee && (
-          <div className='card mb-2'>
-              <div>
-                  <h1>Seleccione el horario</h1>
+          <div className='mb-2'>
+              <div className='service-title '>
+                  <h1>Fecha y hora</h1>
                   <p>Consulte la disponibilidad del turno.</p>
               </div>
 
               <div className='d-flex flex-column mt-2'>
-                  <DatePicker format='DD-MM-YYYY' className='mt-3 p-3' onChange={(value) => {
-                      setDate(
-                        dayjs(value).format('DD-MM-YYYY'),
-                        )
-                        setIsAvailable(false);
-                        }}
+                  <DatePicker 
+                    format='DD-MM-YYYY' 
+                    className='mt-3 p-3' 
+                    placeholder='Seleccione fecha'
+                    onChange={(value) => {
+                        setDate(
+                          dayjs(value).format('DD-MM-YYYY'),
+                          )
+                          setIsAvailable(false);
+                          }}
                   />
-                  <TimePicker format='HH' className='mt-3 p-3' onChange={(value) => {
+                  <TimePicker 
+                    format='HH' 
+                    className='mt-3 p-3'
+                    placeholder='Seleccione Hora'
+                    onChange={(value) => {
                       setIsAvailable(false);
                       setTime(
-                        dayjs(value).format('HH:mm'));
+                        dayjs(value).format('HH'));
                       }}
                   />
 
                   <Button 
-                        className='primary-button mt-2' 
+                        className='primary-button mt-4' 
                         onClick={checkAvailability}>
                           Consultar disponibilidad
                   </Button>
 
                   { isAvailable && 
                     <Button 
-                        className='primary-button mt-2'
+                        className='primary-button mt-4'
                         onClick={ bookNow }>
                           Reservar
                   </Button>
