@@ -59,7 +59,7 @@ function Appoinments() {
     <div className='container-notifications p-5'>
         <h1 className='title-notifications mb-3'>Turnos</h1>
     <Table columns={columns} dataSource={appointments} />
-    { appointments.map()}
+    {/* { appointments.map()} */}
     
 
 </div>
