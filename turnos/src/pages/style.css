@@ -4,6 +4,10 @@
     align-items: center;
     justify-content: space-between;
 }
+.page-title{
+    margin: 20px !important;
+    font-weight: bold;
+}
 
 .title { 
     font-size: 20px !important;
@@ -64,8 +68,8 @@
    height: 800px;
    display: block;
    width: 800px;
-   top: 250px;
-   right: 90px;
+   top: 30%;
+   right: 30%;
    position: absolute;
    border-radius: 600px;
    z-index: -9999;
@@ -124,7 +128,7 @@
     text-align: center;
 }
 .title-appiointment-notifications{
-    font-size:50px;
+    font-size:40px;
     font-weight: bold;
 }
 .booked-container{
@@ -143,4 +147,16 @@
     font-size: 30px;
     font-weight:200;
     margin: 10px !important;
+}
+.booked{
+    top: 10% !important;
+}
+.buttons-appointment{
+    display: flex;
+    margin-top: 40% !important;
+    flex-direction: column;
+    align-items: center;
+}
+.button-booked{
+    margin:10px !important;
 }

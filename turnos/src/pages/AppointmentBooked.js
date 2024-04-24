@@ -29,22 +29,23 @@ function AppointmentBooked() {
         <div className='booked-container'>
             {bookedAppointment ? (
                 <div >
-                     <section className='green-dot-container'>
+                     <section className='green-dot-container booked'>
             <div className='green-dot'></div>
         </section>
         <div className='booked-notification'>
                     <h2 className='title-appiointment-notifications' >Tu turno se ha registrado correctamente!</h2>
                     <p className='info-appiointment-notifications'>Fecha: {bookedAppointment.date}</p>
                     <p className='info-appiointment-notifications'>Hora: {bookedAppointment.time}</p>
-                </div>
-                <div>
-                    <Button  className='primary-button mt-2' onClick={goBack}>
+                    <div className='buttons-appointment'>
+                    <Button  className='secondary-button button-booked ' onClick={goBack}>
                         Volver
                     </Button>
-                    <Button  className='primary-button mt-2' onClick={goToAppointments}>
+                    <Button  className='secondary-button button-booked ' onClick={goToAppointments}>
                        Mis turnos
                     </Button>
                 </div>
+                </div>
+               
                 </div>
             ) : (
                 <p>No se han proporcionado datos de turno.</p>

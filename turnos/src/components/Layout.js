@@ -53,11 +53,7 @@ function Layout({ children }) {
   ];
 
   const employeeMenu = [
-    {
-        name: 'Usuarios',
-        path: '/admin/users',
-        icon: 'ri-user-line'
-    },
+
     {
         name: 'Turnos',
         path: '/employee/appointments',

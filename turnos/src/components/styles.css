@@ -105,6 +105,7 @@
     color: var(--clr-primario-dark);
 }
 
+
 .content {
     min-height: 100%;
 }
@@ -134,6 +135,27 @@
     height: 60px !important;
 }
 
+.whatsapp-icono {
+    position: fixed;
+    bottom: 50px;
+    right: 50px;
+    z-index: 1;
+}
+
+.whatsapp-icono a {
+    color: white;
+    background-color: #1dd639;
+    text-decoration: none;
+    border-radius: 100%;
+    text-align: center;
+    font-size: 30px;
+    padding: 10px 10px 10px 10px !important;
+    transition: all 0.3s; 
+}
+
+.whatsapp-icono a:hover {
+    background-color: #159828; 
+}
 
 
 @media screen and (max-width: 768px) {
