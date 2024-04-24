@@ -105,7 +105,17 @@ label {
 .primary-button:hover {
   color: var(--clr-primario-dark) !important;
 }
-
+.secondary-button{
+  border-radius: 20px !important;
+  background-color: var( --clr-secundario-light) !important;
+  border-color: var( --clr-secundario-light) !important;
+  
+  width:50%;
+  color: black;
+  font-size: 14px !important;
+  font-weight: bold !important;
+  text-transform: uppercase;
+}
 .anchor {
   color: var(--clr-terciario) !important;
   text-decoration: none !important;

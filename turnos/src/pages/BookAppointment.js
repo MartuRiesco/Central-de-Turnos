@@ -59,14 +59,22 @@ function BookAppointment() {
               headers: {
                   Authorization: `Bearer ${localStorage.getItem('token')}`,
               }
-          });
+          }); console.log(response);
+          
       dispatch(hideLoading())
       if(response.data.success) {
           toast.success(response.data.message);
-          navigate('/appointments') 
+          const bookedAppointment = {
+            date: date,
+            time: time
+        };
+        navigate('/appointment-booked', { state: { bookedAppointment } });
+          
       }
+     
       } catch (error) {
           toast.error('Algo se rompio')
+          console.log(error);
           dispatch(hideLoading());
       }
   }

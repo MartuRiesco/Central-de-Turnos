@@ -197,7 +197,9 @@ router.get("/get-all-employees", authenticationMiddleware, async (req, res) => {
       });
     }
   });
-
+router.get("appointment-booked", authenticationMiddleware, async (req,res)=>{
+    
+})
 router.post("/book-appointment", authenticationMiddleware, async (req, res) => {
     try {
         

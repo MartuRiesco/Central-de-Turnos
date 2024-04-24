@@ -18,6 +18,8 @@ import Header from './components/Header';
 import UserInfo from './pages/UserInfo';
 import Appoinments from './pages/Appoinments';
 import EmployeeAppoinments from './pages/Employee/EmployeeAppointments';
+import AppointmentBooked from './pages/AppointmentBooked';
+import WhatsApp from './components/Whatsapp';
 
 
 function App() {
@@ -27,6 +29,7 @@ function App() {
   return (
     <div className='App'>
       <BrowserRouter>
+      <div>
           {loading && (
                 <div className='spinner-parent'>
                 <div class="spinner-border" role="status">
@@ -72,6 +75,12 @@ function App() {
                   <ProtectedRoute>
                     <Header />
                       <Notifications /> 
+                  </ProtectedRoute>
+                }/>
+                 <Route path='/appointment-booked' element={ 
+                  <ProtectedRoute>
+                    <Header />
+                      <AppointmentBooked /> 
                   </ProtectedRoute>
                 }/>
                  <Route path='/get-user-info-by-id' element={ 
@@ -124,7 +133,8 @@ function App() {
                   </ProtectedRoute>
                 }/>
           </Routes>
-
+          <WhatsApp/>
+          </div>
       </BrowserRouter>
     </div>
   );
