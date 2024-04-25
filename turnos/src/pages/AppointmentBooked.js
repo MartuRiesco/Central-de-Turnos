@@ -33,7 +33,7 @@ function AppointmentBooked() {
             <div className='green-dot'></div>
         </section>
         <div className='booked-notification'>
-                    <h2 className='title-appiointment-notifications' >Tu turno se ha registrado correctamente!</h2>
+                    <h2 className='title-appiointment-notifications'>Tu turno se ha registrado correctamente!</h2>
                     <p className='info-appiointment-notifications'>Fecha: {bookedAppointment.date}</p>
                     <p className='info-appiointment-notifications'>Hora: {bookedAppointment.time}</p>
                     <div className='buttons-appointment'>

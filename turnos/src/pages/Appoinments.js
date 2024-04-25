@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { hideLoading, showLoading } from '../redux/alertsSlice';
 import axios from 'axios';
-import { Table } from 'antd';
 import moment from 'moment';
 
 function Appoinments() {
@@ -26,43 +25,28 @@ function Appoinments() {
     }
   }
 
-  const columns = [
-    {
-        title: 'Id',
-        dataIndex: '_id'
-    },
-    {
-      title: 'Servicio',
-      dataIndex: 'name',
-      render: (text, record) => <h1 className='normal-text'>{record.employeeInfo.name}</h1>
-    },
-    {
-      title: 'Email',
-      dataIndex: 'email',
-      render: (text, record) => <p className='normal-text'>{record.employeeInfo.email}</p>
-    },
-    {
-      title: 'Horario',
-      dataIndex: 'createdAt',
-      render: (text, record) => <p className='normal-text'>{moment(record.date).format('DD-MM-YYYY')} {moment(record.time).format('HH:mm')}</p>
-    },
-    {
-        title: 'Status',
-        dataIndex: 'status'
-      }
-  ]
+  
     useEffect(() => {
         getAppointmentsData()
       // eslint-disable-next-line react-hooks/exhaustive-deps
       }, []);
   return (
-    <div className='container-notifications p-5'>
-        <h1 className='title-notifications mb-3'>Turnos</h1>
-    <Table columns={columns} dataSource={appointments} />
-    {/* { appointments.map()} */}
-    
+    <div className='service'>
+    <h1 className='title-notifications'>Mis Turnos</h1>
+    <div className='service-container'>
+        {appointments?.map((employee) => (
+                            <div className='employee-card'>
+                                <h2>{employee.employeeInfo.name}</h2>
+                                <p className='employee-status'>{employee.status}</p>
+                                <p>Email: {employee.employeeInfo.email}</p>
+                                <p>Fecha: {moment(employee.date).format('DD-MM-YYYY')}</p>
+                                <p>Hora: {moment(employee.time).format('HH:mm')}</p>
+                                
 
-</div>
+                            </div>
+                        ))}
+        </div>
+    </div>
   )
 }
 

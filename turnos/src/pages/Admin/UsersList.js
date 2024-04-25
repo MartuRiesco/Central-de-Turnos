@@ -29,7 +29,7 @@ function UsersList() {
     getUsersData()
   }, []);
 
-  const columns = [
+  /* const columns = [
     {
       title: 'Name',
       dataIndex: 'name'
@@ -52,13 +52,25 @@ function UsersList() {
         </div>
       )
     }
-  ]
+  ] */
 
   return (
-    <div className='container-notifications p-5'>
+    <div className='service'>
         <h1 className='title-notifications'>Lista Usuarios</h1>
-        <Table columns={columns} dataSource={users} />
-    </div>
+        {/* <Table columns={columns} dataSource={users} /> */}
+        <div className='service-container'>
+            {users.map((user) => (
+                                <div className='user-card'>
+                                    <h2>{user.name}</h2>
+                                    <p>{user.email}</p>
+                                    <p>{moment(user.createAt).format('DD-MM-YYYY')}</p>
+                                    <div>
+                                        <h1 className='user-block'>Bloquear Cuenta</h1>
+                                    </div>
+                                </div>
+                            ))}
+            </div>
+        </div>
   )
 }
 

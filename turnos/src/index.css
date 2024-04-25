@@ -13,10 +13,12 @@
   --clr-primario-dark: rgb(67, 67, 67);
   --clr-secundario: rgb(189, 255, 49);
   --clr-secundario-light: rgb(103, 156, 25);
-  --clr-gray: rgb(177, 175, 175);
+  --clr-gray: rgb(223, 222, 222);
   --clr-gray-light: rgb(233, 231, 231);
   --clr-active: rgb(73, 75, 45);
   --clr-white: rgb(255, 255, 255);
+  --clr-red: rgb(235, 95, 66);
+  --clr-red-light: rgb(135, 39, 20);
   --ff-primario: 'Poppins', sans-serif;
   --ff-secundario: 'Playfair Display', serif;
 }

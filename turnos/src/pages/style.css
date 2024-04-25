@@ -172,6 +172,89 @@
     color: var(--clr-secundario-light) !important;
 }
 
+/* USER */
+
+.user-card {
+    background-color: var(--clr-secundario) !important;
+    margin: 1rem 0 !important;
+    width: 350px !important;
+    height: 180px !important;
+    padding: 2rem !important;
+    border-radius: 30px !important;
+}
+
+.user-card h2 {
+    font-size: 20px !important;
+    margin-bottom: 20px !important;
+}
+
+.user-card p {
+    font-size: 14px !important;
+}
+
+.user-block {
+    margin-right: 1rem !important;
+    margin-top: .5rem !important;
+    font-size: 12px !important;
+    background-color: var(--clr-secundario-light) !important;
+    color: var(--clr-secundario) !important;
+    border-radius: 10px !important;
+    width: 130px !important;
+    padding: 10px !important;
+}
+
+/* APPOINMENTS LIST */
+
+.employee-card {
+    background-color: var(--clr-secundario) !important;
+    margin: 1rem 0 !important;
+    width: 350px !important;
+    height: 280px !important;
+    padding: 2rem !important;
+    border-radius: 30px !important;
+}
+
+.employee-card h2 {
+    font-size: 30px !important;
+}
+
+.employee-card p {
+    font-size: 14px !important;
+}
+
+.employee-approved {
+    margin-right: 1rem !important;
+    margin-top: .5rem !important;
+    font-size: 12px !important;
+    background-color: var(--clr-secundario-light) !important;
+    color: var(--clr-secundario) !important;
+    border-radius: 10px !important;
+    width: 85px !important;
+    padding: 10px !important;
+}
+
+.employee-rejected {
+    margin-right: 1rem !important;
+    margin-top: .5rem !important;
+    font-size: 12px !important;
+    background-color: var(--clr-red) !important;
+    color: var(--clr-red-light) !important;
+    border-radius: 10px !important;
+    width: 80px !important;
+    padding: 10px !important;
+}
+
+.employee-status {
+    margin: 1rem 0 !important;
+    text-align: center;
+    font-size: 12px !important;
+    background-color: var(--clr-gray) !important;
+    color: var(--clr-primario-dark) !important;
+    border-radius: 10px !important;
+    max-width: 90px !important;
+    padding: 10px !important;
+}
+
 /* CALENDARIO ESTILOS */
 
 .calendar {
