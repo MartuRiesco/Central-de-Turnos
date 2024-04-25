@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { hideLoading, showLoading } from '../../redux/alertsSlice';
 import axios from 'axios';
-import { Table } from 'antd';
 import { toast } from 'react-hot-toast';
 import moment from 'moment';
 
