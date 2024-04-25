@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const User = require("../models/userModel");
 const Employee = require("../models/employeeModel");
+const Appointments = require ("../models/appointmentModel")
 const authenticationMiddleware = require('../middlewares/authenticationMiddleware');
 
 router.get("/get-all-employees", authenticationMiddleware, async (req, res) => {
@@ -21,7 +22,23 @@ router.get("/get-all-employees", authenticationMiddleware, async (req, res) => {
     });
   }
 });
-
+router.get("/get-all-appointments", authenticationMiddleware ,async (req, res) => {
+  try {
+    const appointments = await Appointments.find({});
+    res.status(200).send({
+      message: "Turnos cargados correctamente",
+      success: true,
+      data: appointments,
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).send({
+      message: "Error buscando los turnos",
+      success: false,
+      error,
+    });
+  }
+});
 
 router.get("/get-all-users", authenticationMiddleware, async (req, res) => {
   try {

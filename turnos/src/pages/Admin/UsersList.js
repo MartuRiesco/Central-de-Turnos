@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { hideLoading, showLoading } from '../../redux/alertsSlice';
 import axios from 'axios';
-import { Table } from 'antd';
 import moment from 'moment';
 
 function UsersList() {
@@ -29,35 +28,9 @@ function UsersList() {
     getUsersData()
   }, []);
 
-  /* const columns = [
-    {
-      title: 'Name',
-      dataIndex: 'name'
-    },
-    {
-      title: 'Email',
-      dataIndex: 'email'
-    },
-    {
-      title: 'Creates At',
-      dataIndex: 'createdAt',
-      render: (record, text) => moment(record.createAt).format('DD-MM-YYYY')
-    },
-    {
-      title: 'Actions',
-      dataIndex: 'actions',
-      render: (text, record) => (
-        <div className='d-flex'>
-            <h1 className='anchor'>Block</h1>
-        </div>
-      )
-    }
-  ] */
-
   return (
     <div className='service'>
         <h1 className='title-notifications'>Lista Usuarios</h1>
-        {/* <Table columns={columns} dataSource={users} /> */}
         <div className='service-container'>
             {users.map((user) => (
                                 <div className='user-card'>

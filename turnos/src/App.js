@@ -132,6 +132,12 @@ function App() {
                       <EmployeeAppoinments /> 
                   </ProtectedRoute>
                 }/>
+                <Route path='/admin/appointments' element={ 
+                  <ProtectedRoute>
+                    <Header />
+                      <Appoinments /> 
+                  </ProtectedRoute>
+                }/>
           </Routes>
           <WhatsApp/>
           </div>

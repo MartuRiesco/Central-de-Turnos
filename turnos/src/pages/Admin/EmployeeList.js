@@ -7,7 +7,7 @@ import { toast } from 'react-hot-toast';
 import moment from 'moment';
 
 function EmployeeList() {
-  const [employee, setEmployee] = useState([]);
+  const [employees, setEmployee] = useState([]);
   //const navigate = useNavigate()
   const dispatch = useDispatch()
   const getEmployeeData = async () => {
@@ -50,46 +50,29 @@ function EmployeeList() {
     getEmployeeData()
   }, []);
 
-  const columns = [
-    {
-      title: 'Name',
-      dataIndex: 'name',
-      render: (text, record) => <h1 className='normal-text'>{record.name}</h1>
-    },
-    {
-      title: 'Email',
-      dataIndex: 'email'
-    },
-    /* {
-      title: "Celular",
-      dataIndex: "phoneNumber"
-    }, */
-    {
-      title: 'Creates At',
-      dataIndex: 'createdAt',
-      render: (record, text) => moment(record.createAt).format('DD-MM-YYYY')
-    },
-    {
-        title: 'Status',
-        dataIndex: 'status'
-      },
-    {
-      title: 'Actions',
-      dataIndex: 'actions',
-      render: (text, record) => (
-        <div className='d-flex'>
-            {record.status === 'pending' && <h1 className='anchor' onClick={() => changeEmployeeStatus(record, 'approved')}>Aprobado</h1>}
-            {record.status === 'approved' && <h1 className='anchor' onClick={() => changeEmployeeStatus(record, 'blocked')}>Block</h1>}
-        </div>
-      )
-    }
-  ]
+  
 
   return (
-    <div className='container-notifications p-5'>
-    <h1 className='title-notifications'>Lista de servicios</h1>
-    <Table columns={columns} dataSource={employee} />
-
+  
+<div className='service'>
+<h1 className='title-notifications'>Lista Servicios</h1>
+{/* <Table columns={columns} dataSource={users} /> */}
+<div className='service-container'>
+    {employees.map((employee) => (
+                        <div className='user-card'>
+                            <h2>{employee.name}</h2>
+                            <p>{employee.email}</p>
+                            <p>{moment(employee.createAt).format('DD-MM-YYYY')}</p>
+                            
+                                                          
+                            <div className='block-approve-employee'>
+                                <h1 className='user-block'>Borrar servicio</h1>
+                                {employee.status === 'pending' && <h1 className='user-block' onClick={() => changeEmployeeStatus(employee, 'approved')}>Aprobar</h1>}
+                              {employee.status === 'approved' && <h1 className='user-block' onClick={() => changeEmployeeStatus(employee, 'blocked')}>Blockear</h1>}
+                            </div>
+                        </div>
+                    ))}
+    </div>
 </div>
   )
 }

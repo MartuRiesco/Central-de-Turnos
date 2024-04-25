@@ -42,7 +42,7 @@ function Layout({ children }) {
     },
     {
         name: 'Turnos',
-        path: '/employee/appointments',
+        path: '/admin/appointments',
         icon: 'ri-calendar-check-line'
     },
     {

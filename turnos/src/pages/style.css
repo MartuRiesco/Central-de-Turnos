@@ -217,7 +217,10 @@
 .employee-card h2 {
     font-size: 30px !important;
 }
-
+.block-approve-employee{
+    display: flex;
+    flex-direction: row;
+}
 .employee-card p {
     font-size: 14px !important;
 }

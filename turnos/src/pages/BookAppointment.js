@@ -16,7 +16,34 @@ function BookAppointment() {
   const [ employee, setEmployee ] = useState(null);
   const params = useParams();
   const dispatch = useDispatch();
-
+  const disabledTime = (now) => {
+    const hour = now.hour();
+    const disabled = {
+      disabledHours: () => {
+        const hours = [];
+        for (let i = 0; i < 24; i++) {
+          if (i < 10 || i > 19) {
+            hours.push(i);
+          }
+        }
+        return hours;
+      },
+      disabledMinutes: (selectedHour) => {
+        // Si la hora seleccionada está fuera del rango, deshabilita todos los minutos
+        if (selectedHour < 10 || selectedHour > 19) {
+          return [...Array(60).keys()];
+        }
+        return [];
+      },
+      disabledSeconds: (selectedHour, selectedMinute) => {
+        if (selectedHour < 10 || selectedHour > 19 || selectedMinute !== 0) {
+          return [...Array(60).keys()];
+        }
+        return [];
+      },
+    };
+    return disabled;
+  };
   const getEmployeeData = async() => {
     try {
         dispatch(showLoading());
@@ -133,16 +160,16 @@ function BookAppointment() {
                           setIsAvailable(false);
                           }}
                   />
-                  <TimePicker 
-                    format='HH' 
-                    className='mt-3 p-3'
-                    placeholder='Seleccione Hora'
-                    onChange={(value) => {
-                      setIsAvailable(false);
-                      setTime(
-                        dayjs(value).format('HH'));
-                      }}
-                  />
+                   <TimePicker
+              format='HH'
+              className='mt-3 p-3'
+              placeholder='Seleccione Hora'
+              onChange={value => {
+                setIsAvailable(false);
+                setTime(dayjs(value).format('HH'));
+              }}
+              disabledTime={disabledTime}
+            />
 
                   <Button 
                         className='primary-button mt-4' 
