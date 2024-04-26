@@ -25,7 +25,25 @@ function EmployeeList() {
         dispatch(hideLoading());
     }
   }
-
+  const deleteService = async (employeeId)=>{
+    try {
+      dispatch(showLoading());
+      const response = await axios.delete('/api/admin/delete-service', 
+      { data: {
+        employeeId: employeeId
+      }},{
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('token')}`
+        }
+      })
+      dispatch(hideLoading());
+      if(response.data.success) {
+        setEmployee(employees.filter(employee => employee._id !== employeeId));
+      }
+  } catch (error) {
+      dispatch(hideLoading());
+  }
+  }
   const changeEmployeeStatus = async (record, status) => {
     try {
         dispatch(showLoading());
@@ -65,7 +83,7 @@ function EmployeeList() {
                             
                                                           
                             <div className='block-approve-employee'>
-                                <h1 className='user-block'>Borrar servicio</h1>
+                                <h1 className='user-block' onClick={()=> deleteService(employee._id)}>Borrar servicio</h1>
                                 {employee.status === 'pending' && <h1 className='user-block' onClick={() => changeEmployeeStatus(employee, 'approved')}>Aprobar</h1>}
                               {employee.status === 'approved' && <h1 className='user-block' onClick={() => changeEmployeeStatus(employee, 'blocked')}>Blockear</h1>}
                             </div>

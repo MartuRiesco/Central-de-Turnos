@@ -5,7 +5,7 @@ import { useDispatch } from 'react-redux';
 import { showLoading, hideLoading } from '../redux/alertsSlice';
 
 function Home() {
-    const [ employee, setEmployees ] = useState([]);
+    const [ employees, setEmployees ] = useState([]);
     const dispath = useDispatch();
     const getData = async () => {
         try {
@@ -17,7 +17,10 @@ function Home() {
             });
             dispath(hideLoading());
             if(response.data.success) {
+                console.log(response);
                 setEmployees(response.data.data)
+                
+
             }
         } catch (error) {
             dispath(hideLoading())
@@ -34,8 +37,10 @@ function Home() {
                         <h1>Servicios</h1>
                     </div>
                     <div className='service-container'>
-                        {employee.map((employee) => (
-                            <div className='service-card'>
+                       
+                        {employees.map((employee) => (
+                           
+                            <div className='service-card' >
                                 <Employee employee={employee} />
                             </div>
                         ))}

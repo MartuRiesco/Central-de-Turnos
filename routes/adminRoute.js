@@ -39,7 +39,42 @@ router.get("/get-all-appointments", authenticationMiddleware ,async (req, res) =
     });
   }
 });
-
+router.delete("/delete-user",  async (req, res) => {
+  try {
+  const {userId}= req.body
+    const userToDelete = await User.findOneAndDelete({_id:userId});
+    res.status(200).send({
+      message: "Usuario eliminado  correctamente",
+      success: true,
+      data: userToDelete,
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).send({
+      message: "Error eliminando el usuario" ,
+      success: false,
+      error,
+    });
+  }
+})
+router.delete("/delete-service",  async (req, res) => {
+  try {
+  const {employeeId}= req.body
+    const employeeToDelete = await Employee.findOneAndDelete({_id:employeeId});
+    res.status(200).send({
+      message: "Servicio eliminado  correctamente",
+      success: true,
+      data: employeeToDelete,
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).send({
+      message: "Error eliminando el servicio" ,
+      success: false,
+      error,
+    });
+  }
+})
 router.get("/get-all-users", authenticationMiddleware, async (req, res) => {
   try {
     const users = await User.find({});

@@ -7,6 +7,26 @@ import moment from 'moment';
 function UsersList() {
   const [users, setUsers] = useState([]);
   const dispatch = useDispatch()
+
+  const deleteUser = async (userId)=>{
+    try {
+      dispatch(showLoading());
+      const response = await axios.delete('/api/admin/delete-user', 
+      { data: {
+        userId: userId
+      }},{
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('token')}`
+        }
+      })
+      dispatch(hideLoading());
+      if(response.data.success) {
+        setUsers(users.filter(user => user._id !== userId));
+      }
+  } catch (error) {
+      dispatch(hideLoading());
+  }
+  }
   const getUsersData = async () => {
     try {
         dispatch(showLoading());
@@ -20,6 +40,7 @@ function UsersList() {
           setUsers(response.data.data)
         }
     } catch (error) {
+      console.log(error)
         dispatch(hideLoading());
     }
   }
@@ -38,7 +59,7 @@ function UsersList() {
                                     <p>{user.email}</p>
                                     <p>{moment(user.createAt).format('DD-MM-YYYY')}</p>
                                     <div>
-                                        <h1 className='user-block'>Bloquear Cuenta</h1>
+                                        <h1 className='user-block' onClick={() => deleteUser(user._id)} >Borrar Usuario</h1>
                                     </div>
                                 </div>
                             ))}
