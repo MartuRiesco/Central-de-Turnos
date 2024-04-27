@@ -72,7 +72,7 @@ function Notifications() {
                     user?.unseenNotifications.map((notification)=>(
                     <div className='card p-2' onClick={()=>navigate(notification.onClickPath)}>
                         <div className='card-text'>
-                            {notification.message}
+                            {notification.message} <i class="ri-arrow-right-line"></i>
                         </div>
                     </div>
                     ))
@@ -80,13 +80,13 @@ function Notifications() {
             </Tabs.TabPane>
             <Tabs.TabPane tab='Leidas' className='leidas' key={1}>
                 <div className='d-flex justify-content-end m-3'>
-                    <h1 className='anchor ' onClick={()=>deleteAll()}>Borrar todas</h1>
+                    <h1 className='anchor' onClick={()=>deleteAll()}>Borrar todas</h1>
                 </div>
                 {
                     user?.seenNotifications.map((notification)=>(
                     <div className='card p-2' onClick={()=>navigate(notification.onClickPath)}>
                         <div className='card-text'>
-                            {notification.message}
+                            {notification.message} <i class="ri-arrow-right-line"></i>
                         </div>
                     </div>
                     ))

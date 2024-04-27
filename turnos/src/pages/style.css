@@ -59,32 +59,32 @@
 }
 .menu-notifications{
     display: flex ;
- 
    justify-content: space-between;
    margin: 30px !important;
 }
-.green-dot-container{  
+.green-dot-container {  
    background-color: var(--clr-secundario) !important;
    height: 800px;
    display: block;
    width: 800px;
    top: 30%;
    right: 30%;
-   position: absolute;
+   position: fixed;
    border-radius: 600px;
    z-index: -9999;
 }
 
 .card-text{
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 400;
-    
 }
+
 .card{
-    width: 80%;
-    margin: 50px !important;
+    color: var(--clr-secundario-light);
+    margin: 20px !important;
     background-color: var(--clr-white) !important;
 }
+
 .form-update{
     margin: 20px !important;
 }
@@ -251,8 +251,8 @@
     margin: 1rem 0 !important;
     text-align: center;
     font-size: 12px !important;
-    background-color: var(--clr-gray) !important;
-    color: var(--clr-primario-dark) !important;
+    background-color: var(--clr-secundario-light) !important;
+    color: var(--clr-secundario) !important;
     border-radius: 10px !important;
     max-width: 90px !important;
     padding: 10px !important;
@@ -265,6 +265,9 @@
     margin: 4rem 3rem !important;
     background-color: var(--clr-white) !important;
 }
+
+
+
 .title-appiointment-notifications{
     font-size:40px;
     font-weight: bold;
@@ -283,18 +286,28 @@
 }
 .info-appiointment-notifications{
     font-size: 30px;
-    font-weight:200;
-    margin: 10px !important;
+    font-weight: 200;
+    margin: 10px 0 !important;
 }
 .booked{
     top: 10% !important;
 }
 .buttons-appointment{
     display: flex;
-    margin-top: 40% !important;
+    flex-direction: row !important;
+    margin-top: 5dvb !important;
     flex-direction: column;
-    align-items: center;
+    align-items: left;
 }
-.button-booked{
-    margin:10px !important;
+
+.button-booked {
+    margin-right: 1rem !important;
+    margin-top: .5rem !important;
+    font-size: 16px !important;
+    background-color: var(--clr-secundario-light) !important;
+    color: var(--clr-secundario) !important;
+    border-radius: 10px !important;
+    width: 150px !important;
+    padding: 10px !important;
+    text-align: center;
 }

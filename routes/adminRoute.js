@@ -58,6 +58,19 @@ router.get("/get-all-users", authenticationMiddleware, async (req, res) => {
   }
 })
 
+router.delete("/:employeeId", authenticationMiddleware, async (req, res) => {
+  try {
+    const deletedUser = await Employee.findByIdAndDelete(req.params.employeeId);
+    if (!deletedUser) {
+      return res.status(404).json({ message: 'Usuario no encontrado' });
+    }
+    res.json({ message: 'Usuario eliminado correctamente' });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Error al eliminar el usuario' });
+  }
+})
+
 router.post("/change-employee-status", authenticationMiddleware, async (req, res) => {
     try {
           const { employeeId, status } = req.body

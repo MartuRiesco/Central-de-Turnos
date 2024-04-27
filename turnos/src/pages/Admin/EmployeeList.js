@@ -4,6 +4,7 @@ import { hideLoading, showLoading } from '../../redux/alertsSlice';
 import axios from 'axios';
 import { toast } from 'react-hot-toast';
 import moment from 'moment';
+import UserDeleteButton from '../UserDeleteButton';
 
 function EmployeeList() {
   const [employees, setEmployee] = useState([]);
@@ -61,11 +62,13 @@ function EmployeeList() {
                         <div className='user-card'>
                             <h2>{employee.name}</h2>
                             <p>{employee.email}</p>
+                            <UserDeleteButton employeeId={employee._id} />
                             <p>{moment(employee.createAt).format('DD-MM-YYYY')}</p>
                             
                                                           
                             <div className='block-approve-employee'>
-                                <h1 className='user-block'>Borrar servicio</h1>
+                            
+                                <h1 className='user-block' >Borrar servicio</h1>
                                 {employee.status === 'pending' && <h1 className='user-block' onClick={() => changeEmployeeStatus(employee, 'approved')}>Aprobar</h1>}
                               {employee.status === 'approved' && <h1 className='user-block' onClick={() => changeEmployeeStatus(employee, 'blocked')}>Blockear</h1>}
                             </div>

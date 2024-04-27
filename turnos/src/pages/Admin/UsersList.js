@@ -36,7 +36,7 @@ function UsersList() {
                                 <div className='user-card'>
                                     <h2>{user.name}</h2>
                                     <p>{user.email}</p>
-                                    <p>{moment(user.createAt).format('DD-MM-YYYY')}</p>
+                                    <p>{moment(user.createdAt).format('DD-MM-YYYY')}</p>
                                     <div>
                                         <h1 className='user-block'>Bloquear Cuenta</h1>
                                     </div>

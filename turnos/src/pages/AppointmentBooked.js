@@ -27,31 +27,31 @@ function AppointmentBooked() {
 }
     return (
         <div className='booked-container'>
-            {bookedAppointment ? (
-                <div >
-                     <section className='green-dot-container booked'>
-            <div className='green-dot'></div>
-        </section>
-        <div className='booked-notification'>
-                    <h2 className='title-appiointment-notifications'>Tu turno se ha registrado correctamente!</h2>
-                    <p className='info-appiointment-notifications'>Fecha: {bookedAppointment.date}</p>
-                    <p className='info-appiointment-notifications'>Hora: {bookedAppointment.time}</p>
-                    <div className='buttons-appointment'>
-                    <Button  className='secondary-button button-booked ' onClick={goBack}>
-                        Volver
-                    </Button>
-                    <Button  className='secondary-button button-booked ' onClick={goToAppointments}>
-                       Mis turnos
-                    </Button>
-                </div>
-                </div>
-               
-                </div>
-            ) : (
-                <p>No se han proporcionado datos de turno.</p>
-            )}
+                {bookedAppointment ? (
+                    <div >
+                        <section className='green-dot-container booked'>
+                            <div className='green-dot'></div>
+                        </section>
+                        <div className='booked-notification'>
+                            <h2 className='title-appiointment-notifications'>Tu turno se ha solicitado correctamente!</h2>
+                            <p className='info-appiointment-notifications'>Fecha: {bookedAppointment.date}</p>
+                            <p className='info-appiointment-notifications'>Hora: {bookedAppointment.time}:00</p>
+                            <div className='buttons-appointment'>
+                                <h1 className='button-booked' onClick={goBack}>
+                                    Volver
+                                </h1>
+                                <h1  className='button-booked' onClick={goToAppointments}>
+                                Mis turnos
+                                </h1>
+                            </div>
+                        </div>
+                
+                    </div>
+                ) : (
+                    <p>No se han proporcionado datos de turno.</p>
+                )}
         </div>
     );
 };
 
-export default AppointmentBooked
+export default AppointmentBooked;

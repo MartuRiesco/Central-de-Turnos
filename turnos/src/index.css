@@ -11,12 +11,12 @@
 :root {
   --clr-primario: rgb(81, 81, 81);
   --clr-primario-dark: rgb(67, 67, 67);
-  --clr-secundario: rgb(189, 255, 49);
-  --clr-secundario-light: rgb(103, 156, 25);
+  --clr-secundario: rgb(255, 226, 112);
+  --clr-secundario-light: rgb(181, 129, 21);
   --clr-gray: rgb(223, 222, 222);
   --clr-gray-light: rgb(233, 231, 231);
   --clr-active: rgb(73, 75, 45);
-  --clr-white: rgb(255, 255, 255);
+  --clr-white: rgba(255, 255, 255, 0.8);
   --clr-red: rgb(235, 95, 66);
   --clr-red-light: rgb(135, 39, 20);
   --ff-primario: 'Poppins', sans-serif;
@@ -98,7 +98,7 @@ label {
   border-color: var(--clr-secundario) !important;
   height: 60px !important;
   width: 100% !important;
-  color: var(--clr-primario-dark);
+  color: var(--clr-secundario-light);
   font-size: 14px !important;
   font-weight: bold !important;
   text-transform: uppercase;
@@ -111,18 +111,23 @@ label {
   border-radius: 20px !important;
   background-color: var( --clr-secundario-light) !important;
   border-color: var( --clr-secundario-light) !important;
-  
   width:50%;
   color: black;
   font-size: 14px !important;
   font-weight: bold !important;
   text-transform: uppercase;
 }
+
 .anchor {
-  color: var(--clr-terciario) !important;
+  color: var(--clr-secundario-light) !important;
   text-decoration: none !important;
   font-size: 14px !important;
   cursor: pointer;
+}
+
+.anchor i {
+  font-size: 14px !important;
+  margin: 0 10px !important;
 }
 
 .anchor:hover {
