@@ -42,10 +42,16 @@ function Appoinments() {
         
       // eslint-disable-next-line react-hooks/exhaustive-deps
       }, []);
+
+      const statusTitle = user?.isAdmin ? ', revise los turnos pendientes.' : user?.isEmployee ? ', revise los turnos pendientes.' : ', corrobore el estado de su turno.';
+  
   return (
     <div className='service'>
-    <h1 className='title-notifications'>Mis Turnos</h1>
-    <div className='service-container'>
+        <div className='title-container'>
+            <h1 className='title-notifications'>{user.name}{statusTitle}</h1>
+            <i class="ri-calendar-check-line"></i>
+        </div>
+        <div className='service-container'>
         {appointments?.map((employee) => (
                             <div className='employee-card'>
                             <h2>{user.isAdmin ? employee.employeeInfo.name : 'Turno'}</h2>

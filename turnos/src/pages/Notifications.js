@@ -58,7 +58,10 @@ function Notifications() {
   return (
     
     <div className='container-notifications'>
-        <h1 className='title-notifications'>Notificaciones</h1>
+        <div className='title-container'>
+            <h1 className='title-notifications'>Centro de notificaciones.</h1>
+            <i class="ri-discuss-line"></i>
+        </div>
         <section className='green-dot-container'>
             <div className='green-dot'></div>
         </section>

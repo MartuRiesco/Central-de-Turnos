@@ -67,7 +67,7 @@ function Layout({ children }) {
 
   ];
 
-  const welcome = user?.isAdmin ? 'Gestiona tu empresa, ' : user?.isEmployee ? 'Gestione sus reservas, ' : 'Bienvenido a Ganesha, ';
+  const welcome = user?.isAdmin ? 'Gestiona tu empresa, ' : user?.isEmployee ? 'Gestione sus reservas, ' : 'Bienvenido a nuestra central de turnos, ';
   const menuToBeRendered = user?.isAdmin ? adminMenu : user?.isEmployee ? employeeMenu : userMenu;
   const role = user?.isAdmin ? 'Admin' : user?.isEmployee ? 'Profesional' : 'Cliente';
 

@@ -40,6 +40,9 @@ function Register() {
                         <Form.Item name='email'>
                                 <Input placeholder='Email' />
                         </Form.Item>
+                        <Form.Item name='phone'>
+                                <Input placeholder='Celular' />
+                        </Form.Item>
                         <Form.Item name='password'>
                                 <Input placeholder='Password' type="password" />
                         </Form.Item>

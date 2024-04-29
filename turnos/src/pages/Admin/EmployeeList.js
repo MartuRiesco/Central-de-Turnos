@@ -4,7 +4,6 @@ import { hideLoading, showLoading } from '../../redux/alertsSlice';
 import axios from 'axios';
 import { toast } from 'react-hot-toast';
 import moment from 'moment';
-import UserDeleteButton from '../UserDeleteButton';
 
 function EmployeeList() {
   const [employees, setEmployee] = useState([]);
@@ -26,7 +25,25 @@ function EmployeeList() {
         dispatch(hideLoading());
     }
   }
-
+  const deleteService = async (employeeId)=>{
+    try {
+      dispatch(showLoading());
+      const response = await axios.delete('/api/admin/delete-service', 
+      { data: {
+        employeeId: employeeId
+      }},{
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('token')}`
+        }
+      })
+      dispatch(hideLoading());
+      if(response.data.success) {
+        setEmployee(employees.filter(employee => employee._id !== employeeId));
+      }
+  } catch (error) {
+      dispatch(hideLoading());
+  }
+  }
   const changeEmployeeStatus = async (record, status) => {
     try {
         dispatch(showLoading());
@@ -55,20 +72,20 @@ function EmployeeList() {
   return (
   
 <div className='service'>
-<h1 className='title-notifications'>Lista Servicios</h1>
-{/* <Table columns={columns} dataSource={users} /> */}
+        <div className='title-container'>
+            <h1 className='title-notifications'>Lista de servicios.</h1>
+            <i class="ri-file-list-line"></i>
+        </div>
 <div className='service-container'>
     {employees.map((employee) => (
                         <div className='user-card'>
                             <h2>{employee.name}</h2>
                             <p>{employee.email}</p>
-                            <UserDeleteButton employeeId={employee._id} />
                             <p>{moment(employee.createAt).format('DD-MM-YYYY')}</p>
                             
                                                           
                             <div className='block-approve-employee'>
-                            
-                                <h1 className='user-block' >Borrar servicio</h1>
+                                <h1 className='user-block' onClick={()=> deleteService(employee._id)}>Borrar servicio</h1>
                                 {employee.status === 'pending' && <h1 className='user-block' onClick={() => changeEmployeeStatus(employee, 'approved')}>Aprobar</h1>}
                               {employee.status === 'approved' && <h1 className='user-block' onClick={() => changeEmployeeStatus(employee, 'blocked')}>Blockear</h1>}
                             </div>

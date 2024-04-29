@@ -5,17 +5,16 @@
   padding: 0 !important;
   text-decoration: none !important;
   box-sizing: border-box !important;
-  font-family: 'Poppins', sans-serif;
+  font-family: var(--ff-primario) !important;
 }
 
 :root {
-  --clr-primario: rgb(81, 81, 81);
-  --clr-primario-dark: rgb(67, 67, 67);
-  --clr-secundario: rgb(255, 226, 112);
-  --clr-secundario-light: rgb(181, 129, 21);
-  --clr-gray: rgb(223, 222, 222);
+  --clr-primario: rgb(14, 14, 14);
+  --clr-primario-dark: rgb(14, 14, 14);
+  --clr-secundario: rgb(189, 255, 49);
+  --clr-secundario-dark: rgb(14, 14, 14);
+  --clr-gray: rgb(213, 252, 189);
   --clr-gray-light: rgb(233, 231, 231);
-  --clr-active: rgb(73, 75, 45);
   --clr-white: rgba(255, 255, 255, 0.8);
   --clr-red: rgb(235, 95, 66);
   --clr-red-light: rgb(135, 39, 20);
@@ -98,7 +97,7 @@ label {
   border-color: var(--clr-secundario) !important;
   height: 60px !important;
   width: 100% !important;
-  color: var(--clr-secundario-light);
+  color: var(--clr-secundario-dark);
   font-size: 14px !important;
   font-weight: bold !important;
   text-transform: uppercase;
@@ -109,8 +108,8 @@ label {
 }
 .secondary-button{
   border-radius: 20px !important;
-  background-color: var( --clr-secundario-light) !important;
-  border-color: var( --clr-secundario-light) !important;
+  background-color: var( --clr-secundario-dark) !important;
+  border-color: var( --clr-secundario-dark) !important;
   width:50%;
   color: black;
   font-size: 14px !important;
@@ -119,7 +118,7 @@ label {
 }
 
 .anchor {
-  color: var(--clr-secundario-light) !important;
+  color: var(--clr-secundario-dark) !important;
   text-decoration: none !important;
   font-size: 14px !important;
   cursor: pointer;
