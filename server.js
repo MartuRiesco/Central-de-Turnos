@@ -7,12 +7,11 @@ app.use(express.json());
 const userRoute = require('./routes/userRoute')
 const adminRoute = require('./routes/adminRoute')
 const employeeRoute = require('./routes/employeeRoute')
-
-app.use(express.static(path.join(__dirname, '../turnos/build')));
+app.use(express.static(path.join(__dirname, './turnos/build')));
 
 // Ruta principal para servir el frontend
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, '../turnos/build/index.html'));
+    res.sendFile(path.join(__dirname, './turnos/build/index.html'));
 });
 app.use('/api/user', userRoute);
 app.use('/api/admin', adminRoute);
