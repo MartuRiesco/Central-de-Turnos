@@ -47,6 +47,7 @@ function Login() {
                         </Button>
 
                         <Link to="/register" className="anchor mt-4">
+                            <i class="ri-arrow-right-line"></i>
                             Clickee aquí para registrarse
                         </Link>
                 </Form>

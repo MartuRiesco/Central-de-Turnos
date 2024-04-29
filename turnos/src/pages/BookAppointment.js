@@ -140,14 +140,15 @@ function BookAppointment() {
   }, []);
   
   return (
+    <>
+    <div className='title-container'>
+            <h1 className='title-notifications'>Seleccione la fecha y horario a reservar.</h1>
+            <i class="ri-time-line"></i>
+        </div>
     <div className='calendar'>
+      
       {employee && (
           <div className='mb-2'>
-              <div className='service-title '>
-                  <h1>Fecha y hora</h1>
-                  <p>Consulte la disponibilidad del turno.</p>
-              </div>
-
               <div className='d-flex flex-column mt-2'>
                   <DatePicker 
                     format='DD-MM-YYYY' 
@@ -192,6 +193,8 @@ function BookAppointment() {
            </div>
       )}
     </div>
+
+    </>
   )
 }
 

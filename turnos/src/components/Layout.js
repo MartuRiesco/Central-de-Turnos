@@ -67,15 +67,13 @@ function Layout({ children }) {
 
   ];
 
-  const welcome = user?.isAdmin ? 'Gestiona tu empresa, ' : user?.isEmployee ? 'Revisa tus reservas, ' : 'Te damos la bienvenida a nuestra central de turnos, ';
+  const welcome = user?.isAdmin ? 'Gestiona tu empresa, ' : user?.isEmployee ? 'Gestione sus reservas, ' : 'Bienvenido a nuestra central de turnos, ';
   const menuToBeRendered = user?.isAdmin ? adminMenu : user?.isEmployee ? employeeMenu : userMenu;
   const role = user?.isAdmin ? 'Admin' : user?.isEmployee ? 'Profesional' : 'Cliente';
 
   return (
     <div className='main'>
         <div className='layout'>
-
-            
 
             <div className='welcome'>
                 <h1>Hola!</h1>

@@ -71,12 +71,14 @@ useEffect(() => {
       getEmployeeData()
 }, []);
   return (
-    <div>
-      <h1>Perfil empleado</h1>
-      <hr />
+    <div className='service'>
+        <div className='title-container'>
+            <h1 className='title-notifications'>Perfíl empleado.</h1>
+            <i class="ri-file-list-line"></i>
+        </div>
       { employee && <EmployeeForm onFinish={onFinish} initialValues={employee}/>}
     </div>
   )
 }
 
-export default Profile
+export default Profile;

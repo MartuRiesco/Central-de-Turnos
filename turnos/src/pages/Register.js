@@ -40,13 +40,19 @@ function Register() {
                         <Form.Item name='email'>
                                 <Input placeholder='Email' />
                         </Form.Item>
+                        <Form.Item name='phone'>
+                                <Input placeholder='Celular' />
+                        </Form.Item>
                         <Form.Item name='password'>
                                 <Input placeholder='Password' type="password" />
                         </Form.Item>
 
                         <Button className="primary-button mt-2 mb-4" htmlType="submit">Registrarse</Button>
 
-                        <Link to="/login" className="anchor mt-4">Volver al login</Link>
+                        <Link to="/login" className="anchor mt-4">
+                            <i class="ri-arrow-left-line"></i>
+                            Volver al login
+                        </Link>
                 </Form>
             </div>
         </div>

@@ -24,13 +24,15 @@
 }
 
 .welcome h1 {
-    font-size: 75px;
+    font-size: 60px;
+    letter-spacing: -2px !important;
     font-weight: bold;
     color: var(--clr-primario-dark);
 }
 
 .welcome p {
     font-size: 16px;
+    letter-spacing: 0px !important;
     color: var(--clr-primario-dark);
     text-transform: none;
 }
@@ -39,11 +41,6 @@
     text-transform: capitalize;
     font-weight: bold !important;
 }
-
-/* .sidebar {
-    min-height: 100%;
-    margin: 2rem 0 15rem 0 !important;
-} */
 
 .menu-item {
     margin-top: 40px !important;
@@ -60,7 +57,7 @@
 .role {
     background-color: var(--clr-secundario) !important;
     font-weight: bold !important;
-    color: var(--clr-secundario-light) !important;
+    color: var(--clr-secundario-dark) !important;
     margin: 15px 0 0 !important;
     text-align: center !important;
     border-radius: 15px;
@@ -72,14 +69,14 @@
 
 .menu-bg {
     background-color: var(--clr-secundario);
-    border-radius: 30px !important;
+    border-radius: 20px !important;
     width: 160px;
     height: 160px;
     position: relative;
 }
 
 .menu-item p {
-    color: var(--clr-secundario-light);
+    color: var(--clr-secundario-dark);
     font-size: 16px;
     letter-spacing: .4px;
     font-weight: bold;
@@ -91,7 +88,7 @@
 }
 
 .menu-item i {
-    color: var(--clr-secundario-light);
+    color: var(--clr-secundario-dark);
     text-decoration: none;
     font-size: 30px;
     position: absolute;
@@ -107,11 +104,9 @@
     color: var(--clr-primario-dark);
 }
 
-
 .content {
     min-height: 100%;
 }
-
 
 .body {
     margin: 1rem !important;
@@ -157,12 +152,4 @@
 
 .whatsapp-icono a:hover {
     background-color: #159828; 
-}
-
-
-@media screen and (max-width: 768px) {
-    
-}
-
-@media screen and (max-width: 375px) {
 }

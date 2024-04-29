@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { hideLoading, showLoading } from '../../redux/alertsSlice';
 import axios from 'axios';
@@ -51,12 +52,23 @@ function EmployeeAppoinments() {
       }, []);
   return (
     <div className='service'>
-    <h1 className='title-notifications'>Turnos confirmados</h1>
+        <div className='title-container'>
+            <h1 className='title-notifications'>Turnos solicitados.</h1>
+            <i class="ri-calendar-check-line"></i>
+        </div>
     <div className='service-container'>
         {appointments.map((user) => (
                             <div className='employee-card'>
                                 <h2>{user.userInfo.name}</h2>
-                                <p className='employee-status'>{user.status}</p>
+                                <div className='employee-container'>
+                                  <p className='employee-status'>{user.status}</p>
+                                  <div className='employee-whatsapp-container'>
+                                     <Link className='employee-whatsapp' to={`https://api.whatsapp.com/send?phone=${user.userInfo.phone}`}>
+                                        <i class="ri-whatsapp-line"></i> 
+                                        {user.userInfo.phone}
+                                     </Link>
+                                  </div>
+                                </div>
                                 <p>Email: {user.userInfo.email}</p>
                                 <p>Fecha: {moment(user.date).format('DD-MM-YYYY')}</p>
                                 <p>Hora: {moment(user.time).format('HH:mm')}</p>

@@ -32,10 +32,11 @@ function Home() {
     }, [])
     return (
             <div className='service'>
+                <div className='title-container'>
+                    <h1 className='title-notifications'>Seleccione el servicio a consultar.</h1>
+                    <i class="ri-add-circle-line"></i>
+                </div>
                 <div className='service-container'>
-                    <div className='service-title'>
-                        <h1>Servicios</h1>
-                    </div>
                     <div className='service-container'>
                        
                         {employees.map((employee) => (

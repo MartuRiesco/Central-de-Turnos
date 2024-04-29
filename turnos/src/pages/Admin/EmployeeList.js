@@ -72,8 +72,10 @@ function EmployeeList() {
   return (
   
 <div className='service'>
-<h1 className='title-notifications'>Lista Servicios</h1>
-{/* <Table columns={columns} dataSource={users} /> */}
+        <div className='title-container'>
+            <h1 className='title-notifications'>Lista de servicios.</h1>
+            <i class="ri-file-list-line"></i>
+        </div>
 <div className='service-container'>
     {employees.map((employee) => (
                         <div className='user-card'>

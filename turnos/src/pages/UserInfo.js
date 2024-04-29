@@ -59,35 +59,48 @@ console.log(values, 'val');
   return (
 
     <div>
-      <div>
-      <h1 className='card-title  info-title mt-3'> Informacion personal</h1>
-      <div className='user-info'>
-      <h2 className='user-info-tag'>Nombre: {user.name}</h2>
-      <h2  className='user-info-tag'>Email: {user.email}</h2></div>
-      </div>
-    <Form layout='vertical' className='form-update' onFinish={onFinish}>
-       <Row>
-        <Col span={8} xs={24} sm={24} lg={8}>
-            <FormItem  required label='Nombre' name='name' >
-                <Input placeholder={user.name}/>
-                
-            </FormItem>
-        </Col>
-       </Row>
-       <Row>
-        <Col span={8} xs={24} sm={24} lg={8}>
-            <FormItem  required label='Email' name='email' >
-                <Input  placeholder={user.email}/>
-            </FormItem>
-            
-        </Col>
-       </Row>
-       
-       <div className='d-flex justofy-content-end'>
-       < Button className='primary-button ' htmlType='submit'> ACTUALIZAR</Button>
-       </div>
-    </Form></div>
+        <div className='title-container-profile'>
+              <div className='title-notificacion-profile'>
+                <h1 className='title-notifications'>Administre su perfil, actualice los campos de ser necesario.</h1>
+                <i class="ri-user-line"></i>      
+              </div>
+              <div className='user-info'>
+                <h2 className='user-info-tag'>Nombre: {user.name}</h2>
+                <h2 className='user-info-tag'>Email: {user.email}</h2>
+              </div>
+        </div>
+               
+        <Form layout='vertical' className='form-update' onFinish={onFinish}>
+          <Row>
+              <Col span={8} xs={24} sm={24} lg={8}>
+                  <FormItem  required label='Nombre' name='name' >
+                      <Input placeholder={user.name}/>
+                  </FormItem>
+              </Col>
+          </Row>
+          <Row>
+              <Col span={8} xs={24} sm={24} lg={8}>
+                  <FormItem  required label='Email' name='email' >
+                      <Input  placeholder={user.email}/>
+                  </FormItem>
+              </Col>
+          </Row>
+          <Row>
+              <Col span={8} xs={24} sm={24} lg={8}>
+                  <FormItem  required label='Celular' name='phone' >
+                      <Input  placeholder={user.phone}/>
+                  </FormItem>
+              </Col>
+          </Row>
+          
+          <div className='d-flex justofy-content-end'>
+              <Button className='primary-button' htmlType='submit'>
+                  ACTUALIZAR
+              </Button>
+          </div>
+        </Form>
+    </div>
   )
 }
 
-export default UserInfo
+export default UserInfo;

@@ -1,4 +1,3 @@
-import { Button } from 'antd';
 import React from 'react'
 import { useDispatch } from 'react-redux';
 import { useLocation, useNavigate } from 'react-router-dom';
@@ -27,31 +26,33 @@ function AppointmentBooked() {
 }
     return (
         <div className='booked-container'>
-            {bookedAppointment ? (
-                <div >
-                     <section className='green-dot-container booked'>
-            <div className='green-dot'></div>
-        </section>
-        <div className='booked-notification'>
-                    <h2 className='title-appiointment-notifications'>Tu turno se ha registrado correctamente!</h2>
-                    <p className='info-appiointment-notifications'>Fecha: {bookedAppointment.date}</p>
-                    <p className='info-appiointment-notifications'>Hora: {bookedAppointment.time}</p>
-                    <div className='buttons-appointment'>
-                    <Button  className='secondary-button button-booked ' onClick={goBack}>
-                        Volver
-                    </Button>
-                    <Button  className='secondary-button button-booked ' onClick={goToAppointments}>
-                       Mis turnos
-                    </Button>
+                <div className='title-container'>
+                    <h1 className='title-notifications'>Su reserva. Día y hora.</h1>
+                    <i class="ri-calendar-check-line"></i>
                 </div>
-                </div>
-               
-                </div>
-            ) : (
-                <p>No se han proporcionado datos de turno.</p>
-            )}
+                {bookedAppointment ? (
+                    <div>
+                        <section className='green-dot-container booked'>
+                            <div className='green-dot'></div>
+                        </section>
+                        <div className='booked-notification'>
+                            <h2 className='title-appiointment-notifications'>Su reserva ha sido solicitada para el  {bookedAppointment.date} a las {bookedAppointment.time}:00.</h2>
+                            <div className='buttons-appointment'>
+                                <h1 className='button-booked' onClick={goBack}>
+                                    Volver
+                                </h1>
+                                <h1  className='button-booked' onClick={goToAppointments}>
+                                Mis turnos
+                                </h1>
+                            </div>
+                        </div>
+                
+                    </div>
+                ) : (
+                    <p>No se han proporcionado datos de turno.</p>
+                )}
         </div>
     );
 };
 
-export default AppointmentBooked
+export default AppointmentBooked;

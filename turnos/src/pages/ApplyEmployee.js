@@ -42,10 +42,14 @@ function ApplyEmployee() {
           }
     }
   return (
-    <div className='body-page'>
-        <h1 className='page-title'>Solicitar cuenta de empleado</h1>
-        <hr/>
-        <EmployeeForm onFinish={ onFinish } />
+    <div className='service'>
+        <div className='title-container'>
+            <h1 className='title-notifications'>Seleccione el servicio a consultar.</h1>
+            <i class="ri-user-add-line"></i>
+        </div>
+        <div className='form-update'>
+            <EmployeeForm onFinish={ onFinish } />
+        </div>
     </div>
   )
 }

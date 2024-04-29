@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { hideLoading, showLoading } from '../../redux/alertsSlice';
 import axios from 'axios';
@@ -51,15 +52,27 @@ function UsersList() {
 
   return (
     <div className='service'>
-        <h1 className='title-notifications'>Lista Usuarios</h1>
+        <div className='title-container'>
+          <h1 className='title-notifications'>Lista de usuarios</h1>
+          <i class="ri-user-follow-line"></i>
+        </div>
         <div className='service-container'>
             {users.map((user) => (
-                                <div className='user-card'>
+                                <div className='employee-card'>
+                                      
                                     <h2>{user.name}</h2>
+                                    <div className='employee-container'>
+                                    <Link 
+                                      className='employee-whatsapp' 
+                                      to={`https://api.whatsapp.com/send?phone=${user.phone}`}>
+                                            <i class="ri-whatsapp-line"></i> 
+                                            {user.phone}
+                                    </Link>
+                                    </div>
                                     <p>{user.email}</p>
-                                    <p>{moment(user.createAt).format('DD-MM-YYYY')}</p>
+                                    <p>{moment(user.createdAt).format('DD-MM-YYYY')}</p>
                                     <div>
-                                        <h1 className='user-block' onClick={() => deleteUser(user._id)} >Borrar Usuario</h1>
+                                        <h1 className='employee-rejected' onClick={() => deleteUser(user._id)} >Borrar Usuario</h1>
                                     </div>
                                 </div>
                             ))}
