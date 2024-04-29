@@ -61,7 +61,7 @@ function UsersList() {
                                 <div className='employee-card'>
                                       
                                     <h2>{user.name}</h2>
-                                    <div className='employee-container'>
+                                    <div className='employee-container '>
                                     <Link 
                                       className='employee-whatsapp' 
                                       to={`https://api.whatsapp.com/send?phone=${user.phone}`}>
