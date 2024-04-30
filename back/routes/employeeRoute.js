@@ -1,9 +1,9 @@
 const express = require("express");
 const router = express.Router();
-const User = require("../models/userModel");
-const Employee = require("../models/employeeModel");
-const authenticationMiddleware = require('../middlewares/authenticationMiddleware');
-const Appointment = require("../models/appointmentModel");
+const User = require("../back/models/userModel");
+const Employee = require("../back/models/employeeModel");
+const authenticationMiddleware = require('../back/middlewares/authenticationMiddleware');
+const Appointment = require("../back/models/appointmentModel");
 
 
 router.post("/get-employee-info-by-userid", authenticationMiddleware, async (req, res) => {

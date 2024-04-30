@@ -1,9 +1,9 @@
 const express = require("express");
 const router = express.Router();
-const User = require("../models/userModel");
-const Employee = require("../models/employeeModel");
-const Appointments = require ("../models/appointmentModel")
-const authenticationMiddleware = require('../middlewares/authenticationMiddleware');
+const User = require("../back/models/userModel");
+const Employee = require("../back/models/employeeModel");
+const Appointments = require ("../back/models/appointmentModel")
+const authenticationMiddleware = require('../back/middlewares/authenticationMiddleware');
 
 router.get("/get-all-employees", authenticationMiddleware, async (req, res) => {
   try {
