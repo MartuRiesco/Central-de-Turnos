@@ -1,11 +1,11 @@
 const express = require('express');
 const router = express.Router();
-const User = require('../back/models/userModel');
-const Employee = require('../back/models/employeeModel')
+const User = require('../models/userModel');
+const Employee = require('../models/employeeModel')
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const authenticationMiddleware = require('../back/middlewares/authenticationMiddleware');
-const Appointment = require('../back/models/appointmentModel');
+const authenticationMiddleware = require('../middlewares/authenticationMiddleware');
+const Appointment = require('../models/appointmentModel');
 const moment = require('moment');
 
 router.post('/register', async(req, res) => {
