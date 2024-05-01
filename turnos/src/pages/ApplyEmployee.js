@@ -16,7 +16,7 @@ function ApplyEmployee() {
     const onFinish = async (values) =>{
         try {
             dispatch(showLoading());
-            const response = await axios.post('/api/user/apply-employee-account', 
+            const response = await axios.post('https://central-de-turnos-production-f438.up.railway.app/api/user/apply-employee-account', 
                 {
                     ...values,
                     userId: user._id,
