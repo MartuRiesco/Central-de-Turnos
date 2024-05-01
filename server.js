@@ -8,9 +8,14 @@ const userRoute = require('./routes/userRoute')
 const adminRoute = require('./routes/adminRoute')
 const employeeRoute = require('./routes/employeeRoute')
 
-app.use(cors({
-    origin: ['https://central-de-turnos-7hvn.vercel.app']
-}))
+const corsOptions = {
+    methods: ['GET', 'POST', 'PUT', 'DELETE'], // Define los métodos permitidos
+    origin: 'https://central-de-turnos-7hvn.vercel.app' // Define los orígenes permitidos
+  };
+  
+app.use(cors(corsOptions));
+
+
 app.use('/api/user', userRoute);
 app.use('/api/admin', adminRoute);
 app.use('/api/employee', employeeRoute);
