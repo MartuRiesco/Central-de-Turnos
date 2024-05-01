@@ -8,20 +8,14 @@ const userRoute = require('./routes/userRoute')
 const adminRoute = require('./routes/adminRoute')
 const employeeRoute = require('./routes/employeeRoute')
 
-const corsOptions = {
-    methods: ['GET', 'POST', 'PUT', 'DELETE'], // Define los métodos permitidos
-    origin: 'https://central-de-turnos-7hvn.vercel.app' // Define los orígenes permitidos
-  };
-  
-app.use(cors(corsOptions));
 
 app.use((req, res, next) => {
-    res.append('Access-Control-Allow-Origin', ['https://central-de-turnos-7hvn.vercel.app']);
-    res.append('Access-Control-Allow-Methods', 'GET, PUT, POST, DELETE');
-    //res.append('Access-Control-Allow-Headers', 'Content-Type');
-    next()
-})
-
+    // Configura los encabezados CORS para permitir todas las solicitudes de cualquier origen
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+    next();
+});
 
 app.use('/api/user', userRoute);
 app.use('/api/admin', adminRoute);
