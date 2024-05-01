@@ -13,7 +13,7 @@ function EmployeeAppoinments() {
   const getAppointmentsData = async () => {
     try {
         dispatch(showLoading());
-        const response = await axios.get('/api/employee/get-appointments-by-employee-id', {
+        const response = await axios.get('https://central-de-turnos-production-f438.up.railway.app/api/employee/get-appointments-by-employee-id', {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`
           }
@@ -30,7 +30,7 @@ function EmployeeAppoinments() {
   const changeAppointmentsStatus = async (record, status) => {
     try {
         dispatch(showLoading());
-        const response = await axios.post('/api/employee/change-apppointment-status', { appointmentId: record._id, status: status}, {
+        const response = await axios.post('https://central-de-turnos-production-f438.up.railway.app/api/employee/change-apppointment-status', { appointmentId: record._id, status: status}, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`
           }
