@@ -13,7 +13,7 @@ function EmployeeAppoinments() {
   const getAppointmentsData = async () => {
     try {
         dispatch(showLoading());
-        const response = await axios.get('/api/employee/get-appointments-by-employee-id', {
+        const response = await axios.get('https://central-de-turnos-production-f438.up.railway.app/api/employee/get-appointments-by-employee-id', {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`
           }
@@ -63,7 +63,7 @@ function EmployeeAppoinments() {
                                 <div className='employee-container'>
                                   <p className='employee-status'>{user.status}</p>
                                   <div className='employee-whatsapp-container'>
-                                     <Link className='employee-whatsapp' to={`https://api.whatsapp.com/send?phone=${user.userInfo.phone}`}>
+                                     <Link className='employee-whatsapp' to={`https://api.whatsapp.com/send?phone=549${user.userInfo.phone}`}>
                                         <i class="ri-whatsapp-line"></i> 
                                         {user.userInfo.phone}
                                      </Link>

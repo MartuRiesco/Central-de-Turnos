@@ -49,7 +49,7 @@ const getEmployeeData = async() => {
   try {
       dispatch(showLoading());
       const response = await axios.post(
-          '/api/employee/get-employee-info-by-userid', 
+          'https://central-de-turnos-production-f438.up.railway.app/api/employee/get-employee-info-by-userid', 
           {
             userId: params.employeeId,
           },
