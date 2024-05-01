@@ -48,7 +48,7 @@ function BookAppointment() {
     try {
         dispatch(showLoading());
         const response = await axios.post(
-            '/api/employee/get-employee-info-by-id', 
+            'https://central-de-turnos-production-f438.up.railway.app/api/employee/get-employee-info-by-id', 
             {
               employeeId: params.employeeId,
             },
@@ -73,7 +73,7 @@ function BookAppointment() {
     try {
       dispatch(showLoading());
       const response = await axios.post(
-          '/api/user/book-appointment', 
+          'https://central-de-turnos-production-f438.up.railway.app/api/user/book-appointment', 
           {
             employeeId: params.employeeId,
             userId: user._id,
@@ -110,7 +110,7 @@ function BookAppointment() {
     try {
       dispatch(showLoading());
       const response = await axios.post(
-          '/api/user/check-booking-availability', 
+          'https://central-de-turnos-production-f438.up.railway.app/api/user/check-booking-availability', 
           {
             employeeId: params.employeeId,
             date: date,

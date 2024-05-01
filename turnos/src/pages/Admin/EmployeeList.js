@@ -12,7 +12,7 @@ function EmployeeList() {
   const getEmployeeData = async () => {
     try {
         dispatch(showLoading());
-        const response = await axios.get('/api/admin/get-all-employees', {
+        const response = await axios.get('https://central-de-turnos-production-f438.up.railway.app/api/admin/get-all-employees', {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`
           }
@@ -28,7 +28,7 @@ function EmployeeList() {
   const deleteService = async (employeeId)=>{
     try {
       dispatch(showLoading());
-      const response = await axios.delete('/api/admin/delete-service', 
+      const response = await axios.delete('https://central-de-turnos-production-f438.up.railway.app/api/admin/delete-service', 
       { data: {
         employeeId: employeeId
       }},{
@@ -47,7 +47,7 @@ function EmployeeList() {
   const changeEmployeeStatus = async (record, status) => {
     try {
         dispatch(showLoading());
-        const response = await axios.post('/api/admin/change-employee-status', { employeeId: record._id, userId: record.userId, status: status}, {
+        const response = await axios.post('https://central-de-turnos-production-f438.up.railway.app/api/admin/change-employee-status', { employeeId: record._id, userId: record.userId, status: status}, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`
           }

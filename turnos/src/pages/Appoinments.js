@@ -12,7 +12,7 @@ function Appoinments() {
     try {
       dispatch(showLoading());
       if(user.isAdmin){
-        const response = await axios.get('/api/admin/get-all-appointments', {
+        const response = await axios.get('https://central-de-turnos-production-f438.up.railway.app/api/admin/get-all-appointments', {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`
           }})
@@ -21,7 +21,7 @@ function Appoinments() {
             setAppointments(response.data.data)
           }
       }else{
-        const response = await axios.get('/api/user/get-appointments-by-user-id', {
+        const response = await axios.get('https://central-de-turnos-production-f438.up.railway.app/api/user/get-appointments-by-user-id', {
         headers: {
           Authorization: `Bearer ${localStorage.getItem('token')}`
         }})
