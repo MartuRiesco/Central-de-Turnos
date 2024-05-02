@@ -63,9 +63,9 @@ function Appoinments() {
                             <p>Hora: {moment(employee.time).format('HH:mm')}</p>
                             {
                               employee.status === 'cancelado' ?
-                              <Link to={'/home'}> <Button className='employee-status'>
+                              <Link to={'/home'}> <button className='employee-status'>
                                 Reservar otro turno
-                               </Button></Link>: ''
+                               </button></Link>: ''
                             }
                           </div>
                         )) 
