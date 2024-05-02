@@ -12,6 +12,25 @@ function Layout({ children }) {
   const navigate = useNavigate();
 
   const location = useLocation();
+
+
+  
+const clearCacheAndStorage = () => {
+    // Limpiar el localStorage
+    localStorage.clear();
+
+    // Limpiar el caché del navegador
+    if ('caches' in window) {
+        caches.keys().then(function(cacheNames) {
+            cacheNames.forEach(function(cacheName) {
+                caches.delete(cacheName);
+            });
+        });
+    }
+
+    // Redirigir al usuario a la página de login
+    navigate('/login');
+};
   const userMenu = [
     {
         name: 'Solicitar Turno',
@@ -95,10 +114,7 @@ function Layout({ children }) {
                                         </div>
                                         </Link>
                         })}
-                                <div className='menu-bg' onClick={() => {
-                                    localStorage.clear()
-                                    navigate('/login')
-                                }} >
+                                <div className='menu-bg' onClick={ clearCacheAndStorage} >
                                         <div className='menu-item'>
                                             <i className='ri-logout-box-line'></i>
                                             <p>Logout</p>

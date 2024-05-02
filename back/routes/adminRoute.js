@@ -117,7 +117,7 @@ router.post("/change-employee-status", authenticationMiddleware, async (req, res
           message: `tu cuenta de empleado cambio su estado a ${status}`,
           onClickPath: "/notifications",
     });
-          user.isEmployee = status === "approved" ? true : false;
+          user.isEmployee = status === "aprobado" ? true : false;
           await user.save()
           res.status(200).send({
               message:"Cambio de estado correctamente ",

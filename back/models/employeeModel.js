@@ -24,7 +24,7 @@ const employeeSchema = new mongoose.Schema(
     },
     status:{
         type: String,
-        default: 'pending'
+        default: 'pendiente'
     }
 },
 {

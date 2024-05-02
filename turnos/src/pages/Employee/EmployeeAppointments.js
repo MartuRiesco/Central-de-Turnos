@@ -75,10 +75,10 @@ function EmployeeAppoinments() {
                                 
 
                                 <div>
-                                    {user.status === "pending" && (
+                                    {user.status === "pendiente" && (
                                           <div className='d-flex'>
-                                            <h1 className='employee-approved' onClick={() => changeAppointmentsStatus(user, 'approved')}>Confirmar</h1>
-                                            <h1 className='employee-rejected' onClick={() => changeAppointmentsStatus(user, 'rejected')}>Rechazar</h1>
+                                            <h1 className='employee-approved' onClick={() => changeAppointmentsStatus(user, 'aprobado')}>Confirmar</h1>
+                                            <h1 className='employee-rejected' onClick={() => changeAppointmentsStatus(user, 'cancelado')}>Rechazar</h1>
                                           </div>
                                     )}
                                 </div>

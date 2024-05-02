@@ -113,7 +113,7 @@ router.put('/update-user',  async(req, res) => {
 });
 router.post('/apply-employee-account',authenticationMiddleware, async(req, res) => {
     try {
-       const newEmployee =  new Employee({...req.body, status: 'pending'});
+       const newEmployee =  new Employee({...req.body, status: 'pendiente'});
        await newEmployee.save()
        const adminUser = await User.findOne({isAdmin: true})
        
@@ -182,7 +182,7 @@ router.post('/delete-all-notifications',authenticationMiddleware, async(req, res
 });
 router.get("/get-all-employees", authenticationMiddleware, async (req, res) => {
     try {
-      const employees = await Employee.find({ status: "approved"});
+      const employees = await Employee.find({ status: "aprobado"});
       res.status(200).send({
         message: "Empleados cargados correctamente",
         success: true,
@@ -204,7 +204,7 @@ router.post("/book-appointment", authenticationMiddleware, async (req, res) => {
     try {
         
         //console.log('time', req.body.time);
-        req.body.status = "pending"
+        req.body.status = "pendiente"
         req.body.date = moment(req.body.date, 'DD-MM-YYYY').toISOString()
         req.body.time = moment(req.body.time, 'HH:mm').toISOString()
         const newAppointment = new Appointment(req.body)
@@ -241,7 +241,7 @@ router.post("/book-appointment", authenticationMiddleware, async (req, res) => {
             employeeId,
             date,
             time: { $gte: fromTime, $lte: toTime },
-            status: 'approved'
+            status: 'aprobado'
         })
     if(appointments.length > 0){
         return res.status(200).send({
