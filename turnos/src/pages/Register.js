@@ -41,7 +41,7 @@ function Register() {
                                 <Input placeholder='Email' />
                         </Form.Item>
                         <Form.Item name='phone'>
-                                <Input placeholder='Celular' />
+                                <Input placeholder='Celular, sin 0 y sin 15' />
                         </Form.Item>
                         <Form.Item name='password'>
                                 <Input placeholder='Password' type="password" />

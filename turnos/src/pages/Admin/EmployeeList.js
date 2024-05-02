@@ -87,7 +87,7 @@ function EmployeeList() {
                             <div className='block-approve-employee'>
                                 <h1 className='user-block' onClick={()=> deleteService(employee._id)}>Borrar servicio</h1>
                                 {employee.status === 'pending' && <h1 className='user-block' onClick={() => changeEmployeeStatus(employee, 'approved')}>Aprobar</h1>}
-                              {employee.status === 'approved' && <h1 className='user-block' onClick={() => changeEmployeeStatus(employee, 'blocked')}>Blockear</h1>}
+                              {employee.status === 'approved' && <h1 className='user-block' onClick={() => changeEmployeeStatus(employee, 'blocked')}>Bloquear</h1>}
                             </div>
                         </div>
                     ))}

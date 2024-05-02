@@ -60,7 +60,7 @@ function Layout({ children }) {
         icon: 'ri-user-add-line'
     },
     {
-        name: 'Mí Perfil',
+        name: 'Mi Perfil',
         path: `/employee/profile/${user?._id}`,
         icon: 'ri-user-line'
     },
