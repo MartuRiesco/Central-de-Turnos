@@ -393,3 +393,65 @@
     padding: 10px !important;
     text-align: center;
 }
+
+.button-calendar {
+    margin-right: 1rem !important;
+    margin-top: 1rem !important;
+    font-size: 16px !important;
+    background-color: var(--clr-secundario) !important;
+    color: var(--clr-secundario-dark) !important;
+    border-radius: 10px !important;
+    width: 100% !important;
+    padding: 20px !important;
+    text-align: center;
+}
+
+.secondary-button {
+    margin-right: 1rem !important;
+    margin-top: 1rem !important;
+    font-size: 16px !important;
+    background-color: var(--clr-secundario) !important;
+    color: var(--clr-secundario-dark) !important;
+    border-radius: 10px !important;
+    width: 100% !important;
+    padding: 20px !important;
+    text-align: center;
+}
+
+.ant-picker-panel-layout {
+    align-items: center !important;
+}
+
+.ant-picker-time-panel-column {
+    width: 340px !important;
+    text-align: center !important;
+}
+
+.ant-picker-time-panel-cell {
+    margin-bottom: 18px !important;
+    font-weight: bold !important;
+    color: var(--clr-primario) !important;
+    text-align: center !important;
+}
+
+.ant-picker-time-panel-cell-inner {
+    font-size: 24px !important;
+    width: 340px !important;
+}
+
+.ant-picker-time-panel-cell-selected {
+    text-align: center !important;
+}
+
+.ant-picker-ranges {
+    font-size: 18px !important;
+    display: flex;
+    justify-content: space-between !important;
+    padding: 20px !important;
+}
+
+.ant-btn {
+    font-size: 18px !important;
+    color: var(--clr-primario) !important;
+    background-color: var(--clr-secundario) !important;
+}
