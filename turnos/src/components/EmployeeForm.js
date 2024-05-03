@@ -41,16 +41,12 @@ function EmployeeForm({ onFinish, initialValues }) {
        <Row>
         <Col span={8} xs={24} sm={24} lg={8}>
             <Form.Item required label='Horarios de atención.' name='timings' rules={[{ required: true }]}>
-                <TimePicker.RangePicker className='p-3 mt-3' format='HH'/>
+                <TimePicker.RangePicker className='p-3 mt-3' format='HH:mm'/>
             </Form.Item>
         </Col>
        </Row>
        <div className='d-flex justofy-content-end'>
-        <Button
-            className='primary-button mt-3' 
-            htmlType='submit'> 
-            ENVIAR
-        </Button>
+       < Button className='primary-button mt-3' htmlType='submit'> ENVIAR</Button>
        </div>
     </Form>
   )

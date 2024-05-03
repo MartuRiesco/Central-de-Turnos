@@ -94,9 +94,9 @@ console.log(values, 'val');
           </Row>
           
           <div className='d-flex justofy-content-end'>
-              <h1 className='button-calendar' htmlType='submit'>
+              <Button className='primary-button' htmlType='submit'>
                   ACTUALIZAR
-              </h1>
+              </Button>
           </div>
         </Form>
     </div>
