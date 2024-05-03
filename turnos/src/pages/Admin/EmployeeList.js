@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState} from 'react';
 import { useDispatch } from 'react-redux';
 import { hideLoading, showLoading } from '../../redux/alertsSlice';
 import axios from 'axios';
@@ -86,8 +86,8 @@ function EmployeeList() {
                                                           
                             <div className='block-approve-employee'>
                                 <h1 className='user-block' onClick={()=> deleteService(employee._id)}>Borrar servicio</h1>
-                                {employee.status === 'pending' && <h1 className='user-block' onClick={() => changeEmployeeStatus(employee, 'approved')}>Aprobar</h1>}
-                              {employee.status === 'approved' && <h1 className='user-block' onClick={() => changeEmployeeStatus(employee, 'blocked')}>Bloquear</h1>}
+                                {employee.status === 'pendiente' && <h1 className='user-block' onClick={() => changeEmployeeStatus(employee, 'aprobado')}>Aprobar</h1>}
+                              {employee.status === 'aprobado' && <h1 className='user-block' onClick={() => changeEmployeeStatus(employee, 'blocked')}>Bloquear</h1>}
                             </div>
                         </div>
                     ))}

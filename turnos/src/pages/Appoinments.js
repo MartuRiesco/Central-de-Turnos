@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { hideLoading, showLoading } from '../redux/alertsSlice';
 import axios from 'axios';
 import moment from 'moment';
+import { Link } from 'react-router-dom';
 
 function Appoinments() {
   const {user }= useSelector(state=> state.user)
@@ -60,6 +61,12 @@ function Appoinments() {
                             <p>Email: {employee.employeeInfo.email}</p>
                             <p>Fecha: {moment(employee.date).format('DD-MM-YYYY')}</p>
                             <p>Hora: {moment(employee.time).format('HH:mm')}</p>
+                            {
+                              employee.status === 'cancelado'  && user.isEmployee === false ?
+                              <Link to={'/home'}> <p className='employee-status'>
+                                Reservar otro turno
+                               </p></Link>: ''
+                            }
                           </div>
                         )) 
                         }
