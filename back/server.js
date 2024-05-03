@@ -17,8 +17,6 @@ app.use((req, res, next) => {
     next();
 });
 
-
-
 app.use('/api/user', userRoute);
 app.use('/api/admin', adminRoute);
 app.use('/api/employee', employeeRoute);
