@@ -98,23 +98,21 @@ label {
   height: 60px !important;
   width: 100% !important;
   color: var(--clr-secundario-dark);
-  font-size: 14px !important;
-  font-weight: bold !important;
-  text-transform: uppercase;
+  font-weight: 400 !important;
+  text-transform: capitalize;
+  letter-spacing: .2px !important;
 }
 
-.primary-button:hover {
-  color: var(--clr-primario-dark) !important;
-}
 .secondary-button{
   border-radius: 20px !important;
-  background-color: var( --clr-secundario-dark) !important;
-  border-color: var( --clr-secundario-dark) !important;
-  width:50%;
-  color: black;
-  font-size: 14px !important;
-  font-weight: bold !important;
-  text-transform: uppercase;
+  background-color: var(--clr-secundario) !important;
+  border-color: var(--clr-secundario) !important;
+  height: 60px !important;
+  width: 100% !important;
+  color: var(--clr-secundario-dark);
+  font-weight: 400 !important;
+  text-transform: capitalize;
+  letter-spacing: .2px !important;
 }
 
 .anchor {

@@ -11,7 +11,7 @@ import moment from 'moment';
 function ApplyEmployee() {
 
     const dispatch= useDispatch()
-    const {user }= useSelector(state=> state.user)
+    const { user }= useSelector(state=> state.user)
     const navigate = useNavigate()
     const onFinish = async (values) =>{
         try {
@@ -21,8 +21,8 @@ function ApplyEmployee() {
                     ...values,
                     userId: user._id,
                     timings: [
-                        moment(values.timings[0]).format('HH:mm'),
-                        moment(values.timings[1]).format('HH:mm'),
+                        moment(values.timings[0]).format('HH'),
+                        moment(values.timings[1]).format('HH'),
                       ],
                 }
                 ,{

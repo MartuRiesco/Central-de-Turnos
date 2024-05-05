@@ -10,7 +10,7 @@ import moment from 'moment';
 function Profile() {
   const dispatch = useDispatch();
   const params = useParams()
-  const {user }= useSelector(state=> state.user);
+  const { user }= useSelector(state=> state.user);
   const [ employee, setEmployee ] = useState(null)
     const navigate = useNavigate();
 
@@ -22,8 +22,8 @@ function Profile() {
               ...values,
               userId: user._id,
               timings: [
-                moment(values.timings[0]).format('HH:mm'),
-                moment(values.timings[1]).format('HH:mm')
+                moment(values.timings[0]).format('HH'),
+                moment(values.timings[1]).format('HH')
               ],
             },
             {
@@ -34,14 +34,12 @@ function Profile() {
         dispatch(hideLoading())
         if(response.data.success) {
           toast.success(response.data.message);
-          toast('Redirecting to login page');
           navigate('/');
         } else {
           toast.success(response.data.message)
         }
       } catch (error) {
           dispatch(hideLoading());
-          toast.error('Something went wrong');  
       }
 }
 
@@ -76,7 +74,7 @@ useEffect(() => {
             <h1 className='title-notifications'>Perfíl empleado.</h1>
             <i class="ri-file-list-line"></i>
         </div>
-      { employee && <EmployeeForm onFinish={onFinish} initialValues={employee}/>}
+      { employee && <EmployeeForm onFinish={onFinish} initialValues={employee} />}
     </div>
   )
 }
