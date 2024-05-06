@@ -20,7 +20,7 @@ function ApplyEmployee() {
                 {
                     ...values,
                     userId: user._id,
-                    timings: [
+                    timings: [ 
                         moment(values.timings[0]).format('HH'),
                         moment(values.timings[1]).format('HH'),
                       ],
