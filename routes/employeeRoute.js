@@ -4,6 +4,7 @@ const User = require("../models/userModel");
 const Employee = require("../models/employeeModel");
 const authenticationMiddleware = require('../middlewares/authenticationMiddleware');
 const Appointment = require("../models/appointmentModel");
+const moment = require('moment');
 
 
 router.post("/get-employee-info-by-userid", authenticationMiddleware, async (req, res) => {
@@ -43,12 +44,13 @@ router.post("/get-employee-info-by-userid", authenticationMiddleware, async (req
 
   router.post("/update-employee-profile", authenticationMiddleware, async (req, res) => {
     try {
-        const employee = await Employee.findOneAndUpdate({userId: req.body.userId}, req.body)
+        const employee = await Employee.findOneAndUpdate({ userId: req.body.userId }, req.body)
         res.status(200).send({
             success:true, 
-            message: "Informacion del empleado actualizada correctamente ",
+            message: "Informacion del empleado actualizada correctamente.",
             data: employee
         })
+        console.log('employee', employee);
     } catch (error) {
       console.log(error);
       res.status(500).send({
@@ -60,7 +62,7 @@ router.post("/get-employee-info-by-userid", authenticationMiddleware, async (req
   })
   router.get("/get-appointments-by-employee-id", authenticationMiddleware, async (req, res) => {
     try {
-      const employee = await Employee.findOne({userId: req.body.userId     })
+      const employee = await Employee.findOne({ userId: req.body.userId })
       const appointments = await Appointment.find({employeeId: employee._id})
       res.status(200).send({
         message:"Turnos listados correctamente",

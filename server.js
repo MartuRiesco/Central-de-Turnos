@@ -8,7 +8,6 @@ const userRoute = require('./routes/userRoute')
 const adminRoute = require('./routes/adminRoute')
 const employeeRoute = require('./routes/employeeRoute')
 
-
 app.use((req, res, next) => {
     // Configura los encabezados CORS para permitir todas las solicitudes de cualquier origen
     res.setHeader('Access-Control-Allow-Origin', '*');
