@@ -5,7 +5,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import {toast} from 'react-hot-toast';
 import { hideLoading, showLoading } from '../../redux/alertsSlice';
 import EmployeeForm from '../../components/EmployeeForm';
-import moment from 'moment';
+import dayjs from 'dayjs';
 
 function Profile() {
   const dispatch = useDispatch();
@@ -22,8 +22,8 @@ function Profile() {
               ...values,
               userId: user._id,
               timings: [
-                moment(values.timings[0]).format('HH'),
-                moment(values.timings[1]).format('HH')
+                dayjs(values.timings[0]).format('HH'),
+                dayjs(values.timings[1]).format('HH')
               ],
             },
             {
@@ -74,7 +74,7 @@ useEffect(() => {
             <h1 className='title-notifications'>Perfíl empleado.</h1>
             <i class="ri-file-list-line"></i>
         </div>
-      { employee && <EmployeeForm onFinish={onFinish} initialValues={employee} />}
+      { employee && <EmployeeForm onFinish={onFinish} initialValues={employee}/>}
     </div>
   )
 }
