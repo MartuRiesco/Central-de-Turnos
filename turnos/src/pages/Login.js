@@ -42,7 +42,7 @@ function Login() {
                                 <Input placeholder='Password' type="password" />
                         </Form.Item>
 
-                        <Button className="primary-button mt-2 mb-4" htmlType="submit">
+                        <Button className="primary-button mt-2 mb-2" htmlType="submit">
                             Ingresar
                         </Button>
 

@@ -162,28 +162,28 @@ function BookAppointment() {
                           }}
                   />
                    <TimePicker
-                        format='HH'
-                        className='mt-3 p-3'
-                        placeholder='10:00hs'
-                        onChange={value => {
-                          setIsAvailable(false);
-                          setTime(dayjs(value).format('HH'));
-                        }}
-                        disabledTime={disabledTime}
-                  />
+                      format='HH'
+                      className='mt-3 p-3'
+                      placeholder='Seleccione Hora'
+                      onChange={value => {
+                        setIsAvailable(false);
+                        setTime(dayjs(value).format('HH'));
+                      }}
+                      disabledTime={disabledTime}
+                    />
 
-                  <h1 
-                        className='button-calendar mt-4' 
+                  <Button 
+                        className='primary-button mt-4' 
                         onClick={checkAvailability}>
                           Consultar disponibilidad
-                  </h1>
+                  </Button>
 
                   { isAvailable && 
-                    <h1 
-                        className='button-calendar mt-4'
+                    <Button 
+                        className='primary-button mt-4'
                         onClick={ bookNow }>
                           Reservar
-                  </h1>
+                  </Button>
                   }
 
               </div>

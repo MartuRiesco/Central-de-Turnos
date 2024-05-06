@@ -9,7 +9,7 @@ function Employee({ employee }) {
     >
         <h2>{employee.name}</h2>
         <p>Lúnes a Sábado de</p>
-        <h3>{employee.timings[0]} - {employee.timings[1]}</h3>
+        <h3>{employee.timings[0]}:00 - {employee.timings[1]}:00</h3>
         <i class="arrow ri-arrow-right-line"></i>
     </div>
   )

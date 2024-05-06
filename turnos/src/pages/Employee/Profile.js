@@ -5,12 +5,12 @@ import { useNavigate, useParams } from 'react-router-dom';
 import {toast} from 'react-hot-toast';
 import { hideLoading, showLoading } from '../../redux/alertsSlice';
 import EmployeeForm from '../../components/EmployeeForm';
-import moment from 'moment';
+import dayjs from 'dayjs';
 
 function Profile() {
   const dispatch = useDispatch();
   const params = useParams()
-  const {user }= useSelector(state=> state.user);
+  const { user }= useSelector(state=> state.user);
   const [ employee, setEmployee ] = useState(null)
     const navigate = useNavigate();
 
@@ -22,8 +22,8 @@ function Profile() {
               ...values,
               userId: user._id,
               timings: [
-                moment(values.timings[0]).format('HH:mm'),
-                moment(values.timings[1]).format('HH:mm')
+                dayjs(values.timings[0]).format('HH'),
+                dayjs(values.timings[1]).format('HH')
               ],
             },
             {
@@ -34,14 +34,12 @@ function Profile() {
         dispatch(hideLoading())
         if(response.data.success) {
           toast.success(response.data.message);
-          toast('Redirecting to login page');
           navigate('/');
         } else {
           toast.success(response.data.message)
         }
       } catch (error) {
           dispatch(hideLoading());
-          toast.error('Something went wrong');  
       }
 }
 
