@@ -4,7 +4,7 @@ import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
 import {toast} from 'react-hot-toast';
 import { hideLoading, showLoading } from '../../redux/alertsSlice';
-import EmployeeForm from '../../components/EmployeeForm';
+import EmployeeForm from '../../Components/EmployeeForm';
 import dayjs from 'dayjs';
 
 function Profile() {

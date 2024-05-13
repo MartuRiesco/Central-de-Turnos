@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import Employee from '../components/Employee';
+import Employee from '../Components/Employee';
 import { useDispatch } from 'react-redux';
 import { showLoading, hideLoading } from '../redux/alertsSlice';
 
