@@ -5,7 +5,7 @@ import axios from 'axios';
 import toast from 'react-hot-toast';
 import { useDispatch } from 'react-redux';
 import { hideLoading, showLoading } from '../redux/alertsSlice';
-import Logo from '../Components/Logo';
+import Logo from '../components/Logo';
 
 function Register() {
     const dispatch = useDispatch();

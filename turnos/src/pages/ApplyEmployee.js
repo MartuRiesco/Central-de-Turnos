@@ -5,7 +5,7 @@ import axios from 'axios';
 import { showLoading, hideLoading } from '../redux/alertsSlice';
 import { useNavigate } from 'react-router-dom';
 import {toast} from 'react-hot-toast';
-import EmployeeForm from '../Components/EmployeeForm';
+import EmployeeForm from '../components/EmployeeForm';
 import moment from 'moment';
 
 function ApplyEmployee() {
