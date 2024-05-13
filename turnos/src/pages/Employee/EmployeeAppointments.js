@@ -82,6 +82,20 @@ function EmployeeAppoinments() {
                                           </div>
                                     )}
                                 </div>
+                                <div>
+                                    {user.status === "aprobado" && (
+                                          <div className='d-flex'>
+                                            <h1 className='employee-rejected'>Eliminar</h1>
+                                          </div>
+                                    )}
+                                </div>
+                                <div>
+                                    {user.status === "cancelado" && (
+                                          <div className='d-flex'>
+                                            <h1 className='employee-rejected'>Eliminar</h1>
+                                          </div>
+                                    )}
+                                </div>
                             </div>
                         ))}
         </div>
