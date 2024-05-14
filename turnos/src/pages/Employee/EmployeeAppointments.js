@@ -27,6 +27,26 @@ function EmployeeAppoinments() {
     }
   }
 
+  const deleteAppointment = async(appointmentId) => {
+        try {
+          dispatch(showLoading());
+          const response = await axios.delete('https://central-de-turnos-production-f438.up.railway.app/api/employee/delete-appointment', 
+          { data: {
+            appointmentId: appointmentId
+          }},{
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem('token')}`
+            }
+          })
+          dispatch(hideLoading());
+          if(response.data.success) {
+            setAppointments(appointments.filter(appointment => appointment._id !== appointmentId));
+          }
+      } catch (error) {
+          dispatch(hideLoading());
+    }
+  }
+
   const changeAppointmentsStatus = async (record, status) => {
     try {
         dispatch(showLoading());
@@ -85,7 +105,7 @@ function EmployeeAppoinments() {
                                 <div>
                                     {user.status === "aprobado" && (
                                           <div className='d-flex'>
-                                            <h1 className='employee-rejected'>Eliminar</h1>
+                                            <h1 className='employee-rejected' onClick={() => deleteAppointment(appointments)}>Eliminar</h1>
                                           </div>
                                     )}
                                 </div>

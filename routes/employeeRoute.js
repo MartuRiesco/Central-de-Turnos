@@ -78,6 +78,26 @@ router.post("/get-employee-info-by-userid", authenticationMiddleware, async (req
       });
     }
   });
+
+  router.delete('/delete-appointment', async (req, res) => {
+      try {
+        const { appointmentId } = req.body;
+        const appointmentIdDelete = await Appointment.findOneAndDelete({ _id: appointmentId });
+        res.status(200).send({
+          message: "Turno eliminado correctamente",
+          success: true,
+          data: appointmentIdDelete,
+        });
+      } catch (error) {
+        console.log(error);
+        res.status(500).send({
+          message: "Error eliminando el turno" ,
+          success: false,
+          error,
+        });
+      }
+  })
+
   router.post("/change-apppointment-status",/*  authenticationMiddleware, */ async (req, res) => {
     try {
           const {appointmentId,  status} = req.body
