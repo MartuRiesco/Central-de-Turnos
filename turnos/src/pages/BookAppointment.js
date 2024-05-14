@@ -172,11 +172,12 @@ function BookAppointment() {
                       disabledTime={disabledTime}
                     />
 
-                  <Button 
+                  { isAvailable && <Button 
                         className='primary-button mt-4' 
                         onClick={checkAvailability}>
                           Consultar disponibilidad
                   </Button>
+                  }
 
                   { isAvailable && 
                     <Button 
