@@ -21,31 +21,37 @@ function EmployeeAppoinments() {
         dispatch(hideLoading());
         if(response.data.success) {
           setAppointments(response.data.data)
+          console.log(response.data.data);
         }
     } catch (error) {
         dispatch(hideLoading());
     }
   }
 
-  const deleteAppointment = async(appointmentId) => {
-        try {
-          dispatch(showLoading());
-          const response = await axios.delete('https://central-de-turnos-production-f438.up.railway.app/api/employee/delete-appointment', 
-          { data: {
-            appointmentId: appointmentId
-          }},{
+  const deleteAppointment = async(appointmentId, userInfo) => {
+    try {
+      console.log(userInfo);
+        dispatch(showLoading());
+        const response = await axios.delete('https://central-de-turnos-production-f438.up.railway.app/api/employee/delete-appointment', 
+        { data: {
+            appointmentId: appointmentId,
+            userInfo: userInfo
+        }},{
             headers: {
-              Authorization: `Bearer ${localStorage.getItem('token')}`
+                Authorization: `Bearer ${localStorage.getItem('token')}`
             }
-          })
-          dispatch(hideLoading());
-          if(response.data.success) {
-            setAppointments(appointments.filter(appointment => appointment._id !== appointmentId));
+        })
+        console.log(response.data);
+        dispatch(hideLoading());
+        if(response.data.success) {
+            setAppointments(prevAppointments => prevAppointments.filter(appointment => appointment._id !== appointmentId));
+           
+       
           }
-      } catch (error) {
-          dispatch(hideLoading());
+    } catch (error) {
+        dispatch(hideLoading());
     }
-  }
+}
 
   const changeAppointmentsStatus = async (record, status) => {
     try {
@@ -91,7 +97,8 @@ function EmployeeAppoinments() {
                                 </div>
                                 <p>Email: {user.userInfo.email}</p>
                                 <p>Fecha: {moment(user.date).format('DD-MM-YYYY')}</p>
-                                <p>Hora: {moment(user.time).format('HH:mm')}</p>
+                                <p>Hora: {moment(user.time).utcOffset(0).format('HH:mm')}</p>
+                               
                                 
 
                                 <div>
@@ -103,18 +110,19 @@ function EmployeeAppoinments() {
                                     )}
                                 </div>
                                 <div>
-                                    {user.status === "aprobado" && (
-                                          <div className='d-flex'>
-                                            <h1 className='employee-rejected' onClick={() => deleteAppointment(appointments)}>Eliminar</h1>
-                                          </div>
-                                    )}
+                                {user.status === "aprobado" && (
+                                  <div className='d-flex'>
+                                   <h1 className='employee-rejected' onClick={() => deleteAppointment(user._id, user.userInfo)}>Eliminar</h1>
+                                 </div>
+                                )}
                                 </div>
                                 <div>
-                                    {user.status === "cancelado" && (
-                                          <div className='d-flex'>
-                                            <h1 className='employee-rejected' onClick={() => deleteAppointment(appointments)}>Eliminar</h1>
-                                          </div>
-                                    )}
+                                {user.status === "cancelado" && (
+                                  <div className='d-flex'>
+                                    
+                                      <h1 className='employee-rejected' onClick={() => deleteAppointment(user._id, user.userInfo) } >Eliminar</h1>
+                                  </div>
+                                )}
                                 </div>
                             </div>
                         ))}

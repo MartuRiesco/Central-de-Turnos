@@ -55,12 +55,13 @@ function Appoinments() {
         <div className='service-container'>
         {appointments?.map((employee) => (
                             <div className='employee-card'>
+                            {console.log(moment(employee.time).utcOffset(0).format('HH:mm'))}
                             <h2>{user.isAdmin ? employee.employeeInfo.name : 'Turno'}</h2>
                             <p className='employee-status'>{employee.status}</p>
                             {user.isAdmin && <p>Cliente: {employee.userInfo.name}</p>}
                             <p>Email: {employee.employeeInfo.email}</p>
                             <p>Fecha: {moment(employee.date).format('DD-MM-YYYY')}</p>
-                            <p>Hora: {moment(employee.time).format('HH:mm')}</p>
+                            <p>Hora: {moment(employee.time).utcOffset(0).format('HH:mm')}</p>
                             {
                               employee.status === 'cancelado'  && user.isEmployee === false ?
                               <Link to={'/home'}> <p className='employee-reserved'>

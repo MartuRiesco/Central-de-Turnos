@@ -12,9 +12,6 @@ function Layout({ children }) {
   const navigate = useNavigate();
 
   const location = useLocation();
-
-
-  
 const clearCacheAndStorage = () => {
     // Limpiar el localStorage
     localStorage.clear();

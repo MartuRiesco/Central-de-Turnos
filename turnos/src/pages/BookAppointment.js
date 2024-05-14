@@ -87,10 +87,13 @@ function BookAppointment() {
                   Authorization: `Bearer ${localStorage.getItem('token')}`,
               }
           }); console.log(response);
+          console.log(time);
+
           
       dispatch(hideLoading())
       if(response.data.success) {
           toast.success(response.data.message);
+          console.log(time);
           const bookedAppointment = {
             date: date,
             time: time
@@ -172,12 +175,12 @@ function BookAppointment() {
                       disabledTime={disabledTime}
                     />
 
-                  { isAvailable && <Button 
+                   <Button 
                         className='primary-button mt-4' 
                         onClick={checkAvailability}>
                           Consultar disponibilidad
                   </Button>
-                  }
+                  
 
                   { isAvailable && 
                     <Button 
