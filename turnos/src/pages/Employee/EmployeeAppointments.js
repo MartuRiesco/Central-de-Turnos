@@ -112,7 +112,7 @@ function EmployeeAppoinments() {
                                 <div>
                                     {user.status === "cancelado" && (
                                           <div className='d-flex'>
-                                            <h1 className='employee-rejected'>Eliminar</h1>
+                                            <h1 className='employee-rejected' onClick={() => deleteAppointment(appointments)}>Eliminar</h1>
                                           </div>
                                     )}
                                 </div>
