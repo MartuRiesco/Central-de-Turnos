@@ -81,12 +81,20 @@ router.post("/get-employee-info-by-userid", authenticationMiddleware, async (req
 
   router.delete('/delete-appointment', async (req, res) => {
       try {
-        const { appointmentId } = req.body;
+        const { appointmentId, userInfo } = req.body;
+       console.log(userInfo);
         const appointmentIdDelete = await Appointment.findOneAndDelete({ _id: appointmentId });
+        const user = await User.findOne({ _id: userInfo._id });
+        user.unseenNotifications.push({
+          type: 'Turno Eliminado',
+          message: 'Su turno ha sido eliminado',
+        });
+        await user.save();
+        console.log(user);
         res.status(200).send({
           message: "Turno eliminado correctamente",
           success: true,
-          data: appointmentIdDelete,
+          data: {appointmentIdDelete, user}
         });
       } catch (error) {
         console.log(error);

@@ -10,7 +10,8 @@ const moment = require('moment');
 
 router.post('/register', async(req, res) => {
     try {
-        const userExists = await User.findOne({ email: req.body.email });
+        const email = req.body.email.toLowerCase()
+        const userExists = await User.findOne({ email: email });
         if(userExists) {
           return res
             .status(200)
@@ -34,7 +35,8 @@ router.post('/register', async(req, res) => {
 
 router.post('/login', async(req, res) => {
     try {
-        const user = await User.findOne({ email: req.body.email });
+        const email = req.body.email.toLowerCase()
+        const user = await User.findOne({ email:email });
         if(!user) {
             return res
                 .status(200)
@@ -284,4 +286,3 @@ router.post("/book-appointment", authenticationMiddleware, async (req, res) => {
 
 
 module.exports = router;
-
