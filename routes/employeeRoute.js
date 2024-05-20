@@ -92,15 +92,15 @@ router.post("/get-employee-info-by-userid", authenticationMiddleware, async (req
           type: 'Turno Eliminado',
           message: 'Su turno ha sido eliminado',
         });
-        const emailService = EmailService.getInstance();
-      const email = await emailService.sendAppointmentDeleted(user);
+        /* const emailService = EmailService.getInstance();
+     await emailService.sendAppointmentDeleted(user); */
         
         await user.save();
         console.log(user);
         res.status(200).send({
           message: "Turno eliminado correctamente",
           success: true,
-          data: {appointmentIdDelete, user, email}
+          data: {appointmentIdDelete, user}
         });
       } catch (error) {
         console.log(error);
@@ -125,8 +125,8 @@ router.post("/get-employee-info-by-userid", authenticationMiddleware, async (req
           message: `Su turno cambio su estado a ${status}`,
           onClickPath: "/appointments",
       })
-      const emailService = EmailService.getInstance();
-      await emailService.sendAppointmentInfo(user, appointment);
+     /*  const emailService = EmailService.getInstance();
+      await emailService.sendAppointmentInfo(user, appointment); */
       await user.save()
       
       
