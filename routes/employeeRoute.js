@@ -5,6 +5,8 @@ const Employee = require("../models/employeeModel");
 const authenticationMiddleware = require('../middlewares/authenticationMiddleware');
 const Appointment = require("../models/appointmentModel");
 const moment = require('moment');
+const EmailService = require("../config/emailService");
+
 
 
 router.post("/get-employee-info-by-userid", authenticationMiddleware, async (req, res) => {
@@ -81,6 +83,7 @@ router.post("/get-employee-info-by-userid", authenticationMiddleware, async (req
 
   router.delete('/delete-appointment', async (req, res) => {
       try {
+       console.log('eliminando')
         const { appointmentId, userInfo } = req.body;
        console.log(userInfo);
         const appointmentIdDelete = await Appointment.findOneAndDelete({ _id: appointmentId });
@@ -89,12 +92,15 @@ router.post("/get-employee-info-by-userid", authenticationMiddleware, async (req
           type: 'Turno Eliminado',
           message: 'Su turno ha sido eliminado',
         });
+        const emailService = EmailService.getInstance();
+      const email = await emailService.sendAppointmentDeleted(user);
+        
         await user.save();
         console.log(user);
         res.status(200).send({
           message: "Turno eliminado correctamente",
           success: true,
-          data: {appointmentIdDelete, user}
+          data: {appointmentIdDelete, user, email}
         });
       } catch (error) {
         console.log(error);
@@ -110,15 +116,20 @@ router.post("/get-employee-info-by-userid", authenticationMiddleware, async (req
     try {
           const {appointmentId,  status} = req.body
           const appointment = await Appointment.findByIdAndUpdate(appointmentId, { status });
+          console.log(appointment);
           const user = await User.findOne({_id: appointment.userId})
           const unseenNotifications = user.unseenNotifications;
+          console.log(unseenNotifications);
           unseenNotifications.push({
           type: 'appointment-request-changed',
           message: `Su turno cambio su estado a ${status}`,
           onClickPath: "/appointments",
       })
-      
+      const emailService = EmailService.getInstance();
+      await emailService.sendAppointmentInfo(user, appointment);
       await user.save()
+      
+      
           res.status(200).send({
           message: "Cambio de estado del turno correctamente ",
           success: true,
