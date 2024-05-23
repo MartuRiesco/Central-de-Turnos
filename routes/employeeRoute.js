@@ -5,7 +5,7 @@ const Employee = require("../models/employeeModel");
 const authenticationMiddleware = require('../middlewares/authenticationMiddleware');
 const Appointment = require("../models/appointmentModel");
 const moment = require('moment');
-const EmailService = require("../config/emailService");
+//const EmailService = require("../config/emailService");
 
 
 
