@@ -21,7 +21,7 @@ function EmployeeAppoinments() {
         dispatch(hideLoading());
         if(response.data.success) {
           setAppointments(response.data.data)
-          console.log(response.data.data);
+         
         }
     } catch (error) {
         dispatch(hideLoading());
@@ -30,7 +30,7 @@ function EmployeeAppoinments() {
 
   const deleteAppointment = async(appointmentId, userInfo) => {
     try {
-      console.log(userInfo);
+      
         dispatch(showLoading());
         const response = await axios.delete('https://central-de-turnos-production-f438.up.railway.app/api/employee/delete-appointment', 
         { data: {
@@ -41,7 +41,7 @@ function EmployeeAppoinments() {
                 Authorization: `Bearer ${localStorage.getItem('token')}`
             }
         })
-        console.log(response.data);
+        
         dispatch(hideLoading());
         if(response.data.success) {
             setAppointments(prevAppointments => prevAppointments.filter(appointment => appointment._id !== appointmentId));
